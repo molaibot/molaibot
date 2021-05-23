@@ -13,7 +13,7 @@ module.exports = {
 
         const noArgs = new Discord.MessageEmbed()
         .setTitle('Missing arguments')
-        .setColor('RANDOM')
+        .setColor('#37393e')
         .setDescription('You are missing some args (ex: ;covid all || ;covid Canada)')
         .setTimestamp()
 
@@ -44,6 +44,7 @@ module.exports = {
                 let deaths = data.deaths.value.toLocaleString()
 
                 const embed = new Discord.MessageEmbed()
+                .setColor('#37393e')
                 .setTitle(`COVID-19 Stats for **${countries}**`)
                 .addField('Confirmed Cases', confirmed)
                 .addField('Recovered', recovered)

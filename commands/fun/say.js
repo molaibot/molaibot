@@ -12,6 +12,7 @@ module.exports = {
         .setTitle(`Message From ${message.author.tag}`)
         .setDescription(userMsg)
         .setTimestamp()
+        .setColor('#37393e')
         .setFooter("MolaiBOT - Made By MTGSquad");
         
         if (!userMsg) {

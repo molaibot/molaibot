@@ -11,7 +11,7 @@ module.exports = {
         .setAuthor(`${message.author.tag}`)
         .setTitle(`${message.author.tag}'s Balance`)
         .setDescription(`Wallet: ${profileData.mCoins} mCoins\nBank: ${profileData.bank} mCoins`)
-        .setColor('RANDOM')
+        .setColor('#37393e')
         .setTimestamp()
         .setFooter('MolaiBOT - Made By MTGSquad')
 

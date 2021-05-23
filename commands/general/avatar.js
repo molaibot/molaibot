@@ -10,6 +10,7 @@ module.exports = {
 
         const embed = new Discord.MessageEmbed()
             .setTitle('**Avatar**')
+            .setColor('#37393e')
             .setImage(member.user.displayAvatarURL({ dynamic: true, size: 1024 }))
             .setTimestamp()
 			.setFooter("MolaiBOT - Made By MTGSquad")

@@ -38,7 +38,7 @@ module.exports = {
                 .setAuthor(message.author.tag, message.author.displayAvatarURL({ dynamic: true }))
                 .setDescription(args.slice(1).join(" "))
                 .setTimestamp()
-                .setColor('RANDOM')
+                .setColor('#37393e')
                 .setFooter('MolaiBOT - Made By MTGSquad')
         )
 

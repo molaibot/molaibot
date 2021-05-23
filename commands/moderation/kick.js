@@ -19,7 +19,7 @@ module.exports = {
  
         if(toKick.kickable){
             let kickEmbed = new Discord.MessageEmbed()
-            .setColor('RANDOM')
+            .setColor('#37393e')
             .setTitle('Kick')
             .addField('Member Kicked', toKick)
             .addField('Kicked by', message.author)

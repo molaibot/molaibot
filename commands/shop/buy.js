@@ -51,6 +51,7 @@ module.exports = {
 			}
 
 			const BuyEmbed = new Discord.MessageEmbed()
+			.setColor('#37393e')
 			.setTitle(`You have bought ${itemToBuy} for ${itemPrice} mCoins!`)
 
 			message.channel.send(BuyEmbed)

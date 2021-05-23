@@ -55,7 +55,7 @@ module.exports = {
         )
         .setImage("https://cdn.discordapp.com/attachments/817443928730107986/833928259615195136/standard.gif")
         .setTimestamp()
-        .setColor(roleColor);
+        .setColor('#37393e')
       return message.channel.send(embed);
     } else {
       let command = client.commands.get(args[0].toLowerCase()) || client.commands.find((c) => c.aliases && c.aliases.includes(args[0].toLowerCase())

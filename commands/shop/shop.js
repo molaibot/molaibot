@@ -19,6 +19,7 @@ module.exports = {
             
 
 				const shopEmbed = new Discord.MessageEmbed()
+				.setColor('#37393e')
 				.setFooter('MolaiBOT - Made By MTGSquad')
 				.setTitle('Grab Some MolaiBOT Swag')
 				.setDescription('MolaiBOT Store, The items below are for listed for sale.')

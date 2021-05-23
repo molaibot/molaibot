@@ -16,7 +16,7 @@ module.exports = {
      if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) return message.channel.send("I don't have permission to play Rock Paper Scissors");
 
         const rpsEmbed = new Discord.MessageEmbed()
-        .setColor(Color)
+            .setColor('#37393e')
             .setTitle("**Choose:**")
             .setDescription("🗿 | `Rock`\n 🧾 | `Paper`\n ✂️ | `Scissors`")
 
