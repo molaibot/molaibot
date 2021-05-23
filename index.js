@@ -87,7 +87,7 @@ app.get('/commands', (req, res) => {
     res.status(200).render('commands', { commands });
 });
 
-app.get('/info', (req, res) =>{
+app.get('/api/info', (req, res) =>{
     res.status(200).send(clientDetails);
 });
 
