@@ -1,0 +1,19 @@
+const Discord = require("discord.js")
+
+module.exports = {
+    name: "profile",
+    aliases: ['p'],
+    description: "Profile Info Command",
+    run: (client, message, args) => {
+        let authorInfoEmbed = new Discord.MessageEmbed()
+        .setAuthor(message.author.tag, message.member.user.displayAvatarURL({dynamic:true}))
+        .setTitle(message.author.username)
+        .addFields(
+            { name: "User ID:", value: `${message.author.id}` },
+            { name: "Account Created At:", value: `${message.author.createdAt}` },
+            { name: "Full Username & Tag:", value: `${message.author.tag}` },
+        )
+        .setThumbnail(message.author.displayAvatarURL({dynamic:true}))
+        message.channel.send(authorInfoEmbed)
+    }
+}

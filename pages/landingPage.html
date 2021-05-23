@@ -1,0 +1,50 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MolaiBOT</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body{
+          height: 100%;
+        }
+
+        .section{
+          background: #8A2387;  /* fallback for old browsers */
+          background: -webkit-linear-gradient(to right, #F27121, #E94057, #8A2387);  /* Chrome 10-25, Safari 5.1-6 */
+          background: linear-gradient(to right, #F27121, #E94057, #8A2387); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+        p{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <section class="text-gray-600 body-font section">
+        <div class="container px-5 py-24 mx-auto">
+          <div class="flex flex-col text-center w-full mb-12">
+            <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">MolaiBOT</h1>
+            <p class="lg:w-2/3 mx-auto leading-relaxed text-base">MolaiBOT is a new multi-purpose discord bot which is still in development. If you want experimental features then please fill in the form below, if you get approved as a beta tester, you will recieve a email within 7 days of filling in the form.</p>
+            <br>
+            <a href="https://dsc.gg/molaibot" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mtg-a">Invite</a>
+            <a href="/commands" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mtg-a">Commands</a>
+          </div>
+          <div class="flex flex-col text-center w-full mb-12">
+          <h3 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Wanna Become A Beta Tester? Fill This In!</h3>
+          </div>
+          <form action="https://formspree.io/f/xyyledlw" method="POST">
+          <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:space-x-4 sm:space-y-0 space-y-4 sm:px-0 items-end">
+            <div class="relative flex-grow w-full">
+              <input style="color: black;" placeholder="Name" required name="name" type="text" id="full-name" name="full-name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            </div>
+            <div class="relative flex-grow w-full">
+              <input style="color: black;" placeholder="Email" required name="email" type="email" id="email" name="email" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-transparent focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+            </div>
+            <input name="submit" type="submit" class="text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" value="Submit">
+          </div>
+        </form>
+        </div>
+      </section>    
+</body>
+</html>

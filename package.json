@@ -1,0 +1,23 @@
+{
+  "name": "molaibot",
+  "version": "1.0.0",
+  "description": "MolaiBOT",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ascii-table": "0.0.9",
+    "discord.js": "^12.5.1",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "https": "^1.0.0",
+    "moment": "^2.29.1",
+    "mongoose": "^5.12.2",
+    "node-fetch": "^2.6.1",
+    "random-country": "^1.0.1"
+  }
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commands - MolaiBOT</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body>
+    <section class="main-content">
+        <p>To get a look of the commands in discord use <code>m/help</code>!</p>
+        <br />
+        <p>The Prefix Is: <code>m/</code></p>
+
+        <% commands.forEach(({ name, value }) => { %>
+            <table style="width: 100%;">
+                <h1 style="text-align: center;">
+                    <strong><%= name%></strong>
+                </h1>
+                <tr>
+                    <th>Command Name</th>
+                    <th>Command Description</th>
+                    <th>Command Aliases</th>
+                    <th>Command Usage</th>
+                </tr>
+                <% value.forEach(({ name, description, aliases, usage}) => { %>
+                    <tr>
+                        <td><%= name%></td>
+                        <td><%= description%></td>
+                        <td><%= typeof aliases === 'string' ? aliases : aliases.join(', ')%></td>
+                        <td><%= usage%></td>
+                    </tr>
+                <% }) %>
+            </table>
+        <% }) %>
+    </section>
+
+    <div class="p-2 w-full">
+        <a class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" href="/">Go back home</a>
+    </div>
+</body>
+
+<style>
+    @import url('https://cdn.mtgsquad-dev.com/TheBotlyNoob/Operator-Mono/main.css');
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+    *{
+        font-family: 'Open Sans', sans-serif;
+        box-sizing: border-box;
+    }
+
+    body {
+        padding: 0;
+        margin: 0;
+        font-family: 'Open Sans';
+        font-size: 16px;
+        line-height: 1.5;
+        color: rgb(241, 240, 240);
+        background: #8A2387;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #F27121, #E94057, #8A2387);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #F27121, #E94057, #8A2387); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    .main-content {
+        word-wrap: break-word;
+    }
+    @media screen and (min-width: 64rem) {
+        .main-content {
+            max-width: 64rem;
+            padding: 2rem 6rem;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+    }
+
+    @media screen and (min-width: 42em) and (min-width: 64rem) {
+        .main-content {
+            padding: 2rem 4rem;
+            font-size: 1.1rem;
+        }
+    }
+
+    @media screen and (min-width: 42em) {
+        .main-content {
+            padding: 2rem 1rem;
+            font-size: 1rem;
+        }
+    }
+
+    .main-content h1,
+    .main-content h2,
+    .main-content h3,
+    .main-content h4,
+    .main-content h5,
+    .main-content h6 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        font-weight: normal;
+        color: #ffffff;
+    }
+
+    .main-content table th,
+    .main-content table td {
+        padding: 0.5rem 1rem;
+        border: 1px solid #181111;
+    }
+</style>
+</html>
