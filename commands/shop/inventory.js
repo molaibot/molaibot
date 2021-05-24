@@ -11,7 +11,8 @@ module.exports = {
 		}, async(err, data) => {
 			if(!data){
 				let emptyEmbed = new Discord.MessageEmbed()
-				.setTitle('Your inventory is currently empty!');
+				.setTitle('Your inventory is currently empty!')
+				.setColor('#37393e')
 
 				message.channel.send(emptyEmbed);
 			}
@@ -28,7 +29,7 @@ module.exports = {
 			.setTitle(`${message.author.username}'s Inventory`)
 			.addFields(inv)
 			.setTimestamp()
-			.setColor('RANDOM')
+			.setColor('#37393e')
 			.setFooter('MolaiBOT - Made By MTGSquad')
 
 			message.channel.send(invEmbed);

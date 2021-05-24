@@ -22,7 +22,7 @@ module.exports = {
         const pkg = response
         const embed = new Discord.MessageEmbed()
         .setFooter("I don't remember where i got this from.")
-        .setColor('RANDOM')
+        .setColor('#37393e')
         .setThumbnail('https://cdn.discordapp.com/emojis/586438523796848640.png?v=1') // We Will Keep Discord.JS Thumbnail // You Can Keep Any Thumbnail
         .setAuthor(pkg.author.name, pkg.author.icon_url)
         .setDescription(pkg.description)

@@ -14,7 +14,7 @@ module.exports = {
 
  let user = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
             const embed = new   Discord.MessageEmbed()
-            .setColor(Color)
+            .setColor('#37393e')
                 .setImage(`https://some-random-api.ml/canvas/wasted?avatar=${user.user.displayAvatarURL({ format: 'png' })}`)
 
     

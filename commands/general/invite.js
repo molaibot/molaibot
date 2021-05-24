@@ -7,7 +7,7 @@ module.exports = {
 	run: (client, message, args) => {
 		const membersInServer = message.guild.memberCount;
 		const memberEmbed = new Discord.MessageEmbed()
-		.setColor('RANDOM')
+		.setColor('#37393e')
 		.setTitle(`MolaiBOT`)
         .setDescription('https://dsc.gg/molaibot')
 		.setTimestamp()

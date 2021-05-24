@@ -16,7 +16,7 @@ module.exports = {
         if(!theDescription) return message.reply("Please specify a description/question for the poll!")
 
         const embed = new MessageEmbed()
-        .setColor("RANDOM")
+        .setColor('#37393e')
         .setTitle("💭 New Poll!")
         .setDescription(theDescription)
         .setFooter("Poll started by: "+ message.author.username +'#'+ message.author.discriminator) //optional

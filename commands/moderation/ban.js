@@ -19,7 +19,7 @@ module.exports = {
  
         if(toBan.bannable){
             let x = new Discord.MessageEmbed()
-            .setColor('RANDOM')
+            .setColor('#37393e')
             .setTitle('Ban')
             .addField('Member Banned', toBan)
             .addField('Banned by', message.author)

@@ -6,6 +6,7 @@ module.exports = {
     description: "Profile Info Command",
     run: (client, message, args) => {
         let authorInfoEmbed = new Discord.MessageEmbed()
+        .setColor('#37393e')
         .setAuthor(message.author.tag, message.member.user.displayAvatarURL({dynamic:true}))
         .setTitle(message.author.username)
         .addFields(

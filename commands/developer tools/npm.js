@@ -32,6 +32,7 @@ run: async(client, message, args) => {
     .addField("**❯ Keywords:**", pkg.keywords ? pkg.keywords.join(', '): 'None', false) // 'None' if no keywords
     .setDescription(pkg.description)
     .setTimestamp()
+    .setColor('#37393e')
     message.channel.send(embed)
     } catch (e) {
         return message.channel.send(`\`${args[0]}\` is not a valid npm package`)

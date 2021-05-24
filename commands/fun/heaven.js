@@ -16,7 +16,7 @@ module.exports = {
         if (!Member) return message.channel.send(`Invalid User!`);
 
         let Embed = new Discord.MessageEmbed()
-        .setColor(Color)
+        .setColor('#37393e')
         .setImage(`https://vacefron.nl/api/heaven?user=${Member.user.displayAvatarURL()}`)
 
 

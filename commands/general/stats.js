@@ -6,7 +6,7 @@ module.exports = {
 	aliases: ['s'],
 	run: (client, message, args) => {
 		let serverEmbed = new Discord.MessageEmbed()
-		.setColor('RANDOM')
+		.setColor('#37393e')
 		.setAuthor(message.author.tag, message.member.user.displayAvatarURL({dynamic:true}))
 		.setTitle(`Stats For ${message.guild.name}`)
 		.setDescription(`Total members: ${message.guild.memberCount}`)

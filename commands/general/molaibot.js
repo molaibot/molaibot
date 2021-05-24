@@ -7,7 +7,7 @@ module.exports = {
     run: (client, message, args) => {
         let mStatsEmbed = new Discord.MessageEmbed()
         .setAuthor(message.author.tag, message.member.user.displayAvatarURL({dynamic:true}))
-        .setColor('RANDOM')
+        .setColor('#37393e')
         .setTitle('Stats For MolaiBOT')
         .setDescription(`MolaiBOT Is Currently In ${client.guilds.cache.size} Servers & Has ${client.guilds.cache.reduce((c, g) => c + g.memberCount, 0)} Users!`)
         .setTimestamp()

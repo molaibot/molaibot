@@ -19,6 +19,7 @@ module.exports = {
 
     const embed = new MessageEmbed()
       .setFooter('This command was made by awoken.')
+      .setColor('#37393e')
       .setTitle(response.login)
       .setURL(response.html_url)
       .setThumbnail(response.avatar_url)

@@ -25,7 +25,7 @@ module.exports = {
                     var text = index.selftext
                     const textembed = new Discord.MessageEmbed()
                         .setTitle(subRedditName)
-                        .setColor(Color)
+                        .setColor('#37393e')
                         .setDescription(`[${title}](${link})\n\n${text}`)
                         .setURL(`https://reddit.com/${subRedditName}`)
 

@@ -22,6 +22,7 @@ run: async(client, message, args) => {
     const pkg = response.items[0]
     const embed = new MessageEmbed()
     .setTitle(pkg.name)
+    .setColor('#37393e')
     .setURL(pkg.html_url)
     .setDescription(pkg.description)
     .addField("❯ License", pkg.license ? pkg.license : 'No License', true)
