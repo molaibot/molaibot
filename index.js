@@ -95,6 +95,15 @@ app.get('/api/commands', (req, res) =>{
     res.status(200).send(commands);
 });
 
+app.get('/api', (req, res) =>{
+    const data = {
+        commands: 'https://molaibot.ml/api/commands',
+        information: 'https://molaibot.ml/api/info'
+    }
+
+    res.status(200).send(data);
+})
+
 app.listen(port, () => console.log(`Website Listening On Port ${port}!`));
 
 
