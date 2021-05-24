@@ -101,7 +101,7 @@ await console.log('API Server Started.');
 
 await console.log('Important data:');
 await console.log(clientDetails);
-await console.log('API on http://localhost/')
+await console.log(`API on http://localhost:${port`)
 
 });
 
