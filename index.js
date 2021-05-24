@@ -1,22 +1,21 @@
-const fs = require('fs');
-const Discord = require('discord.js');
-const { prefix, token, activity, mongodb } = require('./config2.json');
-const mongoose = require('mongoose');
-const moment = require('moment');
-const ms = require('ms');
-const express = require('express');
-const path = require('path');
+const Discord = require('discord.js'),
+    { prefix, token, activity, mongodb } = require('./config2.json'),
+    mongoose = require('mongoose'),
+    moment = require('moment'),
+    ms = require('ms'),
+    express = require('express'),
+    path = require('path'),
 
-const { getCommands } = require('./utils/index')
+    { getCommands } = require('./utils/index'),
 
-const client = new Discord.Client();
+    client = new Discord.Client(),
 
 // for the currency stuff
-const profileModel = require('./models/profileSchema');
-const { profile } = require('console');
+    profileModel = require('./models/profileSchema'),
+    { profile } = require('console'),
 
 // Our beautiful custom commands system
-const customCommandsModel = require('./models/customCommandSchema');
+    customCommandsModel = require('./models/customCommandSchema');
 
 // Collections
 client.commands = new Discord.Collection();
@@ -74,7 +73,7 @@ client.once('ready', async () => {
 
 const app = express();
 
-const port = 3000 || 3001;
+const port = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 
@@ -90,13 +89,18 @@ app.get('/commands', (req, res) => {
 app.get('/api/info', (req, res) =>{
     res.status(200).send(clientDetails);
 });
+	
+app.get('/api/commands', (req, res) =>{
+    const commands = getCommands();
+    res.status(200).send(commands);
+});
 
-app.listen(80);
-await console.log('API Server Started.');
+app.listen(port, () => console.log(`Website Listening On Port ${port}!`));
+
+
 
 await console.log('Important data:');
 await console.log(clientDetails);
-await console.log('API on http://localhost/')
 
 });
 
