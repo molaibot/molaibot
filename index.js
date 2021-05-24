@@ -90,8 +90,13 @@ app.get('/commands', (req, res) => {
 app.get('/api/info', (req, res) =>{
     res.status(200).send(clientDetails);
 });
+	
+app.get('/api/commands', (req, res) =>{
+    const commands = getCommands();
+    res.status(200).send(commands);
+});
 
-app.listen(80);
+app.listen(port);
 await console.log('API Server Started.');
 
 await console.log('Important data:');
