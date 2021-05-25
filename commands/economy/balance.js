@@ -15,6 +15,22 @@ module.exports = {
         .setTimestamp()
         .setFooter('MolaiBOT - Made By MTGSquad')
 
-        message.channel.send(balEmbed)
+        let errEmbed = new Discord.MessageEmbed()
+        .setAuthor(message.author.tag)
+        .setTitle(`Error: Database Record Not Found`)
+        .setDescription('Seems like there is no record for your profile inside the database... Could you try running `m/help`, so the the bot tries to register a record?')
+        .addFields(
+            {name: `If it still doesn't work:`, value: 'Join our discord server here: `dsc.gg/devs-gg` and ping @MTGSquad#6149 with the issue.'}
+        )
+        .setColor('#37393e')
+        .setTimestamp()
+        .setFooter('MolaiBOT - Made By MTGSquad');
+
+        try{
+            message.channel.send(balEmbed);
+        }catch(err){
+            console.log(err);
+            message.channel.send(errEmbed);
+        }
     }
 }

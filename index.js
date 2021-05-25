@@ -102,7 +102,7 @@ app.get('/api', (req, res) =>{
     }
 
     res.status(200).send(data);
-})
+});
 
 app.listen(port, () => console.log(`Website Listening On Port ${port}!`));
 

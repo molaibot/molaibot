@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+import { MessageEmbed } from 'discord.js';
 module.exports = {
   name: 'youtube-together',
   description: 'Watch youtube together!',
@@ -27,7 +28,15 @@ module.exports = {
        
     .then(res => res.json())
     .then(invite => {  
-        if(!invite.code) return message.channel.send("I am unable to start a youtube together session, Try again in a minute.") //กำหนดส่งเมื่อมีสิ่งผิดพลาด
+        const errorEmbed = new MessageEmbed()
+        .setAuthor(message.author.tag)
+        .setTitle('Error Starting YouTube Together Session')
+        .setDescription('Try again later.')
+        .setTimestamp()
+        .setFooter('MolaiBOT - Made By MTGSquad')
+        .setColor('#37393e');
+
+        if(!invite.code) return message.channel.send(errorEmbed)
         message.channel.send(`https://discord.com/invite/${invite.code}`)
   })
 
