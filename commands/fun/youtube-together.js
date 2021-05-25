@@ -1,5 +1,5 @@
 const fetch = require('node-fetch');
-import { MessageEmbed } from 'discord.js';
+const { MessageEmbed } = require('discord.js');
 module.exports = {
   name: 'youtube-together',
   description: 'Watch youtube together!',
