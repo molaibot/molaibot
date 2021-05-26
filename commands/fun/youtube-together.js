@@ -28,16 +28,26 @@ module.exports = {
        
     .then(res => res.json())
     .then(invite => {  
+        const clr = '#37393e';
+
         const errorEmbed = new MessageEmbed()
         .setAuthor(message.author.tag)
         .setTitle('Error Starting YouTube Together Session')
         .setDescription('Try again later.')
         .setTimestamp()
         .setFooter('MolaiBOT - Made By MTGSquad')
-        .setColor('#37393e');
+        .setColor(clr);
+
+        const kEmbed = new MessageEmbed()
+        .setAuthor(message.author.tag)
+        .setTitle('YouTube Together Session')
+        .setURL(`https://discord.com/invite/${invite.code}`)
+        .setTimestamp()
+        .setColor(clr)
+        .setFooter('MolaiBOT - Made By MTGSquad');
 
         if(!invite.code) return message.channel.send(errorEmbed)
-        message.channel.send(`https://discord.com/invite/${invite.code}`)
+        message.channel.send(kEmbed);
   })
 
 

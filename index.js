@@ -43,6 +43,11 @@ client.modlogs = async function({ Member, Action, Color, Reason }, message) {
 ModLogs end
 */
 
+// Embeds so i don't have to remember the hex code
+let e;
+e.color = '#37393e';
+e.footer = 'MolaiBOT - Made By MTGSquad';
+
 const cmdHandler = ["command"];
 // Run the command loader
 cmdHandler.forEach(handler => {
@@ -200,7 +205,7 @@ client.on("message", async message => {
                   Cooldown.delete(`${command.name}${message.author.id}`)
                 }, command.cooldown)
             } else {
-              command.run(client, message, args)
+              command.run(client, message, args, profileData, customCommand, e)
             }
 }
 });

@@ -5,7 +5,7 @@ module.exports = {
     cooldown: 7000,
     description: 'Delete a custom command.',
     aliases: ['delete-command', 'delcommand', 'delcmd', 'rmcmd'],
-    run: async(client, message, args, customCmdData) => {
+    run: async(client, message, args, customCommand) => {
         if(message.member.permissions.has('MANAGE_MESSAGES')) return message.channel.send('Deleting commands requires you to have the **MANAGE_MESSAGES** permission.');
             
         

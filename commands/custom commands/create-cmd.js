@@ -5,7 +5,7 @@ module.exports = {
     description: 'Create server-only commands',
     aliases: ['create-command', 'newcommand', 'addcmd'],
     cooldown: 7000,
-    run: async(client, message, args, customCmdData) => {
+    run: async(client, message, args, customCommand) => {
         if(message.member.permissions.has('MANAGE_MESSAGES')) return message.channel.send('Creating new commands requires you to have the **MANAGE_MESSAGES** permission.');
         
         let msg = message;
