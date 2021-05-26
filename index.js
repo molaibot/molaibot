@@ -44,9 +44,12 @@ ModLogs end
 */
 
 // Embeds so i don't have to remember the hex code
-let e;
-e.color = '#37393e';
-e.footer = 'MolaiBOT - Made By MTGSquad';
+let e = {
+    color: '#37393e',
+    footer: 'MolaiBOT - Made By MTGSquad'
+};
+
+console.log(e.color);
 
 const cmdHandler = ["command"];
 // Run the command loader
