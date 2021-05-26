@@ -10,6 +10,9 @@ const Discord = require('discord.js'),
 
     client = new Discord.Client(),
 
+// for blacklisting servers
+    blacklist = require('./models/blacklisted-servers'),
+
 // for the currency stuff
     profileModel = require('./models/profileSchema'),
     { profile } = require('console'),
@@ -48,8 +51,6 @@ let e = {
     color: '#37393e',
     footer: 'MolaiBOT - Made By MTGSquad'
 };
-
-console.log(e.color);
 
 const cmdHandler = ["command"];
 // Run the command loader
@@ -191,15 +192,23 @@ client.on("message", async message => {
     const cmd = args.shift().toLowerCase();
     
     if (cmd.length === 0) return;
+
+    const blacklisted = await blacklist.findOne({ Server: message.guild.id });
     
     // Get the command
     let command = client.commands.get(cmd);
     // If none is found, try to find it by alias
     if (!command) command = client.commands.get(client.aliases.get(cmd));
     // If a command is finally found, run the command
-    if(customCommand && customCommand.commandResponse) return message.channel.send(customCommand.commandResponse);
+    if(customCommand && customCommand.commandResponse) {
+        message.channel.send(customCommand.commandResponse)
+        if(blacklisted) return message.channel.send('This server is on the MolaiBOT blacklist, You cannot use any commands here.');
+    }
     
     if (command) {
+
+        if(blacklisted) return message.channel.send('This server is on the MolaiBOT blacklist, You cannot use any commands here.');
+
             if(command.cooldown) {
                 if(Cooldown.has(`${command.name}${message.author.id}`)) return message.channel.send(`Woah, you are being way too quick, you're on a \`${ms(Cooldown.get(`${command.name}${message.author.id}`) - Date.now(), {long : true})}\` cooldown.`)
                 command.run(client, message, args)
