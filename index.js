@@ -47,10 +47,7 @@ ModLogs end
 */
 
 // Embeds so i don't have to remember the hex code
-let e = {
-    color: '#37393e',
-    footer: 'MolaiBOT - Made By MTGSquad'
-};
+let e = require('./utils/embeds.json');
 
 const cmdHandler = ["command"];
 // Run the command loader
@@ -201,8 +198,8 @@ client.on("message", async message => {
     if (!command) command = client.commands.get(client.aliases.get(cmd));
     // If a command is finally found, run the command
     if(customCommand && customCommand.commandResponse) {
-        message.channel.send(customCommand.commandResponse)
         if(blacklisted) return message.channel.send('This server is on the MolaiBOT blacklist, You cannot use any commands here.');
+        message.channel.send(customCommand.commandResponse)
     }
     
     if (command) {
