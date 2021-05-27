@@ -83,7 +83,7 @@ const port = process.env.PORT || 3000;
 
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) =>{
+app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'pages/landingPage.html'));
 });
 
@@ -92,16 +92,20 @@ app.get('/commands', (req, res) => {
     res.status(200).render('commands', { commands });
 });
 
-app.get('/api/info', (req, res) =>{
+app.get('/support', (req, res) => {
+    res.sendFile(path.join(__dirname, 'pages/support.html'));
+})
+
+app.get('/api/info', (req, res) => {
     res.status(200).send(clientDetails);
 });
 	
-app.get('/api/commands', (req, res) =>{
+app.get('/api/commands', (req, res) => {
     const commands = getCommands();
     res.status(200).send(commands);
 });
 
-app.get('/api', (req, res) =>{
+app.get('/api', (req, res) => {
     const data = {
         commands: 'https://molaibot.ml/api/commands',
         information: 'https://molaibot.ml/api/info'
