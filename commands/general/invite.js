@@ -3,7 +3,7 @@ module.exports = {
 	description: 'The Invite Command.',
 	aliases: ['i'],
 	run: (client, message, args) => {
-		const fetch = require('node-fetch')
+	const fetch = require('node-fetch')
 	fetch(`https://discord.com/api/v9/channels/${message.channel.id}/messages`, {
     method: "POST",
     body: JSON.stringify({"content":"Invite MolaiBOT To Your Server!",
@@ -23,6 +23,6 @@ module.exports = {
         "Authorization": `Bot ${client.token}`,
         "Content-Type": "application/json"
     }
-}).then(res => res.json()).then(console.log)
+}).then(res => res.json());
 	},
 };

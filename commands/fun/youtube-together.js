@@ -27,27 +27,28 @@ module.exports = {
     })
        
     .then(res => res.json())
-    .then(invite => {  
-        const clr = '#37393e';
-
-        const errorEmbed = new MessageEmbed()
-        .setAuthor(message.author.tag)
-        .setTitle('Error Starting YouTube Together Session')
-        .setDescription('Try again later.')
-        .setTimestamp()
-        .setFooter('MolaiBOT - Made By MTGSquad')
-        .setColor(clr);
-
-        const kEmbed = new MessageEmbed()
-        .setAuthor(message.author.tag)
-        .setTitle('YouTube Together Session')
-        .setURL(`https://discord.com/invite/${invite.code}`)
-        .setTimestamp()
-        .setColor(clr)
-        .setFooter('MolaiBOT - Made By MTGSquad');
-
+    .then(invite => { 
         if(!invite.code) return message.channel.send(errorEmbed)
-        message.channel.send(kEmbed);
+	fetch(`https://discord.com/api/v9/channels/${message.channel.id}/messages`, {
+    method: "POST",
+    body: JSON.stringify({"content":"**Watch YouTube Together!**",
+        "components": [{
+            "type": 1,
+            "components": [
+                {
+                    "type": 2,
+                    "label": "Start Watching!",
+                    "style": 5,
+                     "url": `https://discord.com/invite/${invite.code}`
+                }
+            ]
+
+        }]}),
+    headers: {
+        "Authorization": `Bot ${client.token}`,
+        "Content-Type": "application/json"
+    }
+}).then(res => res.json());
   })
 
 
