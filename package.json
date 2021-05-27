@@ -19,6 +19,7 @@
     "mongoose": "^5.12.2",
     "node-fetch": "^2.6.1",
     "node-superfetch": "^0.2.3",
-    "random-country": "^1.0.1"
+    "random-country": "^1.0.1",
+    "sourcebin-wrapper": "^1.6.0"
   }
 }

@@ -1,18 +1,28 @@
-const Discord = require('discord.js')
-
 module.exports = {
 	name: 'invite',
 	description: 'The Invite Command.',
 	aliases: ['i'],
 	run: (client, message, args) => {
-		const membersInServer = message.guild.memberCount;
-		const memberEmbed = new Discord.MessageEmbed()
-		.setColor('#37393e')
-		.setTitle(`MolaiBOT`)
-        .setDescription('https://dsc.gg/molaibot')
-		.setTimestamp()
-		.setFooter('MolaiBOT - Made By MTGSquad')
+		const fetch = require('node-fetch')
+	fetch(`https://discord.com/api/v9/channels/${message.channel.id}/messages`, {
+    method: "POST",
+    body: JSON.stringify({"content":"Invite MolaiBOT To Your Server!",
+        "components": [{
+            "type": 1,
+            "components": [
+                {
+                    "type": 2,
+                    "label": "Click me",
+                    "style": 5,
+                     "url": "https://dsc.gg/molaibot"
+                }
+            ]
 
-		message.channel.send(memberEmbed)
+        }]}),
+    headers: {
+        "Authorization": `Bot ${client.token}`,
+        "Content-Type": "application/json"
+    }
+}).then(res => res.json()).then(console.log)
 	},
 };
