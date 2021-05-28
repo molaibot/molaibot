@@ -1,13 +1,13 @@
 const { MessageEmbed } = require("discord.js");
-
+const e = require('../../utils/embeds.json');
 module.exports = {
   name: 'suggest',
   description: 'Suggest a feature',
   usage: '<suggestion>',
-  run: async(client, message, args, e) => {
+  run: async(client, message, args) => {
       const sc = client.channels.cache.get("847586623763775500")
 
-      const s = args[0];
+      const s = args[0].join(" ");
 
       const embed1 = new MessageEmbed()
       .setAuthor(message.author.tag)
