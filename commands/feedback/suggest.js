@@ -9,6 +9,8 @@ module.exports = {
 
       const s = args.slice(0).join(" ");
 
+      if(!s) return message.channel.send('Please provide a suggestion...');
+
       const embed1 = new MessageEmbed()
       .setAuthor(message.author.tag)
       .setTitle(`Suggestion From ${message.author.tag}`)
