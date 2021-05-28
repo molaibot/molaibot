@@ -212,7 +212,7 @@ client.on("message", async message => {
 
             if(command.cooldown) {
                 if(Cooldown.has(`${command.name}${message.author.id}`)) return message.channel.send(`Woah, you are being way too quick, you're on a \`${ms(Cooldown.get(`${command.name}${message.author.id}`) - Date.now(), {long : true})}\` cooldown.`)
-                command.run(client, message, args)
+                command.run(client, message, args, profileData, customCommand, e)
                 Cooldown.set(`${command.name}${message.author.id}`, Date.now() + command.cooldown)
                 setTimeout(() => {
                   Cooldown.delete(`${command.name}${message.author.id}`)
