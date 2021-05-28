@@ -22,6 +22,8 @@ module.exports = {
       const embed2 = new MessageEmbed()
       .setAuthor(message.author.tag)
       .setTitle(`Your suggestion has been sent!`)
+      .setURL('https://discord.gg/6gQeuFYvd2')
+      .setDescription('Join the discord server by clicking the title so you can see the status of your suggestion!')
       .setFooter(e.footer)
       .setColor(e.color)
       .setTimestamp();
