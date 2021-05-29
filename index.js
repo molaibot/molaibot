@@ -55,6 +55,7 @@ cmdHandler.forEach(handler => {
     require(`./handlers/${handler}`)(client);
 });
 
+mongoose.set('useCreateIndex', true)
 mongoose.connect(mongodb, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
