@@ -19,8 +19,8 @@ run: async(client, message, args) => {
         embed.addField("📥 Input", "```js\n" + code + "```");
         let evaled;
         //If someone attempts to get the bot token
-        if (code.includes(`BOTTOKEN`) || code.includes(`TOKEN`) || code.includes("process.env") || code.includes('client.token')) {
-            evaled = "No, stop, what are you gonna do with it?"
+        if (code.includes(`BOTTOKEN`) || code.includes(`process`) || code.includes(`TOKEN`) || code.includes("process.env") || code.includes('client.token')) {
+            evaled = "No, stop, what are you gonna do with it? Don't try getting the token or exiting the node process."
         } else {
             evaled = eval(code)
         }
