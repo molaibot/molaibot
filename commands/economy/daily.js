@@ -1,3 +1,4 @@
+const { MessageEmbed } = require('discord.js');
 const profileModel = require('../../models/profileSchema');
 module.exports = {
   name: 'daily',
@@ -7,20 +8,30 @@ module.exports = {
     const dailyReward = 1500;
 
     let newBal = profileData.coins + dailyReward;
-    if(profileData > 0) {
-      newBal = dailyReward;
-    }
 
     const params = {
         userID: message.author.id
     }
 
+    try{
     profileModel.findOneAndUpdate(params, {
         $inc: {
             coins: dailyReward
         }
-    }).then(
-      message.channel.send(`You claimed your daily rewards for today, You recieved 1500 coins! **Your wallet balance now is: ${newBal}**, come back in 12 hours for more!`)
-    );
+    })
+    if(profileData.coins = 0) {
+      message.channel.send(`You claimed your rewards for today, come back in 12 hours! Your wallet balance is: **1500**.`);
+    } else {
+    message.channel.send(`You claimed your rewards for today, come back in 12 hours! Your wallet balance is: **${newBal}**.`);
+    }
+  }catch(err){
+    console.log(err)
+    const errEmbed = new MessageEmbed()
+    .setColor('#37393e')
+    .setTitle('Error!')
+    .setDescription(err);
+
+    message.channel.send(errEmbed);
+  }
   }
 }
