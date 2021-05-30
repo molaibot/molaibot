@@ -5,7 +5,7 @@ module.exports = {
     description: "Makes the bot say whatever you want!",
     usage: "<message>",
     run: (client, message, args) => {
-        let userMsg = args[0];
+        let userMsg = argss.slice(0).join(" ");
         
         let sayEmbed = new Discord.MessageEmbed()
         .setAuthor(message.author.tag, message.member.user.displayAvatarURL({dynamic:true}))
