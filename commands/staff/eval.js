@@ -9,6 +9,8 @@ owner: true,
 description: "basically a very dangerous cmd",
 run: async(client, message, args) => {
     const embed = new MessageEmbed()
+
+	if(!message.author.id === '763767239018938368') return message.channel.send('Stop trying to get my token or crashing me. This command is owner only, for the almighty, **MTG**.') 
     
     try {
         let code = args.join(' ');
@@ -19,7 +21,7 @@ run: async(client, message, args) => {
         embed.addField("📥 Input", "```js\n" + code + "```");
         let evaled;
         //If someone attempts to get the bot token
-        if (code.includes(`BOTTOKEN`) || code.includes(`process`) || code.includes(`TOKEN`) || code.includes("process.env") || code.includes('client.token')) {
+        if (code.includes(`BOTTOKEN`) || code.includes(`process`) || code.includes(`client`) || code.includes(`bot`) || code.includes(`TOKEN`) || code.includes("process.env") || code.includes('client.token')) {
             evaled = "No, stop, what are you gonna do with it? Don't try getting the token or exiting the node process."
         } else {
             evaled = eval(code)
