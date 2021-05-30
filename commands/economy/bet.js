@@ -6,7 +6,7 @@ module.exports = {
   name: 'bet',
   description: 'Have a bet against our bot!',
   usage: '<amount>',
-  cooldown: 15000,
+  cooldown: 10000,
   run: async(client, message, args, profileData) => {
     const params = {
       userID: message.author.id
