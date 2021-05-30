@@ -17,7 +17,7 @@ module.exports = {
             coins: dailyReward
         }
     }).then(
-      message.channel.send(`You claimed your daily rewards for today, You recieved 1500 coins! **Your balance now is: ${newBal}**, come back in 12 hours for more!`)
+      message.channel.send(`You claimed your daily rewards for today, You recieved 1500 coins! *you can claim every 12 hours*`)
     );
   }
 }
