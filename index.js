@@ -209,9 +209,9 @@ client.on("message", async message => {
     
     if (command) {
 
-        if(command.owner === true) {
+        /*if(command.owner === true) {
             if(!message.author.id === '763767239018938368') return message.channel.send('You do not have permissions to use this command.')
-        }
+        }*/
 
         if(blacklisted) return message.channel.send('This server is on the MolaiBOT blacklist, You cannot use any commands here.');
 
