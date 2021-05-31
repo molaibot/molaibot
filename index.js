@@ -8,7 +8,11 @@ const Discord = require('discord.js'),
 
     { getCommands } = require('./utils/index'),
 
-    client = new Discord.Client(),
+    client = new Discord.Client({
+        allowedMentions: {
+            repliedUser: true
+        }
+    }),
 
 // for blacklisting servers
     blacklist = require('./models/blacklisted-servers'),
@@ -20,7 +24,12 @@ const Discord = require('discord.js'),
 // Our beautiful custom commands system
     customCommandsModel = require('./models/customCommandSchema');
 
+// inline replies
+require('./utils/inlineReplies');
+
+
 // Collections
+
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 Cooldown = new Discord.Collection();
