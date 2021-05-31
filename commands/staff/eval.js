@@ -10,7 +10,7 @@ description: "basically a very dangerous cmd",
 run: async(client, message, args) => {
     const embed = new MessageEmbed()
 
-    if(!message.author.id === '763767239018938368') return;
+    if(message.member.id != '763767239018938368') return;
     
     try {
         let code = args.join(' ');
