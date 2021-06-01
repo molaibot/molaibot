@@ -1,4 +1,5 @@
 const profileModel = require('../../models/profileSchema');
+const embed = require('../../utils/embeds');
 module.exports = {
   name: 'daily',
   description: 'Get daily rewards!',
@@ -6,7 +7,7 @@ module.exports = {
   run: async(client, message, args, profileData) => {
     const dailyReward = 1500;
 
-    let newBal = profileData.coins + dailyReward;
+    let newBal = profileData.mCoins + dailyReward;
 
     const params = {
         userID: message.author.id
@@ -14,10 +15,10 @@ module.exports = {
 
     profileModel.findOneAndUpdate(params, {
         $inc: {
-            coins: dailyReward
+            mCoins: dailyReward
         }
     }).then(
-      message.channel.send(`You claimed your daily rewards for today, You recieved 1500 coins! *you can claim every 12 hours*`)
+      embed.embed('You claimed your daily rewards!', 'You got 1500 mCoins added to your cash!', message)
     );
   }
 }
