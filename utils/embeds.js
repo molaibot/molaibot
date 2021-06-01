@@ -1,10 +1,5 @@
-const { MessageEmbed, Message } = require('discord.js');
+const { MessageEmbed } = require('discord.js');
 const e = require('./embeds.json');
-/**
- * 
- * @param {Message} message
- */
-
 module.exports.error = (title, errMessage, message, color) => {
     if (!color) {
         color = '#ff0000'
