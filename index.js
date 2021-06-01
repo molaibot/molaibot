@@ -82,7 +82,7 @@ client.once('ready', async () => {
 
 const app = express();
 
-const port = process.env.PORT || 3000;
+const port = 25574;
 
 app.set('view engine', 'ejs');
 
