@@ -16,6 +16,7 @@
     "express": "^4.17.1",
     "glob": "^7.1.7",
     "https": "^1.0.0",
+    "module-alias": "^2.2.2",
     "moment": "^2.29.1",
     "mongoose": "^5.12.2",
     "node-fetch": "^2.6.1",
@@ -23,5 +24,15 @@
     "nodemon": "^2.0.7",
     "random-country": "^1.0.1",
     "sourcebin-wrapper": "^1.6.0"
+  },
+  "_moduleAliases": {
+    "@embeds": "./utils/embeds.js",
+    "@randomInt": "./utils/randomInt.js",
+    "@getCommands": "./utils/index.js",
+    "@models/profileSchema": "./models/profileSchema.js",
+    "@models/modlogs": "./models/modlogs.js",
+    "@models/inventory": "./models/inventory.js",
+    "@models/customCommands": "./models/customCommandSchema.js",
+    "@models/blacklist": "./models/blacklisted-servers.js"
   }
 }

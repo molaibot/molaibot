@@ -1,4 +1,4 @@
-const embed = require('../../utils/embeds');
+const embed = require('@embeds');
 const profileModel = require('../../models/profileSchema');
 const { MessageReaction } = require('discord.js');
 module.exports = {
