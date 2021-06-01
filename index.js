@@ -206,6 +206,9 @@ client.on("message", async message => {
         if(blacklisted) return message.channel.send('This server is on the MolaiBOT blacklist, You cannot use any commands here.');
         message.channel.send(customCommand.commandResponse)
     }
+
+    message.author.bal = await profileData.mCoins;
+    message.author.bank = await profileData.bank;
     
     if (command) {
 
