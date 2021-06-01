@@ -1,5 +1,6 @@
 const embed = require('../../utils/embeds');
 const profileModel = require('../../models/profileSchema');
+const { MessageReaction } = require('discord.js');
 module.exports = {
   name: 'pay',
   description: 'Pay a user!',
@@ -17,6 +18,14 @@ module.exports = {
 
     if(message.author.bal < amount) {
         embed.error('Error', "You don't have enough money.", message);
+    }
+
+    if(!amount) {
+        embed.error('Error', "You didn't provide the amount to give!", message);
+    }
+
+    if(!payUser) {
+        embed.error('Error', "You didn't mention a user!", message)
     }
 
     const myParams = {
