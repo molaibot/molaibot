@@ -1,5 +1,5 @@
 const profileModel = require("../../models/profileSchema");
-const randomInt = require("../../utils/randomInt");
+const { randomInt } = require("../../utils/randomInt");
 const embed = require('../../utils/embeds');
 module.exports = {
   name: "beg",
