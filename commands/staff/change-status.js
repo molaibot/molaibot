@@ -1,19 +1,22 @@
-const { embed, success, error } = require('@embeds');
-const { randomInt } = require('@randomInt');
+const e = require('../../utils/embeds');
 module.exports = {
   name: 'change-status',
   description: 'Change the bots custom status',
   usage: '<status>',
   run: async(client, message, args) => {
-      if(message.member.id !== '763767239018938368') return error('Owner Only Command!', 'Only molai.dev#6149 can run this command.', message);
+      if(message.member.id !== '763767239018938368') { 
+        e.error('Owner Only Command!', 'Only molai.dev#6149 can run this command.', message);
+      }
 
 
       const newStatus = args.slice(0).join(" ");
 
-      if(!newStatus) return error('You did not provide a new status!', 'Please provide a new custom status for the bot.', message);
+      if(!newStatus) {
+        e.error('You did not provide a new status!', 'Please provide a new custom status for the bot.', message);
+      }
 
       client.user.setActivity(newStatus, { type: "WATCHING" }).then(
-          embed('Status Changed!', `I successfully changed my status to: ${newStatus}.`)
+          e.embed('Status Changed!', `I successfully changed my status to: ${newStatus}.`)
       );
   }
 }
