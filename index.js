@@ -70,8 +70,6 @@ mongoose.connect(mongodb, {
 
 client.once('ready', async () => {
 	console.log(`Logged In As ${client.user.tag}!`);
-	client.user.setActivity(`${activity}`, { type: "LISTENING" });
-
 
     const clientDetails = {
         guilds: client.guilds.cache.size,
