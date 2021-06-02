@@ -1,9 +1,9 @@
 const { embed, success, error } = require('@embeds');
 const { randomInt } = require('@randomInt');
 module.exports = {
-  name: '',
-  description: '',
-  usage: '',
+  name: 'change-status',
+  description: 'Change the bots custom status',
+  usage: '<status>',
   run: async(client, message, args) => {
       if(message.member.id !== '763767239018938368') return error('Owner Only Command!', 'Only molai.dev#6149 can run this command.', message);
 
