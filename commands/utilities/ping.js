@@ -4,6 +4,7 @@ module.exports = {
 	name: 'ping',
 	description: 'Ping!',
 	aliases: ['pg'],
+	cooldown: 1,
 	run: (client, message, args) => {
 		let pingEmbed = new Discord.MessageEmbed()
 

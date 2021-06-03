@@ -2,6 +2,7 @@ const fetch = require('node-fetch');
 module.exports = {
   name: 'website',
   description: 'Link to the molaibot website',
+  cooldown: 1,
   run: async(client, message, args) => {
     fetch(`https://discord.com/api/v9/channels/${message.channel.id}/messages`, {
         method: "POST",

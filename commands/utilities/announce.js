@@ -5,6 +5,7 @@ module.exports = {
     usage: '<#channel> <message> [-ping]',
     description: 'Make an announcement',
     aliases: ['announcement'],
+    cooldown: 1,
     /** 
      * @param {Client} client 
      * @param {Message} message 

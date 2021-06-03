@@ -4,6 +4,7 @@ module.exports = {
     name: "poll",
     description: "Start a new poll!",
     aliases: ['newpoll'],
+    cooldown: 1,
     run: async(client, message, args) => {
         // CHECK IF YOUSER HAS PERMS
         if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('Only **Administrators** can use this command.');

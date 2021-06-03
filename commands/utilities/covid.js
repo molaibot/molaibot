@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "covid",
+    cooldown: 1,
     description: "Track a country or worldwide COVID-19 cases",
     aliases: ['coronavirus', 'covid19', 'corona'],
 	run: async(client, message, args) => {
