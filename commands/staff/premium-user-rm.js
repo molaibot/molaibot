@@ -6,6 +6,7 @@ module.exports = {
   name: 'premium-user-rm',
   description: 'Remove a user from molaibot premium',
   aliases: ["rm-user"],
+  cooldown: 1,
   run: async(client, message, args) => {
     const memberEmbed = new MessageEmbed()
     .setColor(e.color)

@@ -6,6 +6,7 @@ module.exports = {
   name: 'premium-user-add',
   description: 'Add a user to molaibot premium',
   aliases: ["add-user"],
+  cooldown: 1,
   run: async(client, message, args) => {
     const memberEmbed = new MessageEmbed()
     .setColor(e.color)
