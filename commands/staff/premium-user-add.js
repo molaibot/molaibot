@@ -21,7 +21,7 @@ module.exports = {
       const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
 
       if(!member) {
-          embed.error("Please provide a member", "Please provide a member so i can give them a premium membership.");
+          embed.error("Please provide a member", "Please provide a member so i can give them a premium membership.", message);
       }
 
       premium.findOne({
