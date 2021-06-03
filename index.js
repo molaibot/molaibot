@@ -70,6 +70,10 @@ mongoose.connect(mongodb, {
 
 client.once('ready', async () => {
 	console.log(`Logged In As ${client.user.tag}!`);
+    client.user.setPresence({ activity: { name: 'm/help | https://bot.molai.dev/' }, status: 'dnd' })
+    .then(console.log)
+    .catch(console.error);
+​
 
     const clientDetails = {
         guilds: client.guilds.cache.size,
