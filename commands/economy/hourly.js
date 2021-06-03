@@ -4,6 +4,7 @@ module.exports = {
   name: 'hourly',
   description: 'Hourly Rewards For Premium Members!',
   premium: true,
+  cooldown: 3600000,
   run: async(client, message, args) => {
     const rewards = 750;
 

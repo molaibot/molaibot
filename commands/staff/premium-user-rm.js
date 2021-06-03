@@ -29,7 +29,6 @@ module.exports = {
         if(!data) {
             embed.error("The user doesn't have premium", "They don't have premium, what are you going to take away 🤣", message);
         }
-
         data.delete();
         embed.embed('Removed Their Premium Membership', 'I successfully terminated their membership.', message).then(
             member.send(memberEmbed)

@@ -12,9 +12,6 @@ const Discord = require('discord.js'),
     client = new Discord.Client(),
     embed = require('./utils/embeds'),
 
-// for blacklisting servers
-    blacklist = require('./models/blacklisted-servers'),
-
 // for the currency stuff
     profileModel = require('./models/profileSchema'),
     { profile } = require('console'),
@@ -76,11 +73,7 @@ mongoose.connect(mongodb, {
 
 client.once('ready', async () => {
 	console.log(`Logged In As ${client.user.tag}!`);
-    client.user.setPresence({ activity: { name: 'm/help | https://bot.molai.dev/' }, status: 'dnd' })
-    .then(console.log)
-    .catch(console.error);
-​
-
+    
     const clientDetails = {
         guilds: client.guilds.cache.size,
         users: client.users.cache.size,
@@ -203,8 +196,6 @@ client.on("message", async message => {
     const cmd = args.shift().toLowerCase();
     
     if (cmd.length === 0) return;
-
-    const blacklisted = await blacklist.findOne({ Server: message.guild.id });
     
     // Get the command
     let command = client.commands.get(cmd);
@@ -212,34 +203,28 @@ client.on("message", async message => {
     if (!command) command = client.commands.get(client.aliases.get(cmd));
     // If a command is finally found, run the command
     if(customCommand && customCommand.commandResponse) {
-        if(blacklisted) return message.channel.send('This server is on the MolaiBOT blacklist, You cannot use any commands here.');
         message.channel.send(customCommand.commandResponse)
     }
 
     message.author.bal = await profileData.mCoins;
     message.author.bank = await profileData.bank;
+
+    const userPre = await premium.findOne({ User: message.author.id });
     
     if (command) {
+        if(command.premium && !userPre) return embed.error("You don't seem to be a premium member", "You don't have premium, however you can buy it from our website.", message);
+    
+        if(command.cooldown) {
+         if(Cooldown.has(`${command.name}${message.author.id}`)) return message.channel.send(`Woah, you are being way too quick, you're on a \`${ms(Cooldown.get(`${command.name}${message.author.id}`) - Date.now(), {long : true})}\` cooldown.`)
+                    command.run(client, message, args, profileData, customCommand, e)
+                    Cooldown.set(`${command.name}${message.author.id}`, Date.now() + command.cooldown)
+                    setTimeout(() => {
+                    Cooldown.delete(`${command.name}${message.author.id}`)
+                    }, command.cooldown)
+                } else if(!cooldown && !command.premium) {
+                    command.run(client, message, args, profileData, customCommand, e)
+                }
 
-        if(blacklisted){
-            message.channel.send('This server is on the MolaiBOT blacklist, You cannot use any commands here.');
-        } else
-
-        if(command.premium && !(premium.findOne({ User: message.author.id }))) {
-            embed.error("You don't seem to be a premium member", "You don't have premium, however you can buy it from our website.", message);
-        } else
-
-            if(command.cooldown) {
-                if(Cooldown.has(`${command.name}${message.author.id}`)) return message.channel.send(`Woah, you are being way too quick, you're on a \`${ms(Cooldown.get(`${command.name}${message.author.id}`) - Date.now(), {long : true})}\` cooldown.`)
-                command.run(client, message, args, profileData, customCommand)
-                Cooldown.set(`${command.name}${message.author.id}`, Date.now() + command.cooldown)
-                setTimeout(() => {
-                  Cooldown.delete(`${command.name}${message.author.id}`)
-                }, command.cooldown)
-            } else {
-              command.run(client, message, args, profileData, customCommand)
-            }
-}
-});
+}});
 
 client.login(token);
