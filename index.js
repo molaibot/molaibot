@@ -221,25 +221,23 @@ client.on("message", async message => {
     
     if (command) {
 
-        /*if(command.owner === true) {
-            if(!message.author.id === '763767239018938368') return message.channel.send('You do not have permissions to use this command.')
-        }*/
-
-        if(blacklisted) return message.channel.send('This server is on the MolaiBOT blacklist, You cannot use any commands here.');
+        if(blacklisted){
+            message.channel.send('This server is on the MolaiBOT blacklist, You cannot use any commands here.');
+        } else
 
         if(command.premium && !(premium.findOne({ User: message.author.id }))) {
             embed.error("You don't seem to be a premium member", "You don't have premium, however you can buy it from our website.", message);
-        }
+        } else
 
             if(command.cooldown) {
                 if(Cooldown.has(`${command.name}${message.author.id}`)) return message.channel.send(`Woah, you are being way too quick, you're on a \`${ms(Cooldown.get(`${command.name}${message.author.id}`) - Date.now(), {long : true})}\` cooldown.`)
-                command.run(client, message, args, profileData, customCommand, e)
+                command.run(client, message, args, profileData, customCommand)
                 Cooldown.set(`${command.name}${message.author.id}`, Date.now() + command.cooldown)
                 setTimeout(() => {
                   Cooldown.delete(`${command.name}${message.author.id}`)
                 }, command.cooldown)
             } else {
-              command.run(client, message, args, profileData, customCommand, e)
+              command.run(client, message, args, profileData, customCommand)
             }
 }
 });
