@@ -10,6 +10,7 @@ const Discord = require('discord.js'),
     { getCommands } = require('./utils/index'),
 
     client = new Discord.Client(),
+    embed = require('./utils/embeds'),
 
 // for blacklisting servers
     blacklist = require('./models/blacklisted-servers'),
@@ -19,7 +20,12 @@ const Discord = require('discord.js'),
     { profile } = require('console'),
 
 // Our beautiful custom commands system
-    customCommandsModel = require('./models/customCommandSchema');
+    customCommandsModel = require('./models/customCommandSchema'),
+
+
+    // premium shit
+
+    premium = require('./models/premium');
 
 // Collections
 
@@ -220,6 +226,10 @@ client.on("message", async message => {
         }*/
 
         if(blacklisted) return message.channel.send('This server is on the MolaiBOT blacklist, You cannot use any commands here.');
+
+        if(command.premium && !(premium.findOne({ User: message.author.id }))) {
+            embed.error("You don't seem to be a premium member", "You don't have premium, however you can buy it from our website.", message);
+        }
 
             if(command.cooldown) {
                 if(Cooldown.has(`${command.name}${message.author.id}`)) return message.channel.send(`Woah, you are being way too quick, you're on a \`${ms(Cooldown.get(`${command.name}${message.author.id}`) - Date.now(), {long : true})}\` cooldown.`)

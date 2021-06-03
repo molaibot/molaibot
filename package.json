@@ -4,7 +4,7 @@
   "description": "MolaiBOT",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --watch ./index index.js"
+    "start": "node ."
   },
   "keywords": [],
   "author": "",
@@ -33,6 +33,7 @@
     "@models/modlogs": "./models/modlogs.js",
     "@models/inventory": "./models/inventory.js",
     "@models/customCommands": "./models/customCommandSchema.js",
-    "@models/blacklist": "./models/blacklisted-servers.js"
+    "@models/blacklist": "./models/blacklisted-servers.js",
+    "@models/premium": "./models/premium.js"
   }
 }
