@@ -18,7 +18,7 @@ module.exports = {
           embed.error("You aren't my owner", "You don't seem to have permissions to use this command.", message);
       }
 
-      const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
+      const member = message.mentions.users.first() || message.guild.members.cache.get(args[0]);
 
       if(!member) {
           embed.error("Please provide a member", "Please provide a member so i can give them a premium membership.");
