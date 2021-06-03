@@ -1,7 +1,7 @@
 const { embed, error } = require("@embeds");
 const {randomInt} = require('@randomInt');
 module.exports = {
-  name: 'howsus',
+  name: 'howgay',
   description: 'See how much of a sussy baka your friend is lmao',
   premium: true,
   cooldown: 25,
