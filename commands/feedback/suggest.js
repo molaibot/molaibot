@@ -4,6 +4,7 @@ module.exports = {
   name: 'suggest',
   description: 'Suggest a feature',
   usage: '<suggestion>',
+  cooldown: 1000000,
   run: async(client, message, args) => {
       const sc = client.channels.cache.get("847586623763775500")
 

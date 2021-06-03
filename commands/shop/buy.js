@@ -7,6 +7,7 @@ module.exports = {
 	aliases: ['purchase'],
 	description: 'Buy something from the shop',
 	usage: '<item name>',
+	cooldown: 1,
 	run: async(client, message, args, profileData) => {
 		const m = message;
 

@@ -10,6 +10,7 @@ module.exports = {
   name: "grave",
   usage: "grave <member>",
   description: "sleep time",
+  cooldown: 1,
   run: async (client, message, args) => {
         
 

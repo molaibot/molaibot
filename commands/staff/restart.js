@@ -2,6 +2,7 @@ const embed = require('../../utils/embeds');
 const {token} = require('../../config.json');
 module.exports = {
   name: 'restart',
+  cooldown: 1,
   description: 'Restart me!',
   run: async(client, message, args) => {
     if(!message.member.id === '763767239018938368') {

@@ -4,6 +4,7 @@ module.exports = {
 	name: 'inventory',
 	aliases: ['inv'],
 	description: "List your inventory, and see the purchases you've made!",
+	cooldown: 1,
 	run: async(client, message, args, profileData) => {
 		inventory.findOne({
 			Guild: message.guild.id,

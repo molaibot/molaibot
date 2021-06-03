@@ -5,6 +5,7 @@ module.exports = {
     description: "Kicks A Member From The Guild.",
     usage: "<@user>",
     aliases: ['k'],
+    cooldown: 1,
     run: (client, message, args) => {
         if(!message.member.hasPermission("KICK_MEMBERS")) return message.channel.send("You don't have permission to kick members.");
         let toKick = message.mentions.members.first();

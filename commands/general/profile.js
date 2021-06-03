@@ -4,6 +4,7 @@ module.exports = {
     name: "profile",
     aliases: ['p'],
     description: "Profile Info Command",
+    cooldown: 1,
     run: (client, message, args) => {
         let authorInfoEmbed = new Discord.MessageEmbed()
         .setColor('#37393e')

@@ -4,6 +4,7 @@ module.exports = {
   aliases: ['setnickname'],
   description: "Set a user's nickname",
   usage: '<@user> <nickname>',
+  cooldown: 1,
   run: async(client, message, args) => {
       const member = message.mentions.members.first();
       const nickname = args.slice(1).join(" ");

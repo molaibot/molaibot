@@ -6,6 +6,7 @@ module.exports = {
 name: "eval",
 aliases: ['e'],
 owner: true,
+cooldown: 1,
 description: "basically a very dangerous cmd",
 run: async(client, message, args) => {
     const embed = new MessageEmbed()

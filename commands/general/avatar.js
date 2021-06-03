@@ -4,6 +4,7 @@ module.exports = {
     name: "avatar",
     aliases: ['av'],
     description: "shows the avatar of the user",
+    cooldown: 1,
     run: (client, message, args) => {
 
         const member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.guild.members.cache.find(r => r.user.username.toLowerCase() === args.join(' ').toLocaleLowerCase()) || message.guild.members.cache.find(r => r.displayName.toLowerCase() === args.join(' ').toLocaleLowerCase()) || message.member;

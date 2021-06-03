@@ -5,6 +5,7 @@ module.exports = {
   name: "github",
   aliases: ["githubuser", "gh"],
   description: "search up a github user!",
+  cooldown: 1,
   run: async (client, message, args) => {
     const name = args.join(" ");
     if (!name) return message.channel.send("Please specify a github username"); // if no github username lul

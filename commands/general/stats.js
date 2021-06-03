@@ -4,6 +4,7 @@ module.exports = {
 	name: 'stats',
 	description: 'Info About The Server.',
 	aliases: ['s'],
+	cooldown: 1,
 	run: (client, message, args) => {
 		let serverEmbed = new Discord.MessageEmbed()
 		.setColor('#37393e')

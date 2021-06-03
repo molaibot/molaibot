@@ -8,6 +8,7 @@ const red = "#ff04a9"
 module.exports = {
   name: "meme",
   usage: "meme",
+  cooldown: 1,
   description: "Get a meme",
   run: async (client, message, args) => {
     https.get(url, (result) => {

@@ -5,6 +5,7 @@ module.exports = {
 	usage: '',
     aliases: ['store'],
 	description: 'List all items available in the shop',
+	cooldown: 1,
 	run: async(client, message, args) => {
 		if(items.length === 0) return message.channel.send('There are no items available for sale!');
 

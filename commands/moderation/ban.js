@@ -5,6 +5,7 @@ module.exports = {
     description: "Bans A Member From The Guild.",
     usage: "<@user>",
     aliases: ['b'],
+    cooldown: 1,
     run: (client, message, args) => {
         if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("You don't have permission to ban members.");
         let toBan = message.mentions.members.first();

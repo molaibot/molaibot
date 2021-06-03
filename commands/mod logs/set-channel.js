@@ -3,6 +3,7 @@ module.exports = {
   name: 'set-channel',
   description: 'Set the modlogs channel!',
   usage: '<channel>',
+  cooldown: 1000000,
   run: async(client, message, args) => {
     if(!message.member.permissions.has('ADMINISTRATOR')) return message.channel.send("The **Administrator** Permission Is Required To Run This Command!");
 

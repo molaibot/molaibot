@@ -5,6 +5,7 @@ const red = "#ff04a9"
 
 module.exports = {
   name: "wasted",
+  cooldown: 1,
   usage: "wasted",
   description: "wasted",
   run: async (client, message, args) => {

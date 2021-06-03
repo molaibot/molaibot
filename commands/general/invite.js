@@ -2,6 +2,7 @@ module.exports = {
 	name: 'invite',
 	description: 'The Invite Command.',
 	aliases: ['i'],
+    cooldown: 1,
 	run: (client, message, args) => {
 	const fetch = require('node-fetch')
 	fetch(`https://discord.com/api/v9/channels/${message.channel.id}/messages`, {

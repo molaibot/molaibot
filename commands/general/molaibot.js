@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 module.exports = {
     name: "molaibot",
     aliases: ['mstats'],
+    cooldown: 1,
     description: "Stats About MolaiBOT.",
     run: (client, message, args) => {
         let mStatsEmbed = new Discord.MessageEmbed()

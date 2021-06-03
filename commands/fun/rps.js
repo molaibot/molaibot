@@ -8,6 +8,7 @@ const choices = ["🗿", "🧾", "✂️"];
 module.exports = {
   name: "rps",
   usage: "rps",
+  cooldown: 1,
   description: "play rock paper sccisors",
   run: async (client, message, args) => {
 

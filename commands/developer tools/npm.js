@@ -5,6 +5,7 @@ module.exports = {
 name: "npm",
 aliases: ["npmsearch"],
 usage: "<package>",
+cooldown: 1,
 description: "search npm packages!",
 run: async(client, message, args) => {
 

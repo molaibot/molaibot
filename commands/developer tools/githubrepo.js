@@ -6,6 +6,7 @@ module.exports = {
 name: "githubrepo",
 usage: "<repoName>",
 aliases: ["repo"],
+cooldown: 1,
 description: "search up a github repo",
 run: async(client, message, args) => {
     const name = args.slice(0).join('');

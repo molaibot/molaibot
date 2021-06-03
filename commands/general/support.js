@@ -3,6 +3,7 @@ module.exports = {
   name: 'support',
   description: 'Get support',
   aliases: ['supportserver'],
+  cooldown: 1,
   run: async(client, message, args) => {
     fetch(`https://discord.com/api/v9/channels/${message.channel.id}/messages`, {
         method: 'POST',

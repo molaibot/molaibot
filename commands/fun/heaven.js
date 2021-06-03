@@ -6,6 +6,7 @@ module.exports = {
   name: "heaven",
   usage: "heaven <member>",
   description: "the legends",
+  cooldown: 1,
   run: async (client, message, args) => {
 
 

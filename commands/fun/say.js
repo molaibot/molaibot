@@ -4,6 +4,7 @@ module.exports = {
     name: "say",
     description: "Makes the bot say whatever you want!",
     usage: "<message>",
+    cooldown: 1,
     run: (client, message, args) => {
         let userMsg = args.slice(0).join(" ");
         

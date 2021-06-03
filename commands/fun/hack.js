@@ -5,6 +5,7 @@ module.exports = {
   name: "hack",
   usage: "hack <member>",
   description: "the legends",
+  cooldown: 1,
   run: async (client, message, args) => {
 
  let user = message.mentions.members.first();

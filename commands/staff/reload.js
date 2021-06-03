@@ -3,6 +3,7 @@ const embed = require('../../utils/embeds');
 module.exports = {
 name: "reload",
 description: 'Reloads the commands!',
+cooldown: 1,
 run: async (client , message, args) => {
  
 if (message.author.id !== "Your ID") return;

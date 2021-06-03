@@ -5,6 +5,7 @@ module.exports = {
     name: 'djs',
     aliases: ['djs-docs', 'docs', 'doc'], // You Can Keep Any Name
     description: 'Shows Docs About Something That You Searched.', // Optional
+    cooldown: 1,
     run: async(client, message, args) => {
     
         const query = args.slice().join(' ')

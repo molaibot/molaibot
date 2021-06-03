@@ -3,6 +3,7 @@ const { randomInt } = require('../../utils/randomInt')
 module.exports = {
   name: 'ghost-buster',
   description: 'Locate the nearest ghost!',
+  cooldown: 1,
   run: async(client, message, args) => {
       const location = randomInt(1, 50);
 

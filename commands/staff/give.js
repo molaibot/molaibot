@@ -2,6 +2,7 @@ const profileModel = require("../../models/profileSchema");
 module.exports = {
   name: "give",
   description: "Give a user some mCoins",
+  cooldown: 1,
   run: async(client, message, args, profileData) => {
     if (message.member.id != "763767239018938368") return message.channel.send(`Sorry only **MTGSquad** can run this command 😔`);
     if (!args.length) return message.channel.send("You need to mention a user to give them mCoins");

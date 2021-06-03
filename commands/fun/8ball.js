@@ -9,6 +9,7 @@ module.exports = {
   aliases: ["magikball"],
   usage: "8Ball <question>",
   description: "Get a stupid answer from Magik Ball",
+  cooldown: 1,
   run: async (client, message, args) => {
       if(!args[1]) return message.reply("please ask a full question!");
       let replies = ['Yes', 'duh', 'Why not', 'No', 'N O', 'Maybe.....', 'I dont know.... Ask someone else.... ', 'Ask again later', "I honestly hate people like you, always asking me questions, ugh >:("];

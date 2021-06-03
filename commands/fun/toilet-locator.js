@@ -3,6 +3,7 @@ const { randomInt } = require('../../utils/randomInt')
 module.exports = {
   name: 'toilet-locator',
   description: 'Locate the nearest toilet!',
+  cooldown: 1,
   run: async(client, message, args) => {
       const loca = randomInt(1, 50);
 
