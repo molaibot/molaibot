@@ -14,9 +14,8 @@ module.exports = {
     .setTitle('Your Membership Has Ended.')
     .setDescription('Your Membership was terminated. Sad to see you go.');
 
-      if(message.member.id !== '763767239018938368') {
-          embed.error("You aren't my owner", "You don't seem to have permissions to use this command.", message);
-      }
+      
+    if(message.member.id !== '763767239018938368') return embed.error("You aren't my owner", "You don't seem to have permissions to use this command.", message);
 
       const member = message.mentions.users.first() || message.guild.members.cache.get(args[0]);
 
