@@ -100,7 +100,7 @@ app.get('/support', (req, res) => {
     res.sendFile(path.join(__dirname, 'pages/support.html'));
 })
 
-app.get('/api/info', (req, res) => {
+app.get('/api/statistics', (req, res) => {
     res.status(200).send(clientDetails);
 });
 	
