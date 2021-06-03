@@ -1,8 +1,9 @@
-const embed = require('../../utils/embeds')
-const { randomInt } = require('../../utils/randomInt')
+const { randomInt } = require('@randomInt');
+const embed = require('@embeds');
 module.exports = {
   name: 'ghost-buster',
   description: 'Locate the nearest ghost!',
+  premium: true,
   cooldown: 1,
   run: async(client, message, args) => {
       const location = randomInt(1, 50);

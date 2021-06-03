@@ -28,6 +28,21 @@ module.exports.embed = (title, embedMessage, message, color) => {
     return message.channel.send(embed)
 }
 
+module.exports.imgEmbed = (title, embedMessage, imgLink,  message, color) => {
+    if (!color) {
+        color = e.color
+    }
+    const embed = new MessageEmbed()
+    .setTitle(title)
+    .setDescription(embedMessage)
+    .setColor(color)
+    .setImage(imgLink)
+    .setTimestamp()
+    .setFooter(e.footer)
+    
+    return message.channel.send(embed)
+}
+
 module.exports.success = (title, succesMessage, message, color) => {
     if (!color) {
         color = '#00ff00' 
