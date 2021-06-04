@@ -1,7 +1,7 @@
 require('module-alias/register');
 require('@inlineReplies')
 const Discord = require('discord.js'),
-    { prefix, token, activity, mongodb } = require('./config2.json'),
+    { prefix, token, mongodb } = require('./config2.json'),
     mongoose = require('mongoose'),
     moment = require('moment'),
     ms = require('ms'),
@@ -10,12 +10,16 @@ const Discord = require('discord.js'),
 
     { getCommands } = require('./utils/index'),
 
-    client = new Discord.Client(),
+    client = new Discord.Client({
+        allowedMentions: {
+            // set repliedUser value to `false` to turn off the mention by default
+            repliedUser: true
+        }
+    }),
     embed = require('./utils/embeds'),
 
 // for the currency stuff
     profileModel = require('./models/profileSchema'),
-    { profile } = require('console'),
 
 // Our beautiful custom commands system
     customCommandsModel = require('./models/customCommandSchema'),

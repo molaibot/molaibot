@@ -36,5 +36,14 @@
     "@models/blacklist": "./models/blacklisted-servers.js",
     "@models/premium": "./models/premium.js",
     "@inlineReplies": "./utils/inlinereplies.js"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtgsquad/molaibot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mtgsquad/molaibot/issues"
+  },
+  "homepage": "https://github.com/mtgsquad/molaibot#readme"
 }
