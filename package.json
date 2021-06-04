@@ -23,7 +23,8 @@
     "node-superfetch": "^0.2.3",
     "nodemon": "^2.0.7",
     "random-country": "^1.0.1",
-    "sourcebin-wrapper": "^1.6.0"
+    "sourcebin-wrapper": "^1.6.0",
+    "weky": "^1.9.0"
   },
   "_moduleAliases": {
     "@embeds": "./utils/embeds.js",

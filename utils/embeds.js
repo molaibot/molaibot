@@ -28,6 +28,15 @@ module.exports.embed = (title, embedMessage, message, color) => {
     return message.inlineReply(embed)
 }
 
+module.exports.titleOnly = (title, message) => {
+    const embed = new MessageEmbed()
+    .setColor(e.color)
+    .setFooter(e.footer)
+    .setTitle(title);
+
+    return message.inlineReply(embed)
+}
+
 module.exports.imgEmbed = (title, embedMessage, imgLink,  message, color) => {
     if (!color) {
         color = e.color
