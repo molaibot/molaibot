@@ -3,3 +3,4 @@ config2.json
 .npm/
 .config/
 node_modules/
+.idea/
