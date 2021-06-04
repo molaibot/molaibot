@@ -13,7 +13,7 @@ const Discord = require('discord.js'),
     client = new Discord.Client({
         allowedMentions: {
             // set repliedUser value to `false` to turn off the mention by default
-            repliedUser: true
+            repliedUser: false
         }
     }),
     embed = require('./utils/embeds'),
