@@ -34,6 +34,7 @@
     "@models/inventory": "./models/inventory.js",
     "@models/customCommands": "./models/customCommandSchema.js",
     "@models/blacklist": "./models/blacklisted-servers.js",
-    "@models/premium": "./models/premium.js"
+    "@models/premium": "./models/premium.js",
+    "@inlineReplies": "./utils/inlinereplies.js"
   }
 }
