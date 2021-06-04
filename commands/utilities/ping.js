@@ -14,6 +14,6 @@ module.exports = {
             .setDescription(`**Ping** \n ${Date.now()  - message.createdTimestamp}ms.`)
 			.setTimestamp()
 			.setFooter('MolaiBOT - Made By MTGSquad');
-		message.channel.send(pingEmbed)
+		message.inlineReply(pingEmbed)
 	},
 };

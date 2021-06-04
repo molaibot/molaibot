@@ -6,7 +6,7 @@ module.exports = {
     description: 'Delete a custom command.',
     aliases: ['delete-command', 'delcommand', 'delcmd', 'rmcmd'],
     run: async(client, message, args, customCommand) => {
-        if(!message.member.permissions.has('MANAGE_MESSAGES')) return message.channel.send('Deleting commands requires you to have the **MANAGE_MESSAGES** permission.');
+        if(!message.member.permissions.has('MANAGE_MESSAGES')) return message.inlineReply('Deleting commands requires you to have the **MANAGE_MESSAGES** permission.');
             
         
         let msg = message;
@@ -22,7 +22,7 @@ module.exports = {
                     commandName: delCommandName
                 }
             ).then(
-                message.channel.send(`I Successfully Deleted A Command Called: ${delCommandName}!`)
+                message.inlineReply(`I Successfully Deleted A Command Called: ${delCommandName}!`)
             )
 
             client.modlogs({

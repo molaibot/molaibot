@@ -32,6 +32,6 @@ module.exports = {
         if(pkg.fields) {embed.addFields(pkg.fields)}
         // If The Docs Searched Has Title
         if(pkg.title) {embed.setTitle(pkg.title)}
-        message.channel.send(embed)
+        message.inlineReply(embed)
     }
 }

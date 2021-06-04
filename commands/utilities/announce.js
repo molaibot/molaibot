@@ -16,7 +16,7 @@ module.exports = {
 
         let mention;
 
-        if(!args.length) return message.channel.send('> Usage: m/announce <#channel> <message> [-ping]');
+        if(!args.length) return message.inlineReply('> Usage: m/announce <#channel> <message> [-ping]');
 
         const channel = message.mentions.channels.first();
         if(!channel) return message.reply('Please specify a channel!');
@@ -48,8 +48,8 @@ module.exports = {
         .setTimestamp()
         .setFooter('MolaiBOT - Made By MTGSquad')
         .setColor('RANDOM')
-        .setTitle(`Sent The Announcement In ${channel}!`)
+        .setTitle(`Sent The Announcement!`)
         
-        message.channel.send(doneEmbed)
+        message.inlineReply(doneEmbed)
     }
 }

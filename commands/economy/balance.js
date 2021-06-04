@@ -27,10 +27,10 @@ module.exports = {
         .setFooter('MolaiBOT - Made By MTGSquad');
 
         try{
-            message.channel.send(balEmbed);
+            message.inlineReply(balEmbed);
         }catch(err){
             console.log(err);
-            message.channel.send(errEmbed);
+            message.inlineReply(errEmbed);
         }
     }
 }

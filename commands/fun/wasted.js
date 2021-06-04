@@ -19,7 +19,7 @@ module.exports = {
                 .setImage(`https://some-random-api.ml/canvas/wasted?avatar=${user.user.displayAvatarURL({ format: 'png' })}`)
 
     
-            await message.channel.send(embed)
+            await message.inlineReply(embed)
 
 
 

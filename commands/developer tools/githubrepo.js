@@ -10,7 +10,7 @@ cooldown: 1,
 description: "search up a github repo",
 run: async(client, message, args) => {
     const name = args.slice(0).join('');
-    if (!name) return message.channel.send("Please specify a github username"); // if no github username lul
+    if (!name) return message.inlineReply("Please specify a github username"); // if no github username lul
     const url = `https://api.github.com/search/repositories?q=${name}`; // Uh the api
 
     let response;
@@ -33,7 +33,7 @@ run: async(client, message, args) => {
     .addField("❯ Language", pkg.language, true)
     .setFooter('This command was made by awoken.')
 
-    message.channel.send(embed)
+    message.inlineReply(embed)
 
 }
 }

@@ -8,7 +8,7 @@ module.exports = {
   cooldown: 1,
   run: async (client, message, args) => {
     const name = args.join(" ");
-    if (!name) return message.channel.send("Please specify a github username"); // if no github username lul
+    if (!name) return message.inlineReply("Please specify a github username"); // if no github username lul
     const url = `https://api.github.com/users/${name}`; // Uh the api
 
     let response;
@@ -32,6 +32,6 @@ module.exports = {
       .addField("❯ Email", response.email ? response.email : 'No Email', true)
       .addField("❯ Location", response.location ? response.location : 'No Location', true)
 
-    message.channel.send(embed);
+    message.inlineReply(embed);
   },
 };

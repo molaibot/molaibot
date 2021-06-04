@@ -10,7 +10,7 @@ description: "search npm packages!",
 run: async(client, message, args) => {
 
     const npm = args[0]
-    if(!npm) return message.channel.send("Please specify a npm package") //If a package was not specified
+    if(!npm) return message.inlineReply("Please specify a npm package") //If a package was not specified
     const url = `https://api.npms.io/v2/search?q=' + ${args[0]}`
 
     let response
@@ -34,9 +34,9 @@ run: async(client, message, args) => {
     .setDescription(pkg.description)
     .setTimestamp()
     .setColor('#37393e')
-    message.channel.send(embed)
+    message.inlineReply(embed)
     } catch (e) {
-        return message.channel.send(`\`${args[0]}\` is not a valid npm package`)
+        return message.inlineReply(`\`${args[0]}\` is not a valid npm package`)
     }
 } 
 }

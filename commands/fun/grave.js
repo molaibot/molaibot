@@ -16,14 +16,14 @@ module.exports = {
 
         let Member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
 
-        if (!Member) return message.channel.send(`Invalid User!`);
+        if (!Member) return message.inlineReply(`Invalid User!`);
 console.log(`${Member.user.displayAvatarURL()}`)
         let Embed = new MessageEmbed()
         .setImage(`https://vacefron.nl/api/grave?user=${Member.user.displayAvatarURL()}`)
                 .setColor(Color)
 
 
-        return message.channel.send(Embed);
+        return message.inlineReply(Embed);
 
         //End
 

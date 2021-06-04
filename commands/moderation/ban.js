@@ -7,15 +7,15 @@ module.exports = {
     aliases: ['b'],
     cooldown: 1,
     run: (client, message, args) => {
-        if(!message.member.hasPermission("BAN_MEMBERS")) return message.channel.send("You don't have permission to ban members.");
+        if(!message.member.hasPermission("BAN_MEMBERS")) return message.inlineReply("You don't have permission to ban members.");
         let toBan = message.mentions.members.first();
         let reason = args.slice(1).join(" ");
-        if(!args[0]) return message.channel.send('Please mention someone to bann');
-        if(!toBan) return message.channel.send(`${args[0]} is not a member.`);
-        if(!reason) return message.channel.send('Specify a reason.');
+        if(!args[0]) return message.inlineReply('Please mention someone to bann');
+        if(!toBan) return message.inlineReply(`${args[0]} is not a member.`);
+        if(!reason) return message.inlineReply('Specify a reason.');
  
         if(!toBan.bannable){
-            return message.channel.send('<a:CoolX:807041416735621160> I cannot ban someone that is mod/admin. <a:CoolX:807041416735621160>');
+            return message.inlineReply('<a:CoolX:807041416735621160> I cannot ban someone that is mod/admin. <a:CoolX:807041416735621160>');
         }
  
         if(toBan.bannable){
@@ -28,7 +28,7 @@ module.exports = {
             .setTimestamp()
             .setFooter('MolaiBOT - Made By MTGSquad ~ Command By Awoken');
  
-            message.channel.send(x);
+            message.inlineReply(x);
             toBan.ban();
 
             client.modlogs({

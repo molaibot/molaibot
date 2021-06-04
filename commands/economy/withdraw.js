@@ -6,10 +6,10 @@ module.exports = {
   description: "Withdraw mCoins from your bank",
   run: async(client, message, args, profileData) => {
     const amount = args[0];
-    if (amount % 1 != 0 || amount <= 0) return message.channel.send("Withdrawn amount must be a whole number");
+    if (amount % 1 != 0 || amount <= 0) return message.inlineReply("Withdrawn amount must be a whole number");
 
     try {
-      if (amount > profileData.bank) return message.channel.send(`You don't have that amount of mCoins to withdraw`);
+      if (amount > profileData.bank) return message.inlineReply(`You don't have that amount of mCoins to withdraw`);
 
       await profileModel.findOneAndUpdate(
         {
@@ -23,7 +23,7 @@ module.exports = {
         }
       );
 
-      return message.channel.send(`You withdrew ${amount} of mCoins into your wallet`);
+      return message.inlineReply(`You withdrew ${amount} of mCoins into your wallet`);
     } catch (err) {
       console.log(err);
     }

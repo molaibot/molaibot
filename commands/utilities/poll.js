@@ -7,14 +7,14 @@ module.exports = {
     cooldown: 1,
     run: async(client, message, args) => {
         // CHECK IF YOUSER HAS PERMS
-        if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply('Only **Administrators** can use this command.');
+        if(!message.member.hasPermission('ADMINISTRATOR')) return message.inlineReply('Only **Administrators** can use this command.');
 
 
         let channelID = message.mentions.channels.first()
         let theDescription = args.slice(1).join(" ")
 
-        if(!channelID) return message.reply("Please specify a channekl you want the poll to be in!")
-        if(!theDescription) return message.reply("Please specify a description/question for the poll!")
+        if(!channelID) return message.inlineReply("Please specify a channekl you want the poll to be in!")
+        if(!theDescription) return message.inlineReply("Please specify a description/question for the poll!")
 
         const embed = new MessageEmbed()
         .setColor('#37393e')

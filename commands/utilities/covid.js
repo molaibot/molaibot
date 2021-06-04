@@ -18,7 +18,7 @@ module.exports = {
         .setDescription('You are missing some args (ex: ;covid all || ;covid Canada)')
         .setTimestamp()
 
-        if(!args[0]) return message.channel.send(noArgs);
+        if(!args[0]) return message.inlineReply(noArgs);
 
         if(args[0] === "all"){
             fetch(`https://covid19.mathdro.id/api`)
@@ -34,7 +34,7 @@ module.exports = {
                 .addField('Recovered', recovered)
                 .addField('Deaths', deaths)
 
-                message.channel.send(embed)
+                message.inlineReply(embed)
             })
         } else {
             fetch(`https://covid19.mathdro.id/api/countries/${countries}`)
@@ -51,9 +51,9 @@ module.exports = {
                 .addField('Recovered', recovered)
                 .addField('Deaths', deaths)
 
-                message.channel.send(embed)
+                message.inlineReply(embed)
             }).catch(e => {
-                return message.channel.send('Invalid country provided')
+                return message.inlineReply('Invalid country provided')
             })
         }
     }

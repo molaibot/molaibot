@@ -14,14 +14,14 @@ module.exports = {
 
 
 
-     if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) return message.channel.send("I don't have permission to play Rock Paper Scissors");
+     if (!message.guild.me.hasPermission("MANAGE_MESSAGES")) return message.inlineReply("I don't have permission to play Rock Paper Scissors");
 
         const rpsEmbed = new Discord.MessageEmbed()
             .setColor('#37393e')
             .setTitle("**Choose:**")
             .setDescription("🗿 | `Rock`\n 🧾 | `Paper`\n ✂️ | `Scissors`")
 
-        const msg = await message.channel.send(rpsEmbed);
+        const msg = await message.inlineReply(rpsEmbed);
         for (let x = 0; x < choices.length; x++) {
           await msg.react(choices[x]);
         }

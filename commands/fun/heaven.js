@@ -14,14 +14,14 @@ module.exports = {
 
       let Member = message.mentions.members.first() || message.guild.members.cache.get(args[0]) || message.member;
 
-        if (!Member) return message.channel.send(`Invalid User!`);
+        if (!Member) return message.inlineReply(`Invalid User!`);
 
         let Embed = new Discord.MessageEmbed()
         .setColor('#37393e')
         .setImage(`https://vacefron.nl/api/heaven?user=${Member.user.displayAvatarURL()}`)
 
 
-        return message.channel.send(Embed);
+        return message.inlineReply(Embed);
 
 
 

@@ -17,7 +17,7 @@ module.exports = {
         .setFooter("MolaiBOT - Made By MTGSquad");
         
         if (!userMsg) {
-            return message.channel.send('Specify A Message Please!')
-        } else message.channel.send(sayEmbed)  
+            return message.inlineReply('Specify A Message Please!')
+        } else message.inlineReply(sayEmbed)  
     }
 }

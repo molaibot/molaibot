@@ -11,21 +11,21 @@ module.exports = {
 	run: async(client, message, args, profileData) => {
 		const m = message;
 
-		if(!args[0]) return m.channel.send('Please specify a item that you want to buy!')
+		if(!args[0]) return message.inlineReply('Please specify a item that you want to buy!')
 		const itemToBuy = args.slice(0).join(' ').toLowerCase();
 
 		const validItem = !!items.find(
 			(val) => val.item.toLowerCase() === itemToBuy
 		)
 
-		if(!validItem) return m.channel.send(`The item you tried to purchase isn't available in the shop, please try *m/shop* to list all items in the shop.`)
+		if(!validItem) return message.inlineReply(`The item you tried to purchase isn't available in the shop, please try *m/shop* to list all items in the shop.`)
 
 		const itemPrice = items.find(
 			(val) => val.item.toLowerCase() === itemToBuy
 		).price;
 
 		const userBalance = await profileData.mCoins;
-		if(userBalance < itemPrice) return m.channel.send('You do not have enough mCoins to buy this item')
+		if(userBalance < itemPrice) return message.inlineReply('You do not have enough mCoins to buy this item')
 
 		const params = {
 			Guild: message.guild.id,
@@ -55,7 +55,7 @@ module.exports = {
 			.setColor('#37393e')
 			.setTitle(`You have bought ${itemToBuy} for ${itemPrice} mCoins!`)
 
-			message.channel.send(BuyEmbed)
+			message.inlineReply(BuyEmbed)
 			await profileSchema.findOneAndUpdate(
 				{
 					userID: message.author.id

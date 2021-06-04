@@ -23,6 +23,6 @@ module.exports = {
       .addField("Question", question)
       .addField("Answer", replies[result]);
 
-      message.channel.send(ballembed);
+      message.inlineReply(ballembed);
   }
 }

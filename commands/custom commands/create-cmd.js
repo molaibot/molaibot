@@ -6,7 +6,7 @@ module.exports = {
     aliases: ['create-command', 'newcommand', 'addcmd'],
     cooldown: 7000,
     run: async(client, message, args, customCommand) => {
-        if(!message.member.permissions.has('MANAGE_MESSAGES')) return message.channel.send('Creating new commands requires you to have the **MANAGE_MESSAGES** permission.');
+        if(!message.member.permissions.has('MANAGE_MESSAGES')) return message.inlineReply('Creating new commands requires you to have the **MANAGE_MESSAGES** permission.');
         
         let msg = message;
 
@@ -24,7 +24,7 @@ module.exports = {
                     commandResponse: newCommandResponse
                 }
             ).then(
-                message.channel.send(`I Successfully Created A Command Called: ${newCommandName}.`)
+                message.inlineReply(`I Successfully Created A Command Called: ${newCommandName}.`)
 
             )
 

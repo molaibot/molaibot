@@ -50,7 +50,7 @@ let regionResult = randomCountry({ full: true });
 const name = message.mentions.users.first().username;
 
 message.delete()
-message.channel.send(`Hacking ${user}`).then(msg => {
+message.inlineReply(`Hacking ${user}`).then(msg => {
                     setTimeout(function() {
                         msg.edit(`**Hacking:** ${user}`).then(msg => {
                     setTimeout(function() {
