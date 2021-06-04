@@ -8,6 +8,8 @@ module.exports = {
   run: async(client, message, args) => {
       const hugUser = message.mentions.users.first();
 
+      if(!hugUser) return embed.embed('Mention Someone', 'You forgot to mention someone', message)
+
       embed.imgEmbed(`You hugged ${hugUser.tag}!`, `🤗`, 'https://thumbs.gfycat.com/BlueDecimalAardwolf-max-1mb.gif', message);
   }
 }
