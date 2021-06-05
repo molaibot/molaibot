@@ -10,10 +10,6 @@ module.exports = {
 
     if(!user) return embed.error('Mention A User', 'How am i supposed to know who you want to marry?', message);
 
-    await marriages.findOne({ User: message.author.tag }, async(err, data) =>{
-      if(data) return embed.embed(`You're already married...`, 'You can divorce them then get married.', message);
-    })
-
     await marriages.create({
         User: message.author.tag,
         MarriedTo: user.tag
