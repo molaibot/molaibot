@@ -1,6 +1,6 @@
 {
 	"prefix": "bot prefix here",
 	"token": "token",
-    "activity": "bot custom status",
+	"activity": "bot custom status",
 	"mongodb": "mongo uri"
 }
