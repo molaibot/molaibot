@@ -38,6 +38,7 @@
 		"@models/customCommands": "./models/customCommandSchema.js",
 		"@models/blacklist": "./models/blacklisted-servers.js",
 		"@models/premium": "./models/premium.js",
+		"@models/marriages": "./models/marriages.js",
 		"@inlineReplies": "./utils/inlinereplies.js"
 	},
 	"devDependencies": {
