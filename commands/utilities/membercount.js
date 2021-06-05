@@ -8,11 +8,11 @@ module.exports = {
 	run: (client, message, args) => {
 		const membersInServer = message.guild.memberCount;
 		const memberEmbed = new Discord.MessageEmbed()
-		.setColor('#37393e')
-		.setTitle(`${message.guild.name} Has ${membersInServer} Members`)
-		.setTimestamp()
-		.setFooter('MolaiBOT - Made By MTGSquad')
+			.setColor('#37393e')
+			.setTitle(`${message.guild.name} Has ${membersInServer} Members`)
+			.setTimestamp()
+			.setFooter('MolaiBOT - Made By MTGSquad');
 
-		message.inlineReply(memberEmbed)
+		message.inlineReply(memberEmbed);
 	},
 };

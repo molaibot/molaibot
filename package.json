@@ -1,51 +1,54 @@
 {
-  "name": "molaibot",
-  "version": "1.0.0",
-  "description": "MolaiBOT",
-  "main": "index.js",
-  "scripts": {
-    "start": "node ."
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "ascii-table": "0.0.9",
-    "discord-buttons": "^3.1.1",
-    "discord.js": "^12.5.1",
-    "ejs": "^3.1.6",
-    "express": "^4.17.1",
-    "glob": "^7.1.7",
-    "https": "^1.0.0",
-    "module-alias": "^2.2.2",
-    "moment": "^2.29.1",
-    "mongoose": "^5.12.2",
-    "node-fetch": "^2.6.1",
-    "node-superfetch": "^0.2.3",
-    "nodemon": "^2.0.7",
-    "random-country": "^1.0.1",
-    "sourcebin-wrapper": "^1.6.0",
-    "weky": "^1.9.0"
-  },
-  "_moduleAliases": {
-    "@embeds": "./utils/embeds.js",
-    "@randomInt": "./utils/randomInt.js",
-    "@getCommands": "./utils/index.js",
-    "@models/profileSchema": "./models/profileSchema.js",
-    "@models/modlogs": "./models/modlogs.js",
-    "@models/inventory": "./models/inventory.js",
-    "@models/customCommands": "./models/customCommandSchema.js",
-    "@models/blacklist": "./models/blacklisted-servers.js",
-    "@models/premium": "./models/premium.js",
-    "@inlineReplies": "./utils/inlinereplies.js"
-  },
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mtgsquad/molaibot.git"
-  },
-  "bugs": {
-    "url": "https://github.com/mtgsquad/molaibot/issues"
-  },
-  "homepage": "https://github.com/mtgsquad/molaibot#readme"
+	"name": "molaibot",
+	"version": "1.0.0",
+	"description": "MolaiBOT",
+	"main": "index.js",
+	"scripts": {
+		"start": "node .",
+		"lint": "prettier --write ."
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"ascii-table": "0.0.9",
+		"discord-buttons": "^3.1.1",
+		"discord.js": "^12.5.1",
+		"ejs": "^3.1.6",
+		"express": "^4.17.1",
+		"glob": "^7.1.7",
+		"https": "^1.0.0",
+		"module-alias": "^2.2.2",
+		"moment": "^2.29.1",
+		"mongoose": "^5.12.2",
+		"node-fetch": "^2.6.1",
+		"node-superfetch": "^0.2.3",
+		"nodemon": "^2.0.7",
+		"random-country": "^1.0.1",
+		"sourcebin-wrapper": "^1.6.0",
+		"weky": "^1.9.0"
+	},
+	"_moduleAliases": {
+		"@embeds": "./utils/embeds.js",
+		"@randomInt": "./utils/randomInt.js",
+		"@getCommands": "./utils/index.js",
+		"@models/profileSchema": "./models/profileSchema.js",
+		"@models/modlogs": "./models/modlogs.js",
+		"@models/inventory": "./models/inventory.js",
+		"@models/customCommands": "./models/customCommandSchema.js",
+		"@models/blacklist": "./models/blacklisted-servers.js",
+		"@models/premium": "./models/premium.js",
+		"@inlineReplies": "./utils/inlinereplies.js"
+	},
+	"devDependencies": {
+		"prettier": "^2.3.1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/mtgsquad/molaibot.git"
+	},
+	"bugs": {
+		"url": "https://github.com/mtgsquad/molaibot/issues"
+	},
+	"homepage": "https://github.com/mtgsquad/molaibot#readme"
 }

@@ -4,3 +4,6 @@ config2.json
 .config/
 node_modules/
 .idea/
+package-lock.json
+yarn-error.log
+yarn.lock
