@@ -44,7 +44,7 @@
 		"@inlineReplies": "./utils/inlinereplies.js"
 	},
 	"devDependencies": {
-		"prettier": "^2.3.1"
+		"prettier": "2.3.1"
 	},
 	"repository": {
 		"type": "git",

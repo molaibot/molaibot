@@ -1,13 +1,29 @@
+const { titleOnly, error } = require('../../utils/embeds');
 const { randomInt } = require('@randomInt');
-const { titleOnly } = require('@embeds');
 module.exports = {
 	name: 'randomint',
-	description: 'Generates a random number!',
-	aliases: ['random-integer', 'randomnumber'],
-	cooldown: 1000,
+	description: 'Generate a random number',
+	usage: '<min> <max>',
 	run: async (client, message, args) => {
-		const answer = randomInt(1, 1000);
+		let min = args[0];
+		let max = args[1];
 
-		titleOnly(`Your Random Number: ${answer}`, message);
+		if (min !== Number)
+			return error(
+				'Please provide a number',
+				'Please give me a number, and not something else.',
+				message
+			);
+
+		if (max !== Number)
+			return error(
+				'Please provide a number',
+				'Please give me a number, and not something else.',
+				message
+			);
+
+		let answer = randomInt(min, max);
+
+		titleOnly(`You answer is: ${answer}`, message);
 	},
 };

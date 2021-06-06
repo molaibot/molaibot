@@ -19,7 +19,6 @@ const Discord = require('discord.js'),
 	profileModel = require('./models/profileSchema'),
 	// Our beautiful custom commands system
 	customCommandsModel = require('./models/customCommandSchema'),
-
 	afkSchema = require('./models/afkSchema'),
 	// premium shit
 
@@ -77,7 +76,10 @@ mongoose
 
 client.once('ready', async () => {
 	console.log(`Logged In As ${client.user.tag}!`);
-	client.user.setPresence({ activity: { name: 'm/help | bot.molai.dev' }, status: 'dnd' });
+	client.user.setPresence({
+		activity: { name: 'm/help | bot.molai.dev' },
+		status: 'dnd',
+	});
 
 	const clientDetails = {
 		guilds: client.guilds.cache.size,
@@ -166,17 +168,17 @@ client.on('guildDelete', (guild) => {
 
 client.on('message', async (message) => {
 	if (message.author.bot) return;
-	
+
 	const pings = message.mentions.users.first();
 
-	if(pings && message.author.id !== pings.id) {
-		await afkSchema.findOne({ User: pings.id }, async(err, data) =>{
-			if(data)
-			return embed.error(
-				"The User is afk!",
-				`${pings.tag} seems to be afk with the reason set to: ${data.Reason}`,
-				message
-			)
+	if (pings && message.author.id !== pings.id) {
+		await afkSchema.findOne({ User: pings.id }, async (err, data) => {
+			if (data)
+				return embed.error(
+					'The User is afk!',
+					`${pings.tag} seems to be afk with the reason set to: ${data.Reason}`,
+					message
+				);
 		});
 	}
 
@@ -240,29 +242,32 @@ client.on('message', async (message) => {
 		 */
 
 		if (command.premium) {
-			premiumGuild.findOne({ Guild: message.guild.id }, async(err, data) => {
-				if(!data)
-				return embed.error(
-					"This is a premium command!",
-					"The server you're in doesn't seem to have premium.",
-					message
-				);
-
-				if(!data.Permanant && Date.now() > data.Expire) {
-					data.delete().then(
-						embed.error(
-							"The premium membership has ended!",
-							"The premium membership for the server has ended, please contact molaibot staff to get it renewed.",
-							message
-						)
+			premiumGuild.findOne({ Guild: message.guild.id }, async (err, data) => {
+				if (!data)
+					return embed.error(
+						'This is a premium command!',
+						"The server you're in doesn't seem to have premium.",
+						message
 					);
+
+				if (!data.Permanant && Date.now() > data.Expire) {
+					data
+						.delete()
+						.then(
+							embed.error(
+								'The premium membership has ended!',
+								'The premium membership for the server has ended, please contact molaibot staff to get it renewed.',
+								message
+							)
+						);
 				}
 
 				if (command.cooldown) {
 					if (Cooldown.has(`${command.name}${message.author.id}`))
 						return message.channel.send(
 							`Woah, you are being way too quick, you're on a \`${ms(
-								Cooldown.get(`${command.name}${message.author.id}`) - Date.now(),
+								Cooldown.get(`${command.name}${message.author.id}`) -
+									Date.now(),
 								{ long: true }
 							)}\` cooldown.`
 						);
@@ -277,8 +282,8 @@ client.on('message', async (message) => {
 				} else if (!cooldown && !command.premium) {
 					command.run(client, message, args, profileData, customCommand);
 				}
-			})
-		} else command.run(client, message, args, profileData, customCommand)
+			});
+		} else command.run(client, message, args, profileData, customCommand);
 	}
 });
 
