@@ -3,7 +3,6 @@ const embed = require('@embeds');
 module.exports = {
 	name: 'ghost-buster',
 	description: 'Locate the nearest ghost!',
-	premium: true,
 	cooldown: 1,
 	run: async (client, message, args) => {
 		const location = randomInt(1, 50);

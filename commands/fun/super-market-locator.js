@@ -4,7 +4,6 @@ module.exports = {
 	name: 'super-market-locator',
 	description: '',
 	aliases: ['sml', 'sm-locator'],
-	premium: true,
 	cooldown: 1,
 	run: async (client, message, args) => {
 		const far = randomInt(20, 500);

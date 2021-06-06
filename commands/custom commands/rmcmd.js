@@ -1,10 +1,10 @@
 const customCommandsModel = require('../../models/customCommandSchema');
 
 module.exports = {
-	name: 'del-cmd',
+	name: 'rmcmd',
+	premium: true,
 	cooldown: 7000,
 	description: 'Delete a custom command.',
-	aliases: ['delete-command', 'delcommand', 'delcmd', 'rmcmd'],
 	run: async (client, message, args, customCommand) => {
 		if (!message.member.permissions.has('MANAGE_MESSAGES'))
 			return message.inlineReply(

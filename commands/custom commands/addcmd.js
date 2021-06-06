@@ -1,9 +1,9 @@
 const customCommandsModel = require('../../models/customCommandSchema');
 
 module.exports = {
-	name: 'create-cmd',
+	name: 'addcmd',
+	premium: true,
 	description: 'Create server-only commands',
-	aliases: ['create-command', 'newcommand', 'addcmd'],
 	cooldown: 7000,
 	run: async (client, message, args, customCommand) => {
 		if (!message.member.permissions.has('MANAGE_MESSAGES'))

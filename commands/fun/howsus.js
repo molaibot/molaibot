@@ -3,7 +3,6 @@ const { randomInt } = require('@randomInt');
 module.exports = {
 	name: 'howsus',
 	description: 'See how much of a sussy baka your friend is lmao',
-	premium: true,
 	cooldown: 25,
 	run: async (client, message, args) => {
 		const friend = message.mentions.users.first();
