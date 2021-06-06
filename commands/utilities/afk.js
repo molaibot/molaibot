@@ -2,6 +2,7 @@ const embed = require('@embeds');
 const afkSchema = require('../../models/afkSchema');
 module.exports = {
   name: 'afk',
+  aliases: ['setafk'],
   description: 'Set your afk status',
   cooldown: 5000,
   run: async(client, message, args) => {
