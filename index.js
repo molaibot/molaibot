@@ -169,7 +169,7 @@ client.on('message', async (message) => {
 	
 	const pings = message.mentions.users.first();
 
-	if(pings) {
+	if(pings && message.author.id !== pings.id) {
 		await afkSchema.findOne({ User: pings.id }, async(err, data) =>{
 			if(data)
 			return embed.error(
