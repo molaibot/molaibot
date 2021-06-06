@@ -8,22 +8,14 @@ module.exports = {
 		let min = args[0];
 		let max = args[1];
 
-		if (min !== Number)
-			return error(
-				'Please provide a number',
-				'Please give me a number, and not something else.',
-				message
-			);
-
-		if (max !== Number)
-			return error(
-				'Please provide a number',
-				'Please give me a number, and not something else.',
-				message
-			);
-
+		try{
+			
 		let answer = randomInt(min, max);
 
 		titleOnly(`You answer is: ${answer}`, message);
+
+		}catch(err) {
+			error("Error!", err, message);
+		}
 	},
 };
