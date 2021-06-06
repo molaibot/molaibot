@@ -236,15 +236,6 @@ client.on('message', async (message) => {
 	message.author.bank = await profileData.bank;
 
 	if (command) {
-		/**
-		 * if(command.premium && !userPre)
-			return embed.error(
-				"You don't have premium",
-				"You don't seem to have premium.",
-				message
-			);
-		 */
-
 		if (command.premium) {
 			premiumGuild.findOne({ Guild: message.guild.id }, async (err, data) => {
 				if (!data)
