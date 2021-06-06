@@ -109,7 +109,11 @@ client.once('ready', async () => {
 
 	app.get('/invite', (req, res) =>{
 		res.redirect("https://discord.com/oauth2/authorize?client_id=807509478408847360&permissions=8&scope=bot");
-	})
+	});
+
+	app.get('/donate', (req, res)=>{
+		res.redirect("https://www.paypal.com/donate/?hosted_button_id=AJF5YCNY57CNW")
+	});
 
 	app.get('/api/statistics', (req, res) => {
 		res.status(200).send(clientDetails);
