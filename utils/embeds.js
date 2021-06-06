@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const e = require('./embeds.json');
+require('./inlinereplies');
 module.exports.error = (title, errMessage, message, color) => {
 	if (!color) {
 		color = '#ff0000';
