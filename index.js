@@ -212,8 +212,6 @@ client.on('message', async (message) => {
 	message.author.bal = await profileData.mCoins;
 	message.author.bank = await profileData.bank;
 
-	const userPre = await premium.findOne({ User: message.author.id });
-
 	if (command) {
 		/**
 		 * if(command.premium && !userPre)
