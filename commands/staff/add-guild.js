@@ -47,7 +47,7 @@ module.exports = {
           Expire: 0,
           Permanant: true
         }).save().then(
-          embed.embed('Gave the server premium', `Expiry: 0\nPermanant: true`)
+          embed.embed('Gave the server premium', `Expiry: 0\nPermanant: true`, message)
         );
       }
     })

@@ -12,7 +12,7 @@ module.exports.error = (title, errMessage, message, color) => {
 		.setTimestamp()
 		.setFooter(e.footer);
 
-	return message.channel.send(errorEmbed);
+	return message.inlineReply(errorEmbed);
 };
 
 module.exports.embed = (title, embedMessage, message, color) => {
@@ -26,7 +26,7 @@ module.exports.embed = (title, embedMessage, message, color) => {
 		.setTimestamp()
 		.setFooter(e.footer);
 
-	return message.channel.send(embed);
+	return message.inlineReply(embed);
 };
 
 module.exports.titleOnly = (title, message) => {
@@ -35,7 +35,7 @@ module.exports.titleOnly = (title, message) => {
 		.setFooter(e.footer)
 		.setTitle(title);
 
-	return message.channel.send(embed);
+	return message.inlineReply(embed);
 };
 
 module.exports.imgEmbed = (title, embedMessage, imgLink, message, color) => {
@@ -50,7 +50,7 @@ module.exports.imgEmbed = (title, embedMessage, imgLink, message, color) => {
 		.setTimestamp()
 		.setFooter(e.footer);
 
-	return message.channel.send(embed);
+	return message.inlineReply(embed);
 };
 
 module.exports.success = (title, succesMessage, message, color) => {
@@ -64,7 +64,7 @@ module.exports.success = (title, succesMessage, message, color) => {
 		.setTimestamp()
 		.setFooter(e.footer);
 
-	return message.channel.send(succesEmbed);
+	return message.inlineReply(succesEmbed);
 };
 
 module.exports.fieldListEmbed = (title, fields, message, color) => {
@@ -78,5 +78,5 @@ module.exports.fieldListEmbed = (title, fields, message, color) => {
 		.setTimestamp()
 		.setFooter(e.footer);
 
-	return message.channel.send(fieldListEmbed);
+	return message.inlineReply(fieldListEmbed);
 };
