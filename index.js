@@ -75,6 +75,7 @@ mongoose
 
 client.once('ready', async () => {
 	console.log(`Logged In As ${client.user.tag}!`);
+	client.user.setPresence({ activity: { name: 'm/help | bot.molai.dev' }, status: 'dnd' });
 
 	const clientDetails = {
 		guilds: client.guilds.cache.size,
