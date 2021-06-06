@@ -21,7 +21,7 @@ const Discord = require('discord.js'),
 	customCommandsModel = require('./models/customCommandSchema'),
 	// premium shit
 
-	premium = require('./models/premium');
+	premiumGuild = require('./models/premium-guild');
 
 // Collections
 
@@ -215,32 +215,55 @@ client.on('message', async (message) => {
 	const userPre = await premium.findOne({ User: message.author.id });
 
 	if (command) {
-		if (command.premium && !userPre)
+		/**
+		 * if(command.premium && !userPre)
 			return embed.error(
-				"You don't seem to be a premium member",
-				"You don't have premium, however you can buy it from our website.",
+				"You don't have premium",
+				"You don't seem to have premium.",
 				message
 			);
+		 */
 
-		if (command.cooldown) {
-			if (Cooldown.has(`${command.name}${message.author.id}`))
-				return message.channel.send(
-					`Woah, you are being way too quick, you're on a \`${ms(
-						Cooldown.get(`${command.name}${message.author.id}`) - Date.now(),
-						{ long: true }
-					)}\` cooldown.`
+		if (command.premium) {
+			premiumGuild.findOne({ Guild: message.guild.id }, async(err, data) => {
+				if(!data)
+				return embed.error(
+					"This is a premium command!",
+					"The server you're in doesn't seem to have premium.",
+					message
 				);
-			command.run(client, message, args, profileData, customCommand, e);
-			Cooldown.set(
-				`${command.name}${message.author.id}`,
-				Date.now() + command.cooldown
-			);
-			setTimeout(() => {
-				Cooldown.delete(`${command.name}${message.author.id}`);
-			}, command.cooldown);
-		} else if (!cooldown && !command.premium) {
-			command.run(client, message, args, profileData, customCommand, e);
-		}
+
+				if(!data.Permanant && Date.now() > data.Expire) {
+					data.delete().then(
+						embed.error(
+							"The premium membership has ended!",
+							"The premium membership for the server has ended, please contact molaibot staff to get it renewed.",
+							message
+						)
+					);
+				}
+
+				if (command.cooldown) {
+					if (Cooldown.has(`${command.name}${message.author.id}`))
+						return message.channel.send(
+							`Woah, you are being way too quick, you're on a \`${ms(
+								Cooldown.get(`${command.name}${message.author.id}`) - Date.now(),
+								{ long: true }
+							)}\` cooldown.`
+						);
+					command.run(client, message, args, profileData, customCommandsModel);
+					Cooldown.set(
+						`${command.name}${message.author.id}`,
+						Date.now() + command.cooldown
+					);
+					setTimeout(() => {
+						Cooldown.delete(`${command.name}${message.author.id}`);
+					}, command.cooldown);
+				} else if (!cooldown && !command.premium) {
+					command.run(client, message, args, profileData, customCommand);
+				}
+			})
+		} else command.run(client, message, args, profileData, customCommand)
 	}
 });
 
