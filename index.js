@@ -19,6 +19,8 @@ const Discord = require('discord.js'),
 	profileModel = require('./models/profileSchema'),
 	// Our beautiful custom commands system
 	customCommandsModel = require('./models/customCommandSchema'),
+
+	afkSchema = require('./models/afkSchema'),
 	// premium shit
 
 	premiumGuild = require('./models/premium-guild');
@@ -163,6 +165,19 @@ client.on('guildDelete', (guild) => {
 });
 
 client.on('message', async (message) => {
+	const pings = message.mentions.users.first();
+
+	if(pings) {
+		await afkSchema.findOne({ User: pings.id }, async(err, data) =>{
+			if(data)
+			return embed.error(
+				"The User is afk!",
+				`${pings.tag} seems to be afk with the reason set to: ${data.Reason}`,
+				message
+			)
+		});
+	}
+
 	if (message.author.bot) return;
 	if (!message.guild) return;
 	if (!message.content.startsWith(prefix)) return;
