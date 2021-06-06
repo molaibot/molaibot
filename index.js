@@ -165,6 +165,8 @@ client.on('guildDelete', (guild) => {
 });
 
 client.on('message', async (message) => {
+	if (message.author.bot) return;
+	
 	const pings = message.mentions.users.first();
 
 	if(pings) {
@@ -178,7 +180,6 @@ client.on('message', async (message) => {
 		});
 	}
 
-	if (message.author.bot) return;
 	if (!message.guild) return;
 	if (!message.content.startsWith(prefix)) return;
 

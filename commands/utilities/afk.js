@@ -15,16 +15,26 @@ module.exports = {
         message
     );
 
+    await afkSchema.findOne({ User: message.author.id }, async(err, data) =>{
+      if(data)
+      return embed.error(
+        "You're already AFK",
+        `You set the reason to: ${data.Reason}`,
+        message
+      );
 
-    new afkSchema({
-        User: message.author.id,
-        Reason: reason
-    }).save().then(
-        embed.embed(
-            "Successfully Set Your AFK Status",
-            `You are afk for: ${reason}`,
-            message
-        )
-    );
+      if(!data) {
+        new afkSchema({
+          User: message.author.id,
+          Reason: reason
+      }).save().then(
+          embed.embed(
+              "Successfully Set Your AFK Status",
+              `You are afk for: ${reason}`,
+              message
+          )
+      );
+      }
+    });
   }
 }
