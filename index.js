@@ -107,6 +107,10 @@ client.once('ready', async () => {
 		res.sendFile(path.join(__dirname, 'pages/support.html'));
 	});
 
+	app.get('/invite', (req, res) =>{
+		res.redirect("https://discord.com/oauth2/authorize?client_id=807509478408847360&permissions=8&scope=bot");
+	})
+
 	app.get('/api/statistics', (req, res) => {
 		res.status(200).send(clientDetails);
 	});
