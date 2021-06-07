@@ -1,5 +1,4 @@
 const { MessageEmbed } = require('discord.js');
-const { post } = require('node-superfetch');
 const SourceBin = require('sourcebin-wrapper');
 
 module.exports = {
@@ -17,10 +16,8 @@ module.exports = {
 			let code = args.join(' ');
 			if (!code)
 				return message.channel.send('Please provide some code to evaluate');
-			if (!code)
-				return message.channel.send('Please provide some code to evaluate');
-			code = code.replace(/(^`{3}(\w+)?|`{3}$)/g, '');
-			code = code.replace(/[“”]/g, '"').replace(/[‘’]/g, "'");
+			
+			code = code.replace(/(^`{3}(\w+)?|`{3}$)/g, '').replace(/[“”]/g, '"').replace(/[‘’]/g, "'");
 			embed.addField('📥 Input', '```js\n' + code + '```');
 			let evaled;
 			//If someone attempts to get the bot token
@@ -32,7 +29,7 @@ module.exports = {
 			) {
 				evaled = 'No, stop, what are you gonna do with it?';
 			} else {
-				evaled = eval(code);
+				evaled = Object.getPrototypeOf(async function(){}).constructor)(code);
 			}
 
 			if (typeof evaled !== 'string')
