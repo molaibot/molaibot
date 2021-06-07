@@ -29,7 +29,7 @@ module.exports = {
 			) {
 				evaled = 'No, stop, what are you gonna do with it?';
 			} else {
-				evaled = await (new Function(`return (async () => {${code}})()`)());;
+				evaled = await (new (Object.getPrototypeOf(async()=>{}).constructor)(code)());
 			}
 
 			if (typeof evaled !== 'string')
