@@ -1,5 +1,4 @@
 const fetch = require('node-fetch');
-const { titleOnly } = require('@embeds');
 module.exports = {
 	name: 'youtube-together',
 	description: 'Watch youtube together!',
@@ -33,10 +32,7 @@ module.exports = {
 			.then((res) => res.json())
 			.then((invite) => {
 				if (!invite.code) return message.channel.send(errorEmbed);
-				
-				titleOnly('To start watching, click the button below!', message).then(
 
-				)
 				fetch(
 					`https://discord.com/api/v9/channels/${message.channel.id}/messages`,
 					{
