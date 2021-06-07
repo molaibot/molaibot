@@ -9,11 +9,6 @@ module.exports = {
 		'Join a voice chat and run the command to watch youtube in a voice chat.',
 	cooldown: 10000,
 	run: async (client, message, args) => {
-		const embed = new MessageEmbed.setColor(e.color)
-			.setFooter(e.footer)
-			.setTitle('Watch YouTube Together')
-			.setTimestamp()
-			.setDescription('To start watching, click: **Start watching**');
 
 		let channel = message.member.voice.channel;
 		if (!channel)
