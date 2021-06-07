@@ -4,6 +4,6 @@ module.exports = model(
 	'marriages',
 	new Schema({
 		User: String,
-		MarriedTo: String
+		MarriedTo: String,
 	})
 );

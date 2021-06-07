@@ -8,14 +8,12 @@ module.exports = {
 		let min = args[0];
 		let max = args[1];
 
-		try{
-			
-		let answer = randomInt(min, max);
+		try {
+			let answer = randomInt(min, max);
 
-		titleOnly(`You answer is: ${answer}`, message);
-
-		}catch(err) {
-			error("Error!", err, message);
+			titleOnly(`You answer is: ${answer}`, message);
+		} catch (err) {
+			error('Error!', err, message);
 		}
 	},
 };

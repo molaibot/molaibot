@@ -183,7 +183,7 @@ client.on('message', async (message) => {
 
 	if (pings && message.author.id !== pings.id) {
 		await afkSchema.findOne({ User: pings.id }, async (err, data) => {
-			if (data)	
+			if (data)
 				return embed.error(
 					'The User is afk!',
 					`${pings.tag} seems to be afk with the reason set to: ${data.Reason}`,
