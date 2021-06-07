@@ -88,7 +88,8 @@ client.once('ready', async () => {
 	};
 	//website
 
-	const app = express();
+	/**
+	 * const app = express();
 
 	const port = 25574;
 
@@ -136,6 +137,7 @@ client.once('ready', async () => {
 	app.listen(port, () => console.log(`Website Listening On Port ${port}!`));
 
 	await console.log('Important data:');
+	 */
 	await console.log(clientDetails);
 });
 
