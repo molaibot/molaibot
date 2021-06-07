@@ -38,14 +38,14 @@ module.exports = {
 					{
 						method: 'POST',
 						body: JSON.stringify({
-							content: '<:down_arrow:851497822711971880>',
+							content: '**Click the button to start watching!**',
 							components: [
 								{
 									type: 1,
 									components: [
 										{
 											type: 2,
-											label: 'Start Watching!',
+											label: 'Start Watching',
 											style: 5,
 											url: `https://discord.com/invite/${invite.code}`,
 										},
