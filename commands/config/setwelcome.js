@@ -6,6 +6,13 @@ module.exports = {
 	premium: true,
 	cooldown: 15000,
 	run: async (client, message, args) => {
+		if(!message.member.permissions.has("MANAGE_MESSAGES"))
+			return embed.error(
+				"You don't have permissions!",
+				"You don't have permissions to perform this action.",
+				message
+		)
+
 		const channel = message.mentions.channels.first().id || message.channel.id;
 
 		schema.findOne({ Guild: message.guild.id }, async (err, data) => {
