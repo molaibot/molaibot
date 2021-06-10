@@ -1,5 +1,5 @@
 module.exports = (guild) => {
-    const bot = client.user;
+	const bot = client.user;
 
 	const onJoinChannel = client.channels.cache.get('833902174115069972');
 
@@ -17,4 +17,4 @@ module.exports = (guild) => {
 		);
 
 	onJoinChannel.send(onJoinEmbed);
-}
+};

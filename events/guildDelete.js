@@ -1,5 +1,5 @@
 module.exports = (guild) => {
-    const onLeaveChannel = client.channels.cache.get('833903791321120858');
+	const onLeaveChannel = client.channels.cache.get('833903791321120858');
 
 	const onLeaveEmbed = new Discord.MessageEmbed()
 		.setTitle(':cry: MolaiBOT Kicked :cry:')
@@ -10,4 +10,4 @@ module.exports = (guild) => {
 		.addField('Guild Members', '```' + guild.memberCount + '```', true);
 
 	onLeaveChannel.send(onLeaveEmbed);
-}
+};

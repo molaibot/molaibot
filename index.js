@@ -74,6 +74,14 @@ client.on('guildDelete', (guild) => {
 	require('./events/guildDelete')(guild);
 });
 
+client.on('guildMemberAdd', (member) => {
+	require('./events/guildMemberAdd')(client, member);
+});
+
+client.on('guildMemberRemove', (member) => {
+	require('./events/guildMemberRemove')(client, member);
+});
+
 client.on('message', async (message) => {
 	if (message.author.bot) return;
 

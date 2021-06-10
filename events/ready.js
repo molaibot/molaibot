@@ -1,5 +1,5 @@
-module.exports = async(client) => {
-    console.log(`Logged In As ${client.user.tag}!`);
+module.exports = async (client) => {
+	console.log(`Logged In As ${client.user.tag}!`);
 	client.user.setPresence({
 		activity: { name: 'm/help | bot.molai.dev' },
 		status: 'dnd',
@@ -10,8 +10,7 @@ module.exports = async(client) => {
 		users: client.users.cache.size,
 		channels: client.channels.cache.size,
 	};
-	
-	
+
 	/**
 	 * const app = express();
 
@@ -63,4 +62,4 @@ module.exports = async(client) => {
 	await console.log('Important data:');
 	 */
 	await console.log(clientDetails);
-}
+};
