@@ -1,7 +1,7 @@
 const embed = require('@embeds');
 const schema = require('../../models/setWelcome');
 module.exports = {
-	name: 'disable-leave',
+	name: 'disable-welcome',
 	description: 'Disable leave messages.',
 	premium: true,
 	cooldown: 1,
