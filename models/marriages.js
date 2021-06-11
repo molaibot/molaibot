@@ -1,9 +1,6 @@
-const { Schema, model } = require('mongoose');
+const m = require('mongoose');
 
-module.exports = model(
-	'marriages',
-	new Schema({
-		User: String,
-		MarriedTo: String,
-	})
-);
+module.exports = m.model("marriages", new m.Schema({
+    To: String,
+    User: String
+}));
