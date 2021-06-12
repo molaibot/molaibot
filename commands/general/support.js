@@ -1,36 +1,19 @@
-const fetch = require('node-fetch');
+const schema = require('../../models/support');
+const embed = require('@embeds');
 module.exports = {
-	name: 'support',
-	description: 'Get support',
-	aliases: ['supportserver'],
-	cooldown: 1,
-	run: async (client, message, args) => {
-		fetch(
-			`https://discord.com/api/v9/channels/${message.channel.id}/messages`,
-			{
-				method: 'POST',
-				body: JSON.stringify({
-					content:
-						'**Wanna Join The Support Server For MolaiBOT And An Awesome Community?**',
-					components: [
-						{
-							type: 1,
-							components: [
-								{
-									type: 2,
-									label: 'Join The Server',
-									style: 5,
-									url: 'https://discord.gg/NRthkRKEXw',
-								},
-							],
-						},
-					],
-				}),
-				headers: {
-					Authorization: `Bot ${client.token}`,
-					'Content-Type': 'application/json',
-				},
-			}
-		).then((res) => res.json());
-	},
-};
+  name: 'support',
+  description: 'Support command *(response is set with the `m/setsupport` command!)*',
+  premium: true,
+  cooldown: 1,
+  run: async(client, message, args) => {
+      await schema.findOne({ Guild: message.guild.id }, async(err, data) =>{
+          if(err) return embed.error("Error!", err, message);
+
+          if(data) {
+              embed.embed("Support", data.Message, message);
+          }
+
+          if(!data) return embed.error("Please ask your server administrators to set this up!", "Contact the admins so they can set the response for this command with `m/setsupport`!")
+      })
+  }
+}
