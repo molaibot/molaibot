@@ -6,7 +6,7 @@
 	"scripts": {
 		"start": "node .",
 		"lint": "prettier --write .",
-		"develop": "pm2 start"
+		"develop": "pm2 start index.js"
 	},
 	"keywords": [],
 	"author": "",
