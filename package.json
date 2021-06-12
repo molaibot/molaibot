@@ -5,7 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "node .",
-		"lint": "prettier --write ."
+		"lint": "prettier --write .",
+		"develop": "pm2 start"
 	},
 	"keywords": [],
 	"author": "",
@@ -25,6 +26,7 @@
 		"node-fetch": "^2.6.1",
 		"node-superfetch": "^0.2.3",
 		"nodemon": "^2.0.7",
+		"pm2": "^5.1.0",
 		"random-country": "^1.0.1",
 		"sourcebin-wrapper": "^1.6.0",
 		"weky": "^1.9.0"
