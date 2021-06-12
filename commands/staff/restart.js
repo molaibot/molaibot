@@ -16,9 +16,7 @@ module.exports = {
 		embed
 			.embed('Restarting...', 'I am restarting, give me a moment.', message)
 			.then((m) => {
-				client.destroy().then(() => {
-					client.login(token);
-				});
+				process.exit();
 			});
 	},
 };
