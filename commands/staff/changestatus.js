@@ -1,0 +1,17 @@
+const { error, embed } = require("../../utils/embeds");
+
+module.exports = {
+  name: 'changestatus',
+  description: "Change the bot's status.",
+  usage: '<status>',
+  run: async(client, message, args) => {
+    const status = args.slice(0).join(" ");
+
+    if(!status) return error("Please provide a status!", "Give me the status to set.", message);
+
+    client.user.setPresence({
+		activity: { name: status },
+		status: 'dnd',
+	}).then(embed("Successfully changed the status!", "My status was successfully changed.", message));
+  }
+}
