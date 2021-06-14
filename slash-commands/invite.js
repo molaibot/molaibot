@@ -1,5 +1,3 @@
-const { MessageEmbed } = require("discord.js");
-const ms = require("ms");
 const { slashEmbed } = require('../utils/embeds')
 
 module.exports = {
