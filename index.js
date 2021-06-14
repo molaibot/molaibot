@@ -1,10 +1,6 @@
 require('module-alias/register');
-<<<<<<< HEAD
 require('./utils/inlinereplies');
 
-=======
-//require('./utils/inlinereplies');
->>>>>>> 21de49c7922b95812e42297730f9ea340f042353
 const Discord = require('discord.js'),
 	{ prefix, token, mongodb } = require('./config.json'),
 	mongoose = require('mongoose'),
@@ -95,11 +91,7 @@ client.on('interaction', async(...args)=>{
 client.on('message', async (message) => {
 	if (message.author.bot) return;
 
-<<<<<<< HEAD
 	if(message.mentions.users.first() === client.user) return embed.embed("Hello! I'm MolaiBOT!", `My Prefix: \`${prefix}\`, To get started, please use \`${prefix}help\`. Thanks For Adding Me!`, message)
-=======
-	if(message.mentions.users.first() === client.user) return embed.embed("Hello! I'm MolaiBOT!", "My Prefix: `m/`, To get started, please use `m/help`. Thanks For Adding Me!", message)
->>>>>>> 21de49c7922b95812e42297730f9ea340f042353
 
 	const pings = message.mentions.users.first();
 
