@@ -1,7 +1,7 @@
 require('module-alias/register');
 //require('./utils/inlinereplies');
 const Discord = require('discord.js'),
-	{ prefix, token, mongodb } = require('./config2.json'),
+	{ prefix, token, mongodb } = require('./config.json'),
 	mongoose = require('mongoose'),
 	moment = require('moment'),
 	ms = require('ms'),
