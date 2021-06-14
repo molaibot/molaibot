@@ -13,7 +13,7 @@ module.exports = {
               embed.embed("Support", data.Message, message);
           }
 
-          if(!data) return embed.error("Please ask your server administrators to set this up!", "Contact the admins so they can set the response for this command with `m/setsupport`!")
+          if(!data) return embed.error("Please ask your server administrators to set this up!", "Contact the admins so they can set the response for this command with `m/setsupport`!", message);
       })
   }
 }
