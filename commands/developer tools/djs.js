@@ -36,6 +36,6 @@ module.exports = {
 		if (pkg.title) {
 			embed.setTitle(pkg.title);
 		}
-		message.inlineReply(embed);
+		message.reply(embed);
 	},
 };

@@ -15,7 +15,7 @@ module.exports = {
 			message.guild.members.cache.get(args[0]) ||
 			message.member;
 
-		if (!Member) return message.inlineReply(`Invalid User!`);
+		if (!Member) return message.reply(`Invalid User!`);
 		console.log(`${Member.user.displayAvatarURL()}`);
 		let Embed = new MessageEmbed()
 			.setImage(
@@ -23,7 +23,7 @@ module.exports = {
 			)
 			.setColor(Color);
 
-		return message.inlineReply(Embed);
+		return message.reply(Embed);
 
 		//End
 	},

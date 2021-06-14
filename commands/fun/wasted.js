@@ -20,6 +20,6 @@ module.exports = {
 				)}`
 			);
 
-		await message.inlineReply(embed);
+		await message.reply(embed);
 	},
 };

@@ -11,7 +11,7 @@ module.exports = {
 	description: 'play rock paper sccisors',
 	run: async (client, message, args) => {
 		if (!message.guild.me.hasPermission('MANAGE_MESSAGES'))
-			return message.inlineReply(
+			return message.reply(
 				"I don't have permission to play Rock Paper Scissors"
 			);
 
@@ -20,7 +20,7 @@ module.exports = {
 			.setTitle('**Choose:**')
 			.setDescription('🗿 | `Rock`\n 🧾 | `Paper`\n ✂️ | `Scissors`');
 
-		const msg = await message.inlineReply(rpsEmbed);
+		const msg = await message.reply(rpsEmbed);
 		for (let x = 0; x < choices.length; x++) {
 			await msg.react(choices[x]);
 		}

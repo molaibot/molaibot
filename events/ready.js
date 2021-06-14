@@ -11,6 +11,22 @@ module.exports = async (client) => {
 		channels: client.channels.cache.size,
 	};
 
+	client.slashes = new Discord.Collection();
+  	const commands = fs
+    .readdirSync(`${__dirname}/../slash-commands`)
+    .filter((comd) => comd.endsWith(".js"));
+  //Makes sure there are commands so it doesn't error
+  if (commands.length) {
+    commands.forEach((command) => {
+      const cmd = require(`${__dirname}/../commands-slash/${command}`);
+
+      if (!cmd.name || !cmd.description || !cmd.run) return;
+
+      client.application.commands.create(cmd);
+      client.slashes.set(cmd.name, cmd);
+    });
+  }
+
 	/**
 	 * const app = express();
 

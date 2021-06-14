@@ -19,7 +19,7 @@ module.exports = {
 			)
 			.setTimestamp();
 
-		if (!args[0]) return message.inlineReply(noArgs);
+		if (!args[0]) return message.reply(noArgs);
 
 		if (args[0] === 'all') {
 			fetch(`https://covid19.mathdro.id/api`)
@@ -35,7 +35,7 @@ module.exports = {
 						.addField('Recovered', recovered)
 						.addField('Deaths', deaths);
 
-					message.inlineReply(embed);
+					message.reply(embed);
 				});
 		} else {
 			fetch(`https://covid19.mathdro.id/api/countries/${countries}`)
@@ -52,10 +52,10 @@ module.exports = {
 						.addField('Recovered', recovered)
 						.addField('Deaths', deaths);
 
-					message.inlineReply(embed);
+					message.reply(embed);
 				})
 				.catch((e) => {
-					return message.inlineReply('Invalid country provided');
+					return message.reply('Invalid country provided');
 				});
 		}
 	},

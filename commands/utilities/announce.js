@@ -61,6 +61,6 @@ module.exports = {
 			.setColor('RANDOM')
 			.setTitle(`Sent The Announcement!`);
 
-		message.inlineReply(doneEmbed);
+		message.reply(doneEmbed);
 	},
 };

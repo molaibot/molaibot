@@ -19,11 +19,11 @@ module.exports = {
 		const winBal = amount * 2;
 
 		if (amount > profileData.mCoins)
-			return message.inlineReply(
+			return message.reply(
 				'You do not have enough money for this bet. *Make sure you have it in cash*'
 			);
 		if (amount < 100)
-			return message.inlineReply(
+			return message.reply(
 				'Please choose over `100` mCoins for your bet.'
 			);
 
@@ -34,7 +34,7 @@ module.exports = {
 				.setTitle('You Won!')
 				.setDescription(`You won ${winBal} mCoins!`);
 
-			message.inlineReply(winEmbed);
+			message.reply(winEmbed);
 			await profileModel.findOneAndUpdate(params, {
 				$inc: {
 					mCoins: winBal,
@@ -47,7 +47,7 @@ module.exports = {
 				.setTitle('You lost!')
 				.setDescription(`You lost a total of ${winBal} mCoins!`);
 
-			message.inlineReply(loseEmbed);
+			message.reply(loseEmbed);
 			await profileModel.findOneAndUpdate(params, {
 				$inc: {
 					mCoins: -winBal,

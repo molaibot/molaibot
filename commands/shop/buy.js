@@ -32,7 +32,7 @@ module.exports = {
 
 		const userBalance = await profileData.mCoins;
 		if (userBalance < itemPrice)
-			return message.inlineReply(
+			return message.reply(
 				'You do not have enough mCoins to buy this item'
 			);
 
@@ -64,7 +64,7 @@ module.exports = {
 				.setColor('#37393e')
 				.setTitle(`You have bought ${itemToBuy} for ${itemPrice} mCoins!`);
 
-			message.inlineReply(BuyEmbed);
+			message.reply(BuyEmbed);
 			await profileSchema.findOneAndUpdate(
 				{
 					userID: message.author.id,

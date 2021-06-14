@@ -8,15 +8,15 @@ module.exports = {
 	cooldown: 1,
 	run: (client, message, args) => {
 		if (!message.member.hasPermission('BAN_MEMBERS'))
-			return message.inlineReply("You don't have permission to ban members.");
+			return message.reply("You don't have permission to ban members.");
 		let toBan = message.mentions.members.first();
 		let reason = args.slice(1).join(' ');
-		if (!args[0]) return message.inlineReply('Please mention someone to bann');
-		if (!toBan) return message.inlineReply(`${args[0]} is not a member.`);
-		if (!reason) return message.inlineReply('Specify a reason.');
+		if (!args[0]) return message.reply('Please mention someone to bann');
+		if (!toBan) return message.reply(`${args[0]} is not a member.`);
+		if (!reason) return message.reply('Specify a reason.');
 
 		if (!toBan.bannable) {
-			return message.inlineReply(
+			return message.reply(
 				'<a:CoolX:807041416735621160> I cannot ban someone that is mod/admin. <a:CoolX:807041416735621160>'
 			);
 		}
@@ -31,7 +31,7 @@ module.exports = {
 				.setTimestamp()
 				.setFooter('MolaiBOT - Made By MTGSquad ~ Command By Awoken');
 
-			message.inlineReply(x);
+			message.reply(x);
 			toBan.ban();
 
 			client.modlogs(

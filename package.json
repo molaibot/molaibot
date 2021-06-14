@@ -13,9 +13,10 @@
 	"license": "Apache License",
 	"dependencies": {
 		"ascii-table": "0.0.9",
+		"child_process": "^1.0.2",
 		"dayjs": "^1.10.5",
 		"discord-buttons": "^3.1.1",
-		"discord.js": "^12.5.1",
+		"discord.js": "^13.0.0-dev.1ac9a2eb5bfef6d009de7c54d3fac5e3d4a5afdc",
 		"ejs": "^3.1.6",
 		"glob": "^7.1.7",
 		"https": "^1.0.0",

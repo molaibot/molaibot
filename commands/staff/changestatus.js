@@ -12,7 +12,7 @@ module.exports = {
     if(!status) return error("Please provide a status!", "Give me the status to set.", message);
 
     client.user.setPresence({
-		activity: { name: status },
+		activity: { name: `${status}` },
 		status: 'dnd',
 	}).then(embed("Successfully changed the status!", "My status was successfully changed.", message));
   }

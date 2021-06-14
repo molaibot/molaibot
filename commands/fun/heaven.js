@@ -13,7 +13,7 @@ module.exports = {
 			message.guild.members.cache.get(args[0]) ||
 			message.member;
 
-		if (!Member) return message.inlineReply(`Invalid User!`);
+		if (!Member) return message.reply(`Invalid User!`);
 
 		let Embed = new Discord.MessageEmbed()
 			.setColor('#37393e')
@@ -21,6 +21,6 @@ module.exports = {
 				`https://vacefron.nl/api/heaven?user=${Member.user.displayAvatarURL()}`
 			);
 
-		return message.inlineReply(Embed);
+		return message.reply(Embed);
 	},
 };

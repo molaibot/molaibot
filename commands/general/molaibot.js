@@ -24,6 +24,6 @@ module.exports = {
 			.setTimestamp()
 			.setFooter('MolaiBOT - Made By MTGSquad');
 
-		message.inlineReply(mStatsEmbed);
+		message.reply(mStatsEmbed);
 	},
 };

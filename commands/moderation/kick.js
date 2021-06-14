@@ -8,15 +8,15 @@ module.exports = {
 	cooldown: 1,
 	run: (client, message, args) => {
 		if (!message.member.hasPermission('KICK_MEMBERS'))
-			return message.inlineReply("You don't have permission to kick members.");
+			return message.reply("You don't have permission to kick members.");
 		let toKick = message.mentions.members.first();
 		let reason = args.slice(1).join(' ');
-		if (!args[0]) return message.inlineReply('Please mention someone to kick.');
-		if (!toKick) return message.inlineReply(`${args[0]} is not a member.`);
-		if (!reason) return message.inlineReply('Specify a reason.');
+		if (!args[0]) return message.reply('Please mention someone to kick.');
+		if (!toKick) return message.reply(`${args[0]} is not a member.`);
+		if (!reason) return message.reply('Specify a reason.');
 
 		if (!toKick.kickable) {
-			return message.inlineReply(
+			return message.reply(
 				'<a:CoolX:807041416735621160> I cannot kick someone that is mod/admin. <a:CoolX:807041416735621160>'
 			);
 		}
@@ -31,7 +31,7 @@ module.exports = {
 				.setTimestamp()
 				.setFooter('MolaiBOT - Made By MTGSquad ~ Command By Awoken');
 
-			message.inlineReply(kickEmbed);
+			message.reply(kickEmbed);
 			toKick.kick();
 
 			client.modlogs(
