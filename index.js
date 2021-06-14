@@ -85,7 +85,7 @@ client.on('guildMemberRemove', (member) => {
 client.on('message', async (message) => {
 	if (message.author.bot) return;
 
-	if(message.mentions.users.first() === client.user) return embed.embed("Hello! I'm MolaiBOT!", "My Prefix: `m/`, To get started, please use `m/help`. Thanks For Adding Me!")
+	if(message.mentions.users.first() === client.user) return embed.embed("Hello! I'm MolaiBOT!", "My Prefix: `m/`, To get started, please use `m/help`. Thanks For Adding Me!", message)
 
 	const pings = message.mentions.users.first();
 
