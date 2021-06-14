@@ -1,11 +1,11 @@
 require('module-alias/register');
-//require('./utils/inlinereplies');
+require('./utils/inlinereplies');
+
 const Discord = require('discord.js'),
-	{ prefix, token, mongodb } = require('./config2.json'),
+	{ prefix, token, mongodb } = require('./config.json'),
 	mongoose = require('mongoose'),
 	moment = require('moment'),
 	ms = require('ms'),
-	express = require('express'),
 	path = require('path'),
 	{ getCommands } = require('./utils/index'),
 	client = new Discord.Client({
@@ -21,7 +21,6 @@ const Discord = require('discord.js'),
 	customCommandsModel = require('./models/customCommandSchema'),
 	afkSchema = require('./models/afkSchema'),
 	// premium shit
-
 	premiumGuild = require('./models/premium-guild');
 
 // Collections
@@ -92,7 +91,7 @@ client.on('interaction', async(...args)=>{
 client.on('message', async (message) => {
 	if (message.author.bot) return;
 
-	if(message.mentions.users.first() === client.user) return embed.embed("Hello! I'm MolaiBOT!", "My Prefix: `m/`, To get started, please use `m/help`. Thanks For Adding Me!", message)
+	if(message.mentions.users.first() === client.user) return embed.embed("Hello! I'm MolaiBOT!", `My Prefix: \`${prefix}\`, To get started, please use \`${prefix}help\`. Thanks For Adding Me!`, message)
 
 	const pings = message.mentions.users.first();
 
