@@ -21,7 +21,7 @@ module.exports = {
 			if (data)
 				return embed.error(
 					'You already seem to be married',
-					"You can't be married to 2 people at the same time! Get a divorce with `m/divorce`",
+					`You can't be married to 2 people at the same time! Get a divorce with \`${prefix}divorce\``,
 					message
 				);
 

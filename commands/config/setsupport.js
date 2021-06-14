@@ -1,5 +1,7 @@
-const embed = require('@embeds');
-const schema = require('../../models/support');
+const embed = require('@embeds'),
+  schema = require('../../models/support'),
+  { prefix } = require('../../config.json');
+
 module.exports = {
   name: 'setsupport',
   description: 'Set what you want to send to the user on the support command!',
@@ -8,7 +10,7 @@ module.exports = {
   run: async(client, message, args) => {
     const msg = args.slice(0).join(" ");
 
-    if(!msg) return embed.error("Please provide a message", "Provide the message you want to send when the `m/support` command is ran.", message);
+    if(!msg) return embed.error("Please provide a message", `Provide the message you want to send when the \`${prefix}support\` command is ran.`, message);
 
       await schema.findOne({ Guild: message.guild.id }, async(err, data) => {
           if(data) return data.delete().then(

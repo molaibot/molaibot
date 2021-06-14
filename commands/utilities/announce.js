@@ -1,4 +1,5 @@
-const { Client, Message, MessageEmbed } = require('discord.js');
+const { Client, Message, MessageEmbed } = require('discord.js'),
+  { prefix } = require('../../config.json');
 
 module.exports = {
 	name: 'announce',
@@ -18,8 +19,8 @@ module.exports = {
 		let mention;
 
 		if (!args.length)
-			return message.reply(
-				'> Usage: m/announce <#channel> <message> [-ping]'
+			return message.inlineReply(
+				`> Usage: ${prefix}announce <#channel> <message> [-ping]`
 			);
 
 		const channel = message.mentions.channels.first();
