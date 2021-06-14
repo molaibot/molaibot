@@ -4,20 +4,19 @@
 	"description": "MolaiBOT",
 	"main": "index.js",
 	"scripts": {
-		"start": "node .",
+		"start": "nodemon --trace-warnings .",
 		"lint": "prettier --write .",
 		"develop": "pm2 start index.js"
 	},
 	"keywords": [],
 	"author": "",
-	"license": "ISC",
+	"license": "Apache License",
 	"dependencies": {
 		"ascii-table": "0.0.9",
 		"dayjs": "^1.10.5",
 		"discord-buttons": "^3.1.1",
 		"discord.js": "^12.5.1",
 		"ejs": "^3.1.6",
-		"express": "^4.17.1",
 		"glob": "^7.1.7",
 		"https": "^1.0.0",
 		"module-alias": "^2.2.2",

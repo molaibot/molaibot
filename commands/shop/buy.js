@@ -1,7 +1,9 @@
-const Discord = require('discord.js');
-const items = require('../../shopitems');
-const inventory = require('../../models/inventory');
-const profileSchema = require('../../models/profileSchema');
+const Discord = require('discord.js'),
+  items = require('../../shopitems'),
+  inventory = require('../../models/inventory'),
+  profileSchema = require('../../models/profileSchema'),
+  { prefix } = require('../../config.json');
+
 module.exports = {
 	name: 'buy',
 	aliases: ['purchase'],
@@ -13,15 +15,15 @@ module.exports = {
 
 		if (!args[0])
 			return message.inlineReply('Please specify a item that you want to buy!');
-		const itemToBuy = args.slice(0).join(' ').toLowerCase();
+		const itemToBuy = args.slice(0).join(' ').toLowerCase(),
 
-		const validItem = !!items.find(
+		  validItem = !!items.find(
 			(val) => val.item.toLowerCase() === itemToBuy
 		);
 
 		if (!validItem)
 			return message.inlineReply(
-				`The item you tried to purchase isn't available in the shop, please try *m/shop* to list all items in the shop.`
+				`The item you tried to purchase isn't available in the shop, please try \`${prefix}shop\` to list all items in the shop.`
 			);
 
 		const itemPrice = items.find(
