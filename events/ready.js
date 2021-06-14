@@ -22,7 +22,7 @@ module.exports = async (client) => {
 
       if (!cmd.name || !cmd.description || !cmd.run) return;
 
-      client.guilds.cache.get("807514218772430910").commands.create(cmd);
+      client.application.commands.create(cmd);
       client.slashes.set(cmd.name, cmd);
     });
   }
