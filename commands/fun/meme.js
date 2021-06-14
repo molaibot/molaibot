@@ -30,7 +30,7 @@ module.exports = {
 							.setDescription(`[${title}](${link})\n\n${text}`)
 							.setURL(`https://reddit.com/${subRedditName}`);
 
-						message.inlineReply(textembed);
+						message.reply(textembed);
 					}
 
 					var image = index.preview.images[0].source.url.replace('&amp;', '&');
@@ -45,7 +45,7 @@ module.exports = {
 							.setDescription(`[${title}](${link})\n\n${text}`)
 							.setURL(`https://reddit.com/${subRedditName}`);
 
-						message.inlineReply(textembed);
+						message.reply(textembed);
 					}
 					console.log(image);
 					const imageembed = new Discord.MessageEmbed()
@@ -54,7 +54,7 @@ module.exports = {
 						.setColor(Color)
 						.setDescription(`[${title}](${link})`)
 						.setURL(`https://reddit.com/${subRedditName}`);
-					message.inlineReply(imageembed);
+					message.reply(imageembed);
 				})
 				.on('error', function (e) {
 					console.log('Got an error: ', e);

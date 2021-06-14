@@ -7,7 +7,6 @@ module.exports = {
 		'Join a voice chat and run the command to watch youtube in a voice chat.',
 	cooldown: 10000,
 	run: async (client, message, args) => {
-
 		let channel = message.member.voice.channel;
 		if (!channel)
 			return message.channel.send(

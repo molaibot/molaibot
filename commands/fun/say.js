@@ -20,7 +20,7 @@ module.exports = {
 			.setFooter('MolaiBOT - Made By MTGSquad');
 
 		if (!userMsg) {
-			return message.inlineReply('Specify A Message Please!');
-		} else message.inlineReply(sayEmbed);
+			return message.reply('Specify A Message Please!');
+		} else message.reply(sayEmbed);
 	},
 };

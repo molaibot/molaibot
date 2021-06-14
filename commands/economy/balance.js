@@ -1,42 +1,20 @@
-const Discord = require('discord.js');
-
+const embed = require('@embeds');
+const profileSchema = require('../../models/profileSchema');
 module.exports = {
 	name: 'balance',
 	description: 'Check your account balance!',
 	cooldown: 3000,
 	usage: '',
 	aliases: ['bal'],
-	run: (client, message, args, profileData) => {
-		let balEmbed = new Discord.MessageEmbed()
-			.setAuthor(`${message.author.tag}`)
-			.setTitle(`${message.author.tag}'s Balance`)
-			.setDescription(
-				`Wallet: ${profileData.mCoins} mCoins\nBank: ${profileData.bank} mCoins`
-			)
-			.setColor('#37393e')
-			.setTimestamp()
-			.setFooter('MolaiBOT - Made By MTGSquad');
+	run: async(client, message, args, profileData) => {
+		const user = message.mentions.users.first() || message.author;
 
-		let errEmbed = new Discord.MessageEmbed()
-			.setAuthor(message.author.tag)
-			.setTitle(`Error: Database Record Not Found`)
-			.setDescription(
-				'Seems like there is no record for your profile inside the database... Could you try running `m/help`, so the the bot tries to register a record?'
-			)
-			.addFields({
-				name: `If it still doesn't work:`,
-				value:
-					'Join our discord server here: `dsc.gg/devs-gg` and ping @MTGSquad#6149 with the issue.',
-			})
-			.setColor('#37393e')
-			.setTimestamp()
-			.setFooter('MolaiBOT - Made By MTGSquad');
+		await profileSchema.findOne({ userID: user.id }, async(err, data) =>{
+			if(!data) return embed.error("They don't exist in the database!", "Please ask them to run a command, so that they can be registered into the database.", message);
 
-		try {
-			message.inlineReply(balEmbed);
-		} catch (err) {
-			console.log(err);
-			message.inlineReply(errEmbed);
-		}
-	},
+			if(user.id !== message.author.id) return embed.embed(`${user.tag}'s Balance:`, `Wallet: ${data.mCoins} mCoins\nBank: ${data.bank} mCoins`, message);
+
+			if(user.id === message.author.id) return embed.embed("Your balance:", `Wallet: ${profileData.mCoins} mCoins\nBank: ${profileData.bank} mCoins`, message);
+		})
+	}
 };

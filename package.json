@@ -5,16 +5,18 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "node .",
-		"lint": "prettier --write ."
+		"lint": "prettier --write .",
+		"develop": "pm2 start index.js"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
 		"ascii-table": "0.0.9",
+		"child_process": "^1.0.2",
 		"dayjs": "^1.10.5",
 		"discord-buttons": "^3.1.1",
-		"discord.js": "^12.5.1",
+		"discord.js": "^13.0.0-dev.1ac9a2eb5bfef6d009de7c54d3fac5e3d4a5afdc",
 		"ejs": "^3.1.6",
 		"express": "^4.17.1",
 		"glob": "^7.1.7",
@@ -25,6 +27,7 @@
 		"node-fetch": "^2.6.1",
 		"node-superfetch": "^0.2.3",
 		"nodemon": "^2.0.7",
+		"pm2": "^5.1.0",
 		"random-country": "^1.0.1",
 		"sourcebin-wrapper": "^1.6.0",
 		"weky": "^1.9.0"

@@ -6,7 +6,7 @@ module.exports = {
 	cooldown: 1000000,
 	run: async (client, message, args) => {
 		if (!message.member.permissions.has('ADMINISTRATOR'))
-			return message.inlineReply(
+			return message.reply(
 				'The **Administrator** Permission Is Required To Run This Command!'
 			);
 
@@ -19,7 +19,7 @@ module.exports = {
 				Guild: message.guild.id,
 				Channel: channel.id,
 			}).save();
-			message.inlineReply(
+			message.reply(
 				`I succesfully set the mod-logs channel to: ${channel}`
 			);
 		});

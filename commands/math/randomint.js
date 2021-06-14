@@ -5,17 +5,15 @@ module.exports = {
 	description: 'Generate a random number',
 	usage: '<min> <max>',
 	run: async (client, message, args) => {
-		let min = args[0];
-		let max = args[1];
+		let mini = args[0];
+		let maxi = args[1];
 
-		try{
-			
-		let answer = randomInt(min, max);
+		try {
+			let answer = randomInt(mini, maxi);
 
-		titleOnly(`You answer is: ${answer}`, message);
-
-		}catch(err) {
-			error("Error!", err, message);
+			titleOnly(`You answer is: ${answer}`, message);
+		} catch (err) {
+			error('Error!', err, message);
 		}
 	},
 };

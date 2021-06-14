@@ -16,6 +16,6 @@ module.exports = {
 			.setDescription(`Total members: ${message.guild.memberCount}`)
 			.setTimestamp()
 			.setFooter('MolaiBOT - Made By MTGSquad');
-		message.inlineReply(serverEmbed);
+		message.reply(serverEmbed);
 	},
 };

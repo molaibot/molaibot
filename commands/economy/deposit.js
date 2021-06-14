@@ -7,10 +7,10 @@ module.exports = {
 	run: async (client, message, args, profileData) => {
 		const amount = args[0];
 		if (amount % 1 != 0 || amount <= 0)
-			return message.inlineReply('Deposit amount must be a whole number');
+			return message.reply('Deposit amount must be a whole number');
 		try {
 			if (amount > profileData.mCoins)
-				return message.inlineReply(
+				return message.reply(
 					`You don't have that amount of coins to deposit`
 				);
 			await profileModel.findOneAndUpdate(
@@ -25,7 +25,7 @@ module.exports = {
 				}
 			);
 
-			return message.inlineReply(
+			return message.reply(
 				`You deposited ${amount} of mCoins into your bank`
 			);
 		} catch (err) {

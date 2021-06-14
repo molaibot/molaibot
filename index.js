@@ -1,5 +1,5 @@
 require('module-alias/register');
-require('./utils/inlinereplies');
+//require('./utils/inlinereplies');
 const Discord = require('discord.js'),
 	{ prefix, token, mongodb } = require('./config2.json'),
 	mongoose = require('mongoose'),
@@ -29,6 +29,9 @@ const Discord = require('discord.js'),
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 Cooldown = new Discord.Collection();
+
+// functions
+client.getCmds = getCommands();
 
 // modlogs
 const modlogs = require('./models/modlogs');
@@ -60,130 +63,42 @@ cmdHandler.forEach((handler) => {
 	require(`./handlers/${handler}`)(client);
 });
 
-mongoose.set('useCreateIndex', true);
-mongoose
-	.connect(mongodb, {
-		useNewUrlParser: true,
-		useUnifiedTopology: true,
-		useFindAndModify: false,
-	})
-	.then(() => {
-		console.log('Connected To The MongoDB Database!');
-	})
-	.catch((err) => {
-		console.log(err);
-	});
+require('./events/mongooseConnect')(mongodb);
 
 client.once('ready', async () => {
-	console.log(`Logged In As ${client.user.tag}!`);
-	client.user.setPresence({
-		activity: { name: 'm/help | bot.molai.dev' },
-		status: 'dnd',
-	});
-
-	const clientDetails = {
-		guilds: client.guilds.cache.size,
-		users: client.users.cache.size,
-		channels: client.channels.cache.size,
-	};
-	//website
-
-	/**
-	 * const app = express();
-
-	const port = 25574;
-
-	app.set('view engine', 'ejs');
-
-	app.get('/', (req, res) => {
-		res.sendFile(path.join(__dirname, 'pages/landingPage.html'));
-	});
-
-	app.get('/commands', (req, res) => {
-		const commands = getCommands();
-		res.status(200).render('commands', { commands });
-	});
-
-	app.get('/support', (req, res) => {
-		res.sendFile(path.join(__dirname, 'pages/support.html'));
-	});
-
-	app.get('/invite', (req, res) =>{
-		res.redirect("https://discord.com/oauth2/authorize?client_id=807509478408847360&permissions=8&scope=bot");
-	});
-
-	app.get('/donate', (req, res)=>{
-		res.redirect("https://www.paypal.com/donate/?hosted_button_id=AJF5YCNY57CNW")
-	});
-
-	app.get('/api/statistics', (req, res) => {
-		res.status(200).send(clientDetails);
-	});
-
-	app.get('/api/commands', (req, res) => {
-		const commands = getCommands();
-		res.status(200).send(commands);
-	});
-
-	app.get('/api', (req, res) => {
-		const data = {
-			commands: 'https://molaibot.ml/api/commands',
-			information: 'https://molaibot.ml/api/info',
-		};
-
-		res.status(200).send(data);
-	});
-
-	app.listen(port, () => console.log(`Website Listening On Port ${port}!`));
-
-	await console.log('Important data:');
-	 */
-	await console.log(clientDetails);
+	require('./events/ready')(client);
 });
 
 client.on('guildCreate', (guild) => {
-	const bot = client.user;
-
-	const onJoinChannel = client.channels.cache.get('833902174115069972');
-
-	const onJoinEmbed = new Discord.MessageEmbed()
-		.setTitle(':clap: New Server Join! :clap: ')
-		.addField('Guild', '```' + guild.name + '```')
-		.addField('Server Region', '```' + guild.region + '```', true)
-		.addField('Guild ID', '```' + guild.id + '```', true)
-		.addField('Guild Owner ID', '```' + guild.ownerID + '```', true)
-		.addField('Guild Members', '```' + guild.memberCount + '```', true)
-		.addField(
-			'When Joined',
-			'```' + moment(bot.joinedAt).format('llll') + '```',
-			true
-		);
-
-	onJoinChannel.send(onJoinEmbed);
+	require('./events/guildCreate')(guild);
 });
 
 client.on('guildDelete', (guild) => {
-	const onLeaveChannel = client.channels.cache.get('833903791321120858');
-
-	const onLeaveEmbed = new Discord.MessageEmbed()
-		.setTitle(':cry: MolaiBOT Kicked :cry:')
-		.addField('Guild', '```' + guild.name + '```')
-		.addField('Server Region', '```' + guild.region + '```', true)
-		.addField('Guild ID', '```' + guild.id + '```', true)
-		.addField('Guild Owner ID', '```' + guild.ownerID + '```', true)
-		.addField('Guild Members', '```' + guild.memberCount + '```', true);
-
-	onLeaveChannel.send(onLeaveEmbed);
+	require('./events/guildDelete')(guild);
 });
+
+client.on('guildMemberAdd', (member) => {
+	require('./events/guildMemberAdd')(client, member);
+});
+
+client.on('guildMemberRemove', (member) => {
+	require('./events/guildMemberRemove')(client, member);
+});
+
+client.on('interaction', async(...args)=>{
+	require('./events/interaction')(...args, client);
+})
 
 client.on('message', async (message) => {
 	if (message.author.bot) return;
+
+	if(message.mentions.users.first() === client.user) return embed.embed("Hello! I'm MolaiBOT!", "My Prefix: `m/`, To get started, please use `m/help`. Thanks For Adding Me!", message)
 
 	const pings = message.mentions.users.first();
 
 	if (pings && message.author.id !== pings.id) {
 		await afkSchema.findOne({ User: pings.id }, async (err, data) => {
-			if (data)	
+			if (data)
 				return embed.error(
 					'The User is afk!',
 					`${pings.tag} seems to be afk with the reason set to: ${data.Reason}`,

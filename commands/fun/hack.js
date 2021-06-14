@@ -76,7 +76,7 @@ module.exports = {
 		const name = message.mentions.users.first().username;
 
 		message.delete();
-		message.inlineReply(`Hacking ${user}`).then((msg) => {
+		message.reply(`Hacking ${user}`).then((msg) => {
 			setTimeout(function () {
 				msg.edit(`**Hacking:** ${user}`).then((msg) => {
 					setTimeout(function () {

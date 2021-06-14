@@ -7,11 +7,11 @@ module.exports = {
 	run: async (client, message, args, profileData) => {
 		const amount = args[0];
 		if (amount % 1 != 0 || amount <= 0)
-			return message.inlineReply('Withdrawn amount must be a whole number');
+			return message.reply('Withdrawn amount must be a whole number');
 
 		try {
 			if (amount > profileData.bank)
-				return message.inlineReply(
+				return message.reply(
 					`You don't have that amount of mCoins to withdraw`
 				);
 
@@ -27,7 +27,7 @@ module.exports = {
 				}
 			);
 
-			return message.inlineReply(
+			return message.reply(
 				`You withdrew ${amount} of mCoins into your wallet`
 			);
 		} catch (err) {

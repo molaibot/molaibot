@@ -1,5 +1,5 @@
 const embed = require('../../utils/embeds');
-const { token } = require('../../config.json');
+const { exec } = require('child_process');
 module.exports = {
 	name: 'restart',
 	cooldown: 1,
@@ -13,12 +13,10 @@ module.exports = {
 			);
 		}
 
-		embed
-			.embed('Restarting...', 'I am restarting, give me a moment.', message)
-			.then((m) => {
-				client.destroy().then(() => {
-					client.login(token);
-				});
-			});
+		embed.embed("Restarting...", "I pulled the latest version of the code from github too!", message).then(
+			exec("git pull").then(
+				exec("pm2 restart 0")
+			)
+		);
 	},
 };
