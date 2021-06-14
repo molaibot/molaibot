@@ -15,7 +15,7 @@ module.exports = {
 			);
 
 		message
-			.inlineReply('Rickrolled them for ya 😜')
+			.reply('Rickrolled them for ya 😜')
 			.then(
 				user
 					.send('Someone specially told me to deliver this rickroll to you!')

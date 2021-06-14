@@ -1,5 +1,5 @@
 require('module-alias/register');
-require('./utils/inlinereplies');
+//require('./utils/inlinereplies');
 const Discord = require('discord.js'),
 	{ prefix, token, mongodb } = require('./config2.json'),
 	mongoose = require('mongoose'),
@@ -84,6 +84,10 @@ client.on('guildMemberAdd', (member) => {
 client.on('guildMemberRemove', (member) => {
 	require('./events/guildMemberRemove')(client, member);
 });
+
+client.on('interaction', async(...args)=>{
+	require('./events/interaction')(...args, client);
+})
 
 client.on('message', async (message) => {
 	if (message.author.bot) return;

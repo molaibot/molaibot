@@ -13,6 +13,6 @@ module.exports = {
 			.setTimestamp()
 			.setFooter('MolaiBOT - Made By MTGSquad');
 
-		message.inlineReply(memberEmbed);
+		message.reply(memberEmbed);
 	},
 };

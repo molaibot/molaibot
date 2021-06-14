@@ -8,7 +8,7 @@ module.exports = {
 	cooldown: 1,
 	run: async (client, message, args) => {
 		const name = args.join(' ');
-		if (!name) return message.inlineReply('Please specify a github username'); // if no github username lul
+		if (!name) return message.reply('Please specify a github username'); // if no github username lul
 		const url = `https://api.github.com/users/${name}`; // Uh the api
 
 		let response;
@@ -44,6 +44,6 @@ module.exports = {
 				true
 			);
 
-		message.inlineReply(embed);
+		message.reply(embed);
 	},
 };

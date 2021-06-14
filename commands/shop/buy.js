@@ -12,7 +12,7 @@ module.exports = {
 		const m = message;
 
 		if (!args[0])
-			return message.inlineReply('Please specify a item that you want to buy!');
+			return message.reply('Please specify a item that you want to buy!');
 		const itemToBuy = args.slice(0).join(' ').toLowerCase();
 
 		const validItem = !!items.find(
@@ -20,7 +20,7 @@ module.exports = {
 		);
 
 		if (!validItem)
-			return message.inlineReply(
+			return message.reply(
 				`The item you tried to purchase isn't available in the shop, please try *m/shop* to list all items in the shop.`
 			);
 
@@ -30,7 +30,7 @@ module.exports = {
 
 		const userBalance = await profileData.mCoins;
 		if (userBalance < itemPrice)
-			return message.inlineReply(
+			return message.reply(
 				'You do not have enough mCoins to buy this item'
 			);
 
@@ -62,7 +62,7 @@ module.exports = {
 				.setColor('#37393e')
 				.setTitle(`You have bought ${itemToBuy} for ${itemPrice} mCoins!`);
 
-			message.inlineReply(BuyEmbed);
+			message.reply(BuyEmbed);
 			await profileSchema.findOneAndUpdate(
 				{
 					userID: message.author.id,

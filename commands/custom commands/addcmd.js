@@ -7,7 +7,7 @@ module.exports = {
 	cooldown: 7000,
 	run: async (client, message, args, customCommand) => {
 		if (!message.member.permissions.has('MANAGE_MESSAGES'))
-			return message.inlineReply(
+			return message.reply(
 				'Creating new commands requires you to have the **MANAGE_MESSAGES** permission.'
 			);
 
@@ -31,7 +31,7 @@ module.exports = {
 					commandResponse: newCommandResponse,
 				})
 				.then(
-					message.inlineReply(
+					message.reply(
 						`I Successfully Created A Command Called: ${newCommandName}.`
 					)
 				);

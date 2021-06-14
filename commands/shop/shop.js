@@ -8,7 +8,7 @@ module.exports = {
 	cooldown: 1,
 	run: async (client, message, args) => {
 		if (items.length === 0)
-			return message.inlineReply('There are no items available for sale!');
+			return message.reply('There are no items available for sale!');
 
 		// How tf do i get this to work, in the name of the field it says to me: "undefined", how do i fix it?
 		const itemsList = [];
@@ -30,6 +30,6 @@ module.exports = {
 			.addFields(itemsList)
 			.setTimestamp();
 
-		message.inlineReply(shopEmbed);
+		message.reply(shopEmbed);
 	},
 };

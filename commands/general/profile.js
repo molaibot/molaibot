@@ -19,6 +19,6 @@ module.exports = {
 				{ name: 'Full Username & Tag:', value: `${message.author.tag}` }
 			)
 			.setThumbnail(message.author.displayAvatarURL({ dynamic: true }));
-		message.inlineReply(authorInfoEmbed);
+		message.reply(authorInfoEmbed);
 	},
 };

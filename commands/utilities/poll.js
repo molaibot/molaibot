@@ -8,7 +8,7 @@ module.exports = {
 	run: async (client, message, args) => {
 		// CHECK IF YOUSER HAS PERMS
 		if (!message.member.hasPermission('ADMINISTRATOR'))
-			return message.inlineReply(
+			return message.reply(
 				'Only **Administrators** can use this command.'
 			);
 
@@ -16,11 +16,11 @@ module.exports = {
 		let theDescription = args.slice(1).join(' ');
 
 		if (!channelID)
-			return message.inlineReply(
+			return message.reply(
 				'Please specify a channekl you want the poll to be in!'
 			);
 		if (!theDescription)
-			return message.inlineReply(
+			return message.reply(
 				'Please specify a description/question for the poll!'
 			);
 

@@ -18,7 +18,7 @@ module.exports = {
 		let mention;
 
 		if (!args.length)
-			return message.inlineReply(
+			return message.reply(
 				'> Usage: m/announce <#channel> <message> [-ping]'
 			);
 
@@ -60,6 +60,6 @@ module.exports = {
 			.setColor('RANDOM')
 			.setTitle(`Sent The Announcement!`);
 
-		message.inlineReply(doneEmbed);
+		message.reply(doneEmbed);
 	},
 };
