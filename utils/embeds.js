@@ -85,12 +85,12 @@ module.exports.slashEmbed = (title, embedMessage, command, color) => {
 	if (!color) {
 		color = e.color;
 	}
-	const embed = new MessageEmbed()
+	const sembed = new MessageEmbed()
 		.setTitle(title)
 		.setDescription(embedMessage)
 		.setColor(color)
 		.setTimestamp()
 		.setFooter(e.footer);
 
-	return command.editReply({ embeds: [embed] });
+	return command.editReply({ embeds: [sembed] });
 }
