@@ -30,6 +30,13 @@ client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 Cooldown = new Discord.Collection();
 
+// functions
+client.getCommands = getCommands();
+client.embed = embed.embed();
+client.error = embed.error();
+client.titleOnly = embed.titleOnly();
+client.fields = embed.fieldListEmbed();
+
 // modlogs
 const modlogs = require('./models/modlogs');
 client.modlogs = async function ({ Member, Action, Color, Reason }, message) {
