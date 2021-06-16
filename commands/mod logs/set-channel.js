@@ -10,7 +10,7 @@ module.exports = {
 				'The **Administrator** Permission Is Required To Run This Command!'
 			);
 
-		const channel = message.mentions.channels.first();
+		const channel = message.mentions.channels.first() || message.channel;
 
 		modlogs.findOne({ Guild: message.guild.id }, async (err, data) => {
 			if (data) data.delete();

@@ -13,6 +13,7 @@ const Discord = require('discord.js'),
 			// set repliedUser value to `false` to turn off the mention by default
 			repliedUser: false,
 		},
+		intents: require('discord.js').Intents.ALL
 	}),
 	embed = require('./utils/embeds'),
 	// for the currency stuff
@@ -40,14 +41,33 @@ client.modlogs = async function ({ Member, Action, Color, Reason }, message) {
 	if (!data) return;
 
 	const channel = message.guild.channels.cache.get(data.Channel);
-	const logsEmbed = new Discord.MessageEmbed()
+
+	let logsEmbed = new Discord.MessageEmbed()
 		.setColor(Color)
 		.setDescription(`Reason: ${Reason}`)
 		.addField('Member', `${Member}`)
 		.setTitle(`Action: ${Action}`);
 
-	channel.send(logsEmbed);
+	channel.send({ embeds: [logsEmbed] });
 };
+
+	client.msgLogs = async function ({ Member, Action, OldContent, NewContent }, newMessage) {
+		const data = await modlogs.findOne({ Guild: newMessage.guild.id });
+
+		if (!data) return;
+
+		const channel = client.channels.cache.get(data.Channel);
+
+		let mlogsEmbed = new Discord.MessageEmbed()
+			.setColor("RED")
+			.setDescription("MolaiBOT Logs")
+			.addField("Old Content", `${OldContent}`)
+			.addField("New Content", `${NewContent}`)
+			.addField('Member', `${Member}`)
+			.setTitle(`Action: ${Action}`);
+
+		channel.send({ embeds: [mlogsEmbed] });
+	};
 
 /*
 ModLogs end
@@ -64,6 +84,7 @@ cmdHandler.forEach((handler) => {
 
 require('./events/mongooseConnect')(mongodb);
 
+// Set guild events
 client.once('ready', async () => {
 	require('./events/ready')(client);
 });
@@ -86,7 +107,7 @@ client.on('guildMemberRemove', (member) => {
 
 client.on('interaction', async(...args)=>{
 	require('./events/interaction')(...args, client);
-})
+});
 
 client.on('message', async (message) => {
 	if (message.author.bot) return;
@@ -201,5 +222,14 @@ client.on('message', async (message) => {
 		} else command.run(client, message, args, profileData, customCommand);
 	}
 });
+
+// Set message events
+client.on("messageDelete", (message) => {
+	require('./events/messageDelete')(client, message);
+});
+
+client.on("messageUpdate", (oldMessage, newMessage) => {
+	require('./events/messageUpdate')(client, oldMessage, newMessage);
+})
 
 client.login(token);

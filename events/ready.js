@@ -1,3 +1,5 @@
+const Discord = require('discord.js');
+const fs = require('fs');
 module.exports = async (client) => {
 	console.log(`Logged In As ${client.user.tag}!`);
 	client.user.setPresence({
@@ -18,7 +20,7 @@ module.exports = async (client) => {
   //Makes sure there are commands so it doesn't error
   if (commands.length) {
     commands.forEach((command) => {
-      const cmd = require(`${__dirname}/../commands-slash/${command}`);
+      const cmd = require(`${__dirname}/../slash-commands/${command}`);
 
       if (!cmd.name || !cmd.description || !cmd.run) return;
 
