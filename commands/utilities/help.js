@@ -57,7 +57,7 @@ module.exports = {
 				)
 				.setTimestamp()
 				.setColor('#37393e');
-			return message.reply(embed);
+			return message.reply({ embeds: [embed] });
 		} else {
 			let command =
 				client.commands.get(args[0].toLowerCase()) ||
@@ -72,7 +72,7 @@ module.exports = {
 							`Invalid command! Use \`${prefix}help\` for all of my commands!`
 						)
 						.setColor('FF0000');
-					return message.reply(embed);
+					return message.reply({ embeds: [embed] });
 				}
 				const embed = new MessageEmbed()
 					.setTitle('Command Catagory:')
@@ -80,7 +80,7 @@ module.exports = {
 						{ name: `Catagory Name`, value: command.name },
 						{ name: `Amount Of Commands`, value: command.cmdAmount }
 					);
-				return message.reply(embed);
+				return message.reply({ embeds: [embed] });
 			}
 
 			const embed = new MessageEmbed()
@@ -111,7 +111,7 @@ module.exports = {
 				)
 				.setTimestamp()
 				.setColor(roleColor);
-			return message.reply(embed);
+			return message.reply({ embeds: [embed] });
 		}
 	},
 };
