@@ -31,7 +31,7 @@ module.exports = {
 				.setTimestamp()
 				.setFooter('MolaiBOT - Made By MTGSquad ~ Command By Awoken');
 
-			message.reply(x);
+			message.reply({ embeds: [x] });
 			toBan.ban();
 
 			client.modlogs(

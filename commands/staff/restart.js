@@ -13,10 +13,12 @@ module.exports = {
 			);
 		}
 
-		embed.embed("Restarting...", "I pulled the latest version of the code from github too!", message).then(
-			exec("git pull").then(
-				exec("pm2 restart 0")
+		embed
+			.embed(
+				'Restarting...',
+				'I pulled the latest version of the code from github too!',
+				message
 			)
-		);
+			.then(exec('git pull && pm2 restart index.js'));
 	},
 };

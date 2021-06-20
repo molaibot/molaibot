@@ -19,9 +19,7 @@ module.exports = {
 				Guild: message.guild.id,
 				Channel: channel.id,
 			}).save();
-			message.reply(
-				`I succesfully set the mod-logs channel to: ${channel}`
-			);
+			message.reply(`I succesfully set the mod-logs channel to: ${channel}`);
 		});
 	},
 };

@@ -35,7 +35,7 @@ module.exports.titleOnly = (title, message) => {
 		.setFooter(e.footer)
 		.setTitle(title);
 
-	return message.reply(embed);
+	return message.reply({ embeds: [embed] });
 };
 
 module.exports.imgEmbed = (title, embedMessage, imgLink, message, color) => {
@@ -50,7 +50,7 @@ module.exports.imgEmbed = (title, embedMessage, imgLink, message, color) => {
 		.setTimestamp()
 		.setFooter(e.footer);
 
-	return message.reply(embed);
+	return message.reply({ embeds: [embed] });
 };
 
 module.exports.success = (title, succesMessage, message, color) => {
@@ -64,7 +64,7 @@ module.exports.success = (title, succesMessage, message, color) => {
 		.setTimestamp()
 		.setFooter(e.footer);
 
-	return message.reply(succesEmbed);
+	return message.reply({ embeds: [succesEmbed] });
 };
 
 module.exports.fieldListEmbed = (title, fields, message, color) => {
@@ -78,7 +78,7 @@ module.exports.fieldListEmbed = (title, fields, message, color) => {
 		.setTimestamp()
 		.setFooter(e.footer);
 
-	return message.reply(fieldListEmbed);
+	return message.reply({ embeds: [fieldListEmbed] });
 };
 
 module.exports.slashEmbed = (title, embedMessage, command, color) => {
@@ -93,4 +93,4 @@ module.exports.slashEmbed = (title, embedMessage, command, color) => {
 		.setFooter(e.footer);
 
 	return command.editReply({ embeds: [sembed] });
-}
+};

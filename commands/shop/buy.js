@@ -1,8 +1,8 @@
 const Discord = require('discord.js'),
-  items = require('../../shopitems'),
-  inventory = require('../../models/inventory'),
-  profileSchema = require('../../models/profileSchema'),
-  { prefix } = require('../../config.json');
+	items = require('../../shopitems'),
+	inventory = require('../../models/inventory'),
+	profileSchema = require('../../models/profileSchema'),
+	{ prefix } = require('../../config.json');
 
 module.exports = {
 	name: 'buy',
@@ -16,10 +16,7 @@ module.exports = {
 		if (!args[0])
 			return message.inlineReply('Please specify a item that you want to buy!');
 		const itemToBuy = args.slice(0).join(' ').toLowerCase(),
-
-		  validItem = !!items.find(
-			(val) => val.item.toLowerCase() === itemToBuy
-		);
+			validItem = !!items.find((val) => val.item.toLowerCase() === itemToBuy);
 
 		if (!validItem)
 			return message.inlineReply(
@@ -32,9 +29,7 @@ module.exports = {
 
 		const userBalance = await profileData.mCoins;
 		if (userBalance < itemPrice)
-			return message.reply(
-				'You do not have enough mCoins to buy this item'
-			);
+			return message.reply('You do not have enough mCoins to buy this item');
 
 		const params = {
 			Guild: message.guild.id,
@@ -64,7 +59,7 @@ module.exports = {
 				.setColor('#37393e')
 				.setTitle(`You have bought ${itemToBuy} for ${itemPrice} mCoins!`);
 
-			message.reply(BuyEmbed);
+			message.reply({ embeds: [BuyEmbed] });
 			await profileSchema.findOneAndUpdate(
 				{
 					userID: message.author.id,

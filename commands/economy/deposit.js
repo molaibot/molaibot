@@ -10,9 +10,7 @@ module.exports = {
 			return message.reply('Deposit amount must be a whole number');
 		try {
 			if (amount > profileData.mCoins)
-				return message.reply(
-					`You don't have that amount of coins to deposit`
-				);
+				return message.reply(`You don't have that amount of coins to deposit`);
 			await profileModel.findOneAndUpdate(
 				{
 					userID: message.author.id,
@@ -25,9 +23,7 @@ module.exports = {
 				}
 			);
 
-			return message.reply(
-				`You deposited ${amount} of mCoins into your bank`
-			);
+			return message.reply(`You deposited ${amount} of mCoins into your bank`);
 		} catch (err) {
 			console.log(err);
 		}

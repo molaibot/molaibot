@@ -27,9 +27,7 @@ module.exports = {
 				}
 			);
 
-			return message.reply(
-				`You withdrew ${amount} of mCoins into your wallet`
-			);
+			return message.reply(`You withdrew ${amount} of mCoins into your wallet`);
 		} catch (err) {
 			console.log(err);
 		}

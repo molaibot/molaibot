@@ -31,7 +31,7 @@ module.exports = {
 				.setTimestamp()
 				.setFooter('MolaiBOT - Made By MTGSquad ~ Command By Awoken');
 
-			message.reply(kickEmbed);
+			message.reply({ embeds: [kickEmbed] });
 			toKick.kick();
 
 			client.modlogs(

@@ -1,12 +1,8 @@
 # MolaiBOT is an open source discord bot.
 
-
-
 ## Contributing
 
 Just put your changes!
-
-
 
 ## Thanks For Visiting
 

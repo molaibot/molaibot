@@ -23,9 +23,7 @@ module.exports = {
 				'You do not have enough money for this bet. *Make sure you have it in cash*'
 			);
 		if (amount < 100)
-			return message.reply(
-				'Please choose over `100` mCoins for your bet.'
-			);
+			return message.reply('Please choose over `100` mCoins for your bet.');
 
 		if (winner === 1) {
 			const winEmbed = new MessageEmbed()

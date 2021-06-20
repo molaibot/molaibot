@@ -17,7 +17,7 @@ module.exports = {
 						.setTitle('Your inventory is currently empty!')
 						.setColor('#37393e');
 
-					message.reply(emptyEmbed);
+					message.reply({ embeds: [emptyEmbed] });
 				}
 
 				const inv = [];
@@ -36,7 +36,7 @@ module.exports = {
 					.setColor('#37393e')
 					.setFooter('MolaiBOT - Made By MTGSquad');
 
-				message.reply(invEmbed);
+				message.reply({ embeds: [invEmbed] });
 			}
 		);
 	},

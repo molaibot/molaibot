@@ -1,4 +1,4 @@
-module.exports = (guild) => {
+module.exports = async (guild) => {
 	const bot = client.user;
 
 	const onJoinChannel = client.channels.cache.get('833902174115069972');
@@ -14,7 +14,8 @@ module.exports = (guild) => {
 			'When Joined',
 			'```' + moment(bot.joinedAt).format('llll') + '```',
 			true
-		);
+		)
+		.addField('Set prefix to:', `${defaultPrefix}`, true);
 
 	onJoinChannel.send(onJoinEmbed);
 };

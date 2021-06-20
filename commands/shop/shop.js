@@ -30,6 +30,6 @@ module.exports = {
 			.addFields(itemsList)
 			.setTimestamp();
 
-		message.reply(shopEmbed);
+		message.reply({ embeds: [shopEmbed] });
 	},
 };

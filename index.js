@@ -2,7 +2,9 @@ require('module-alias/register');
 require('./utils/inlinereplies');
 
 const Discord = require('discord.js'),
-	{ prefix, token, mongodb } = require('./config.json'),
+	//{ defaultprefix, token, mongodb } = require('./config2.json'),
+	{ token, mongodb } = require('./config.json'),
+	defaultprefix = 'm/',
 	mongoose = require('mongoose'),
 	moment = require('moment'),
 	ms = require('ms'),
@@ -13,7 +15,7 @@ const Discord = require('discord.js'),
 			// set repliedUser value to `false` to turn off the mention by default
 			repliedUser: false,
 		},
-		intents: require('discord.js').Intents.ALL
+		intents: require('discord.js').Intents.ALL,
 	}),
 	embed = require('./utils/embeds'),
 	// for the currency stuff
@@ -22,7 +24,8 @@ const Discord = require('discord.js'),
 	customCommandsModel = require('./models/customCommandSchema'),
 	afkSchema = require('./models/afkSchema'),
 	// premium shit
-	premiumGuild = require('./models/premium-guild');
+	premiumGuild = require('./models/premium-guild'),
+	prefixSchema = require('./models/prefix');
 
 // Collections
 
@@ -51,23 +54,26 @@ client.modlogs = async function ({ Member, Action, Color, Reason }, message) {
 	channel.send({ embeds: [logsEmbed] });
 };
 
-	client.msgLogs = async function ({ Member, Action, OldContent, NewContent }, newMessage) {
-		const data = await modlogs.findOne({ Guild: newMessage.guild.id });
+client.msgLogs = async function (
+	{ Member, Action, OldContent, NewContent },
+	newMessage
+) {
+	const data = await modlogs.findOne({ Guild: newMessage.guild.id });
 
-		if (!data) return;
+	if (!data) return;
 
-		const channel = client.channels.cache.get(data.Channel);
+	const channel = client.channels.cache.get(data.Channel);
 
-		let mlogsEmbed = new Discord.MessageEmbed()
-			.setColor("RED")
-			.setDescription("MolaiBOT Logs")
-			.addField("Old Content", `${OldContent}`)
-			.addField("New Content", `${NewContent}`)
-			.addField('Member', `${Member}`)
-			.setTitle(`Action: ${Action}`);
+	let mlogsEmbed = new Discord.MessageEmbed()
+		.setColor('RED')
+		.setDescription('MolaiBOT Logs')
+		.addField('Old Content', `${OldContent}`)
+		.addField('New Content', `${NewContent}`)
+		.addField('Member', `${Member}`)
+		.setTitle(`Action: ${Action}`);
 
-		channel.send({ embeds: [mlogsEmbed] });
-	};
+	channel.send({ embeds: [mlogsEmbed] });
+};
 
 /*
 ModLogs end
@@ -105,14 +111,36 @@ client.on('guildMemberRemove', (member) => {
 	require('./events/guildMemberRemove')(client, member);
 });
 
-client.on('interaction', async(...args)=>{
+client.on('interaction', async (...args) => {
 	require('./events/interaction')(...args, client);
 });
 
+let prefix = defaultprefix;
+
 client.on('message', async (message) => {
 	if (message.author.bot) return;
+	console.log(prefix);
 
-	if(message.mentions.users.first() === client.user) return embed.embed("Hello! I'm MolaiBOT!", `My Prefix: \`${prefix}\`, To get started, please use \`${prefix}help\`. Thanks For Adding Me!`, message)
+	await prefixSchema.findOne(
+		{ guildID: message.guild.id },
+		async (err, data) => {
+			if (!data) {
+				await prefixSchema.create({
+					guildID: message.guild.id,
+					prefix: defaultprefix,
+				});
+			}
+
+			if (data) prefix = data.prefix;
+		}
+	);
+
+	if (message.mentions.users.first() === client.user)
+		return embed.embed(
+			"Hello! I'm MolaiBOT!",
+			`My Prefix: \`${prefix}\`, To get started, please use \`${prefix}help\`. Thanks For Adding Me!`,
+			message
+		);
 
 	const pings = message.mentions.users.first();
 
@@ -224,12 +252,12 @@ client.on('message', async (message) => {
 });
 
 // Set message events
-client.on("messageDelete", (message) => {
+client.on('messageDelete', (message) => {
 	require('./events/messageDelete')(client, message);
 });
 
-client.on("messageUpdate", (oldMessage, newMessage) => {
+client.on('messageUpdate', (oldMessage, newMessage) => {
 	require('./events/messageUpdate')(client, oldMessage, newMessage);
-})
+});
 
 client.login(token);

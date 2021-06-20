@@ -1,9 +1,9 @@
 const m = require('mongoose');
 
 module.exports = m.model(
-	'supportCmd',
+	'prefix',
 	new m.Schema({
-		Guild: String,
-		Message: String,
+		guildID: String,
+		prefix: String,
 	})
 );
