@@ -3,7 +3,7 @@ require('./utils/inlinereplies');
 
 const Discord = require('discord.js'),
 	//{ defaultprefix, token, mongodb } = require('./config2.json'),
-	{ token, mongodb } = require('./config.json'),
+	{ token, mongodb } = require('./config2.json'),
 	defaultprefix = 'm/',
 	mongoose = require('mongoose'),
 	moment = require('moment'),
@@ -119,8 +119,7 @@ let prefix = defaultprefix;
 
 client.on('message', async (message) => {
 	if (message.author.bot) return;
-	console.log(prefix);
-
+	
 	await prefixSchema.findOne(
 		{ guildID: message.guild.id },
 		async (err, data) => {

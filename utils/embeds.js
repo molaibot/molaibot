@@ -12,7 +12,7 @@ module.exports.error = (title, errMessage, message, color) => {
 		.setTimestamp()
 		.setFooter(e.footer);
 
-	return message.reply(errorEmbed);
+	return message.reply({ embeds: [errorEmbed]});
 };
 
 module.exports.embed = (title, embedMessage, message, color) => {
@@ -26,7 +26,7 @@ module.exports.embed = (title, embedMessage, message, color) => {
 		.setTimestamp()
 		.setFooter(e.footer);
 
-	return message.reply(embed);
+	return message.reply({embeds: [embed]});
 };
 
 module.exports.titleOnly = (title, message) => {
