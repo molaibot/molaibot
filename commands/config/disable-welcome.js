@@ -2,17 +2,11 @@ const embed = require('@embeds');
 const schema = require('../../models/setWelcome');
 module.exports = {
 	name: 'disable-welcome',
-	description: 'Disable leave messages.',
+	description: 'Disable welcome messages.',
 	premium: true,
 	cooldown: 1,
+	permission: "MANAGE_GUILD",
 	run: async (client, message, args) => {
-		if (!message.member.permissions.has('MANAGE_MESSAGES'))
-			return embed.error(
-				"You don't have permissions!",
-				"You don't have permissions to perform this action.",
-				message
-			);
-
 		await schema.findOne({ Guild: message.guild.id }, async (err, data) => {
 			if (!data)
 				return embed.error(

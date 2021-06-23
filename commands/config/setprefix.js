@@ -5,12 +5,11 @@ module.exports = {
 	name: 'setprefix',
 	description: 'Set the custom prefix for this server.',
 	usage: '<prefix>',
+	permission: "MANAGE_GUILD",
 	/**
 	 * @param {Message} message
 	 */
 	run: async (client, message, args) => {
-		if(!message.member.permissions.has("MANAGE_GUILD")) return titleOnly("You don't have the `MANAGE_GUILD` permission!", message);
-
 		const newPrefix = args.slice(0).join(' ');
 
 		if(!newPrefix) return titleOnly("Provide the new prefix please!", message);

@@ -20,7 +20,7 @@ module.exports = {
 			.setTitle('**Choose:**')
 			.setDescription('🗿 | `Rock`\n 🧾 | `Paper`\n ✂️ | `Scissors`');
 
-		const msg = await message.reply(rpsEmbed);
+		const msg = await message.reply({ embeds: [rpsEmbed] });
 		for (let x = 0; x < choices.length; x++) {
 			await msg.react(choices[x]);
 		}

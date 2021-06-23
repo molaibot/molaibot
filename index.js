@@ -5,6 +5,7 @@ const Discord = require('discord.js'),
 	//{ defaultprefix, token, mongodb } = require('./config2.json'),
 	{ token, mongodb } = require('./config2.json'),
 	defaultprefix = 'm/',
+	ownerID = '763767239018938368',
 	mongoose = require('mongoose'),
 	moment = require('moment'),
 	ms = require('ms'),
@@ -204,6 +205,16 @@ client.on('message', async (message) => {
 	message.author.bank = await profileData.bank;
 
 	if (command) {
+		if(command.permission) {
+			if(!message.member.permissions.has(command.permission)) return embed.error(`You do not have the required permissions!`, `This command needs you to have the ${command.permission} permission.`, message);
+		}
+
+		if(command.botPerm) {
+			if(!message.guild.me.permissions.has(command.botPerm)) return embed.error(`I don't have the ${command.botPerm} permission!`, "Please give me the permissions, it is required for the command to work.", message);
+		}
+
+		if(command.disabled) return embed.error("This command is disabled.", `The ${command.name.toUpperCase()} command is disabled by **${client.users.cache.has(ownerID).tag}**`)
+
 		if (command.premium) {
 			premiumGuild.findOne({ Guild: message.guild.id }, async (err, data) => {
 				if (!data)
@@ -242,7 +253,7 @@ client.on('message', async (message) => {
 					setTimeout(() => {
 						Cooldown.delete(`${command.name}${message.author.id}`);
 					}, command.cooldown);
-				} else if (!cooldown && !command.premium) {
+				} else if (!cooldown && !command.premium && !command.permission && !command.botPerm) {
 					command.run(client, message, args, profileData, customCommand);
 				}
 			});

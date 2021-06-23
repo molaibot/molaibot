@@ -21,6 +21,6 @@ module.exports = {
 				`https://vacefron.nl/api/heaven?user=${Member.user.displayAvatarURL()}`
 			);
 
-		return message.reply(Embed);
+		return message.reply({ embeds: [Embed] });
 	},
 };

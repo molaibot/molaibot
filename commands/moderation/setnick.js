@@ -5,15 +5,10 @@ module.exports = {
 	description: "Set a user's nickname",
 	usage: '<@user> <nickname>',
 	cooldown: 1,
+	permission: "MANAGE_NICKNAMES",
 	run: async (client, message, args) => {
 		const member = message.mentions.members.first();
 		const nickname = args.slice(1).join(' ');
-
-		if (!message.member.permissions.has('MANAGE_NICKNAMES'))
-			return embed.error(
-				'Error',
-				'You do not have the **MANAGE_MESSAGES** permission'
-			);
 
 		if (!member)
 			return embed.error(

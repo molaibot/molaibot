@@ -23,7 +23,7 @@ module.exports = {
 			)
 			.setColor(Color);
 
-		return message.reply(Embed);
+		return message.reply({ embeds: [Embed] });
 
 		//End
 	},

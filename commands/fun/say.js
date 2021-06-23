@@ -21,6 +21,6 @@ module.exports = {
 
 		if (!userMsg) {
 			return message.reply('Specify A Message Please!');
-		} else message.reply(sayEmbed);
+		} else message.reply({ embeds: [rpsEmbed] });
 	},
 };

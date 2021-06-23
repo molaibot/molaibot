@@ -5,12 +5,8 @@ module.exports = {
 	premium: true,
 	description: 'Create server-only commands',
 	cooldown: 7000,
+	permission: "MANAGE_GUILD",
 	run: async (client, message, args, customCommand) => {
-		if (!message.member.permissions.has('MANAGE_MESSAGES'))
-			return message.reply(
-				'Creating new commands requires you to have the **MANAGE_MESSAGES** permission.'
-			);
-
 		let msg = message;
 
 		let newCommandName = args[0];

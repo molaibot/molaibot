@@ -5,14 +5,8 @@ module.exports = {
 	description: 'Disable leave messages.',
 	premium: true,
 	cooldown: 1,
+	permission: "MANAGE_GUILD",
 	run: async (client, message, args) => {
-		if (!message.member.permissions.has('MANAGE_MESSAGES'))
-			return embed.error(
-				"You don't have permissions!",
-				"You don't have permissions to perform this action.",
-				message
-			);
-
 		await schema.findOne({ Guild: message.guild.id }, async (err, data) => {
 			if (!data)
 				return embed.error(

@@ -6,9 +6,8 @@ module.exports = {
 	usage: '<@user>',
 	aliases: ['k'],
 	cooldown: 1,
+	permission: "KICK_MEMBERS",
 	run: (client, message, args) => {
-		if (!message.member.hasPermission('KICK_MEMBERS'))
-			return message.reply("You don't have permission to kick members.");
 		let toKick = message.mentions.members.first();
 		let reason = args.slice(1).join(' ');
 		if (!args[0]) return message.reply('Please mention someone to kick.');

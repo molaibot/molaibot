@@ -6,9 +6,8 @@ module.exports = {
 	usage: '<@user>',
 	aliases: ['b'],
 	cooldown: 1,
+	permission: "BAN_MEMBERS",
 	run: (client, message, args) => {
-		if (!message.member.hasPermission('BAN_MEMBERS'))
-			return message.reply("You don't have permission to ban members.");
 		let toBan = message.mentions.members.first();
 		let reason = args.slice(1).join(' ');
 		if (!args[0]) return message.reply('Please mention someone to bann');

@@ -31,6 +31,6 @@ module.exports = {
 			.addField('Question', question)
 			.addField('Answer', replies[result]);
 
-		message.reply(ballembed);
+		message.reply({ embeds: [ballEmbed] });
 	},
 };
