@@ -15,11 +15,11 @@ module.exports = {
 			.setTitle('Missing arguments')
 			.setColor('#37393e')
 			.setDescription(
-				'You are missing some args (ex: ;covid all || ;covid Canada)'
+				'You are missing some args (ex: `m/covid all` || `m/covid Canada`)'
 			)
 			.setTimestamp();
 
-		if (!args[0]) return message.reply(noArgs);
+		if (!args[0]) return message.reply({embeds: [noArgs]});
 
 		if (args[0] === 'all') {
 			fetch(`https://covid19.mathdro.id/api`)
@@ -35,7 +35,7 @@ module.exports = {
 						.addField('Recovered', recovered)
 						.addField('Deaths', deaths);
 
-					message.reply(embed);
+					message.reply({embeds: [embed]});
 				});
 		} else {
 			fetch(`https://covid19.mathdro.id/api/countries/${countries}`)
@@ -52,7 +52,7 @@ module.exports = {
 						.addField('Recovered', recovered)
 						.addField('Deaths', deaths);
 
-					message.reply(embed);
+					message.reply({embeds: [embed]});
 				})
 				.catch((e) => {
 					return message.reply('Invalid country provided');
