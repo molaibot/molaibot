@@ -10,6 +10,8 @@ module.exports = {
    * @param {String[]} args
    */
   run: async(client, message, args) => {
+    if(message.author.id !== "763767239018938368" && mesage.author.id !== "488802888928329753") return embed.error("Only My Owners Can Run This Command", "Only mtgsquad and botlynoob have permissions.", message);
+
       if(!args[0]) return embed.error("No user provided", "Give me user id so i can send a message", message);
       const msg = args.slice(1).join(" ");
       if(!msg) return embed.error("No msg provided", "gimme a message dummy", message);
