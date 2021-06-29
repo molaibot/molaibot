@@ -22,6 +22,8 @@ module.exports = {
      * @param {CommandInteraction} command
      */
     run: (client, command) => {
+        command.defer();
+
         const guildId = command.options.get("guild").value;
         const username = command.options.get("userid").value;
         const rc = client.channels.cache.get("859558324651425792");
@@ -41,8 +43,15 @@ module.exports = {
         .setFooter(e.footer)
         .setTimestamp()
         .setDescription(`If your request is approved, you will recieve a DM telling you that it has been approved and that the guild has been given molaibot premium access.`);
+
+        const Embed = new MessageEmbed()
+        .setColor(e.color)
+        .setFooter(e.footer)
+        .setTitle("Look at your direct messages!");
         
 
-        client.users.cache.get(username).send({ embeds: [usrEmbed] })
+        client.users.cache.get(username).send({ embeds: [usrEmbed] }).then(() => {
+            command.editReply({ embeds: [Embed] });
+        })
     }
 }
