@@ -10,6 +10,14 @@ module.exports = {
     run: async(client, command) => {
         command.defer();
 
+        const errrr = new MessageEmbed()
+        .setTitle("You don't have the `MANAGE_GUILD` permission.")
+        .setFooter(e.footer)
+        .setColor(e.errColor)
+        .setTimestamp();
+
+        if(!command.member.permissions.has("MANAGE_GUILD")) return command.editReply({ embeds: [errrr] })
+
         await modlogs.findOne({ Guild: command.guild.id }, async(err, data) => {
             if(err) return console.log(err);
 

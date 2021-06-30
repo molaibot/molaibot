@@ -12,9 +12,8 @@ module.exports.error = (title, errMessage, message, color) => {
 		.setTimestamp()
 		.setFooter(e.footer);
 
-	return message.reply({ embeds: [errorEmbed]});
+	return message.reply({ embeds: [errorEmbed] })
 };
-
 module.exports.embed = (title, embedMessage, message, color) => {
 	if (!color) {
 		color = e.color;
@@ -93,4 +92,18 @@ module.exports.slashEmbed = (title, embedMessage, command, color) => {
 		.setFooter(e.footer);
 
 	return command.editReply({ embeds: [sembed] });
+};
+
+module.exports.sErr = (title, errMessage, command, color) => {
+	if (!color) {
+		color = '#ff0000';
+	}
+	const errorEmbed = new MessageEmbed()
+		.setTitle(title)
+		.setDescription(errMessage)
+		.setColor(color)
+		.setTimestamp()
+		.setFooter(e.footer);
+
+	return command.editReply({ embeds: [errorEmbed] })
 };
