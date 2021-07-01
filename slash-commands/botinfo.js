@@ -1,5 +1,7 @@
 const { CommandInteraction, Client, MessageEmbed } = require("discord.js");
-const { device, withV, operatingSystem } = require('../utils/os')
+const { device, withV, operatingSystem } = require('../utils/os');
+const e = require('../utils/embeds.json');
+const ms = require('ms');
 module.exports = {
     name: "botinfo",
     description: "Get info about molaibot!",
@@ -28,7 +30,7 @@ module.exports = {
         },
         {
             name: `Uptime`,
-            value: `\`\`\`${client.uptime}\`\`\``,
+            value: `\`\`\`${ms(client.uptime)}\`\`\``,
             inline: true
         },
         {
@@ -46,7 +48,7 @@ module.exports = {
             value: `\`\`\`${withV()}\`\`\``,
         }
       )
-      .setColor("RANDOM")
+      .setColor(e.color)
       .setFooter("MolaiBOT - Made by MTGSquad", command.user.displayAvatarURL())
       .setTimestamp();
 
