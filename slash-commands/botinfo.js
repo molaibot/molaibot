@@ -15,7 +15,7 @@ module.exports = {
         const embed = new MessageEmbed()
       .setAuthor(`MolaiBOT`, client.user.displayAvatarURL())
       .setDescription(
-        `[Support Server](https://dsc.gg/devs-gg)  [Invite](https://s.molai.dev/molaibot)   [Vote](https://s.molai.dev/vote4molaibot)`
+        `[Support Server](https://dsc.gg/devs-gg) — [Invite](https://s.molai.dev/molaibot) — [Vote](https://s.molai.dev/vote4molaibot)`
       )
       .addFields(
         {
