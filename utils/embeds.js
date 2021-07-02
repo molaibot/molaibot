@@ -12,7 +12,7 @@ module.exports.error = (title, errMessage, message, color) => {
 		.setTimestamp()
 		.setFooter(e.footer);
 
-	return message.reply({ embeds: [errorEmbed] })
+	return message.reply({ embeds: [errorEmbed] });
 };
 module.exports.embed = (title, embedMessage, message, color) => {
 	if (!color) {
@@ -25,7 +25,7 @@ module.exports.embed = (title, embedMessage, message, color) => {
 		.setTimestamp()
 		.setFooter(e.footer);
 
-	return message.reply({embeds: [embed]});
+	return message.reply({ embeds: [embed] });
 };
 
 module.exports.titleOnly = (title, message) => {
@@ -105,5 +105,19 @@ module.exports.sErr = (title, errMessage, command, color) => {
 		.setTimestamp()
 		.setFooter(e.footer);
 
-	return command.editReply({ embeds: [errorEmbed] })
+	return command.editReply({ embeds: [errorEmbed] });
+};
+
+module.exports.badWord = (title, errMessage, footer, message, bot, color) => {
+	if (!color) {
+		color = '#ff0000';
+	}
+	const errorEmbed = new MessageEmbed()
+		.setTitle(title)
+		.setDescription(errMessage)
+		.setColor(color)
+		.setTimestamp()
+		.setFooter(footer, bot.user.displayAvatarURL());
+
+	return message.reply({ embeds: [errorEmbed] });
 };

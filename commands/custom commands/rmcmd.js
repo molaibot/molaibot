@@ -5,7 +5,7 @@ module.exports = {
 	premium: true,
 	cooldown: 7000,
 	description: 'Delete a custom command.',
-	permission: "MANAGE_GUILD",
+	permission: 'MANAGE_GUILD',
 	run: async (client, message, args, customCommand) => {
 		if (!message.member.permissions.has('MANAGE_MESSAGES'))
 			return message.reply(

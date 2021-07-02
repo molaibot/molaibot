@@ -1,5 +1,6 @@
 module.exports = (client, oldMessage, newMessage) => {
 	if (newMessage.author.bot) return;
+	if (newMessage.content === oldMessage.content) return;
 
 	client.msgLogs(
 		{

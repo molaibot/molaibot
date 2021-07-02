@@ -6,7 +6,7 @@ module.exports = {
 	usage: '<@user>',
 	aliases: ['k'],
 	cooldown: 1,
-	permission: "KICK_MEMBERS",
+	permission: 'KICK_MEMBERS',
 	run: (client, message, args) => {
 		let toKick = message.mentions.members.first();
 		let reason = args.slice(1).join(' ');

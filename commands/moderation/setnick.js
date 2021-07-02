@@ -5,7 +5,7 @@ module.exports = {
 	description: "Set a user's nickname",
 	usage: '<@user> <nickname>',
 	cooldown: 1,
-	permission: "MANAGE_NICKNAMES",
+	permission: 'MANAGE_NICKNAMES',
 	run: async (client, message, args) => {
 		const member = message.mentions.members.first();
 		const nickname = args.slice(1).join(' ');

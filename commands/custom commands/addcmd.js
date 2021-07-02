@@ -5,7 +5,7 @@ module.exports = {
 	premium: true,
 	description: 'Create server-only commands',
 	cooldown: 7000,
-	permission: "MANAGE_GUILD",
+	permission: 'MANAGE_GUILD',
 	run: async (client, message, args, customCommand) => {
 		let msg = message;
 

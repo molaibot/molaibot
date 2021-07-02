@@ -2,7 +2,6 @@ require('module-alias/register');
 require('./utils/inlinereplies');
 
 const Discord = require('discord.js'),
-	//{ defaultprefix, token, mongodb } = require('./config2.json'),
 	{ token, mongodb } = require('./config2.json'),
 	defaultprefix = 'm/',
 	ownerID = '763767239018938368',
@@ -18,6 +17,7 @@ const Discord = require('discord.js'),
 		},
 		intents: require('discord.js').Intents.ALL,
 	}),
+	badwords = require('badwords/array'),
 	embed = require('./utils/embeds'),
 	// for the currency stuff
 	profileModel = require('./models/profileSchema'),
@@ -26,7 +26,8 @@ const Discord = require('discord.js'),
 	afkSchema = require('./models/afkSchema'),
 	// premium shit
 	premiumGuild = require('./models/premium-guild'),
-	prefixSchema = require('./models/prefix');
+	prefixSchema = require('./models/prefix'),
+	autoMod = require('./models/automod');
 
 // Collections
 
@@ -120,7 +121,40 @@ let prefix = defaultprefix;
 
 client.on('message', async (message) => {
 	if (message.author.bot) return;
-	
+
+	badwords.forEach(async (badword) => {
+		await autoMod.findOne({ guild: message.guild.id }, async (err, data) => {
+			if (!data) return;
+
+			if (data.enabled === true) {
+				if (message.content.includes(badword)) {
+					embed
+						.badWord(
+							'Message Deleted.',
+							'Your message contained a bad word.',
+							'MolaiBOT Auto-Moderation',
+							message,
+							client
+						)
+						.then(() =>
+							message.delete().then(() =>
+								client.modlogs(
+									{
+										Member: message.author.tag,
+										Action: 'Moderation',
+										Color: 'RED',
+										Reason:
+											'Message deleted, because it contained **bad words.**',
+									},
+									message
+								)
+							)
+						);
+				}
+			}
+		});
+	});
+
 	await prefixSchema.findOne(
 		{ guildID: message.guild.id },
 		async (err, data) => {
@@ -205,15 +239,31 @@ client.on('message', async (message) => {
 	message.author.bank = await profileData.bank;
 
 	if (command) {
-		if(command.permission) {
-			if(!message.member.permissions.has(command.permission)) return embed.error(`You do not have the required permissions!`, `This command needs you to have the ${command.permission} permission.`, message);
+		if (command.permission) {
+			if (!message.member.permissions.has(command.permission))
+				return embed.error(
+					`You do not have the required permissions!`,
+					`This command needs you to have the ${command.permission} permission.`,
+					message
+				);
 		}
 
-		if(command.botPerm) {
-			if(!message.guild.me.permissions.has(command.botPerm)) return embed.error(`I don't have the ${command.botPerm} permission!`, "Please give me the permissions, it is required for the command to work.", message);
+		if (command.botPerm) {
+			if (!message.guild.me.permissions.has(command.botPerm))
+				return embed.error(
+					`I don't have the ${command.botPerm} permission!`,
+					'Please give me the permissions, it is required for the command to work.',
+					message
+				);
 		}
 
-		if(command.disabled) return embed.error("This command is disabled.", `The ${command.name.toUpperCase()} command is disabled by **${client.users.cache.has(ownerID).tag}**`)
+		if (command.disabled)
+			return embed.error(
+				'This command is disabled.',
+				`The ${command.name.toUpperCase()} command is disabled by **${
+					client.users.cache.has(ownerID).tag
+				}**`
+			);
 
 		if (command.premium) {
 			premiumGuild.findOne({ Guild: message.guild.id }, async (err, data) => {
@@ -253,7 +303,12 @@ client.on('message', async (message) => {
 					setTimeout(() => {
 						Cooldown.delete(`${command.name}${message.author.id}`);
 					}, command.cooldown);
-				} else if (!cooldown && !command.premium && !command.permission && !command.botPerm) {
+				} else if (
+					!cooldown &&
+					!command.premium &&
+					!command.permission &&
+					!command.botPerm
+				) {
 					command.run(client, message, args, profileData, customCommand);
 				}
 			});

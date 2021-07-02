@@ -8,7 +8,9 @@ module.exports = {
 	run: async (client, message, args) => {
 		// CHECK IF YOUSER HAS PERMS
 		if (!message.member.hasPermission('MANAGE_MESSAGES'))
-			return message.reply('People with the *Manage Messages* permission can use this command.');
+			return message.reply(
+				'People with the *Manage Messages* permission can use this command.'
+			);
 
 		let channelID = message.mentions.channels.first();
 		let theDescription = args.slice(1).join(' ');

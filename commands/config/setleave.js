@@ -5,7 +5,7 @@ module.exports = {
 	description: 'Set the channel for leave messages',
 	premium: true,
 	cooldown: 15000,
-	permission: "MANAGE_GUILD",
+	permission: 'MANAGE_GUILD',
 	run: async (client, message, args) => {
 		const channel = message.mentions.channels.first().id || message.channel.id;
 

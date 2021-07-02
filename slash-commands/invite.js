@@ -10,11 +10,11 @@ module.exports = {
 		command.defer();
 
 		const embed = new MessageEmbed()
-		.setTitle("Click Me To Invite MolaiBOT!")
-		.setURL("https://s.molai.dev/molaibot")
-		.setColor(e.color)
-		.setFooter(e.footer)
-		.setTimestamp();
+			.setTitle('Click Me To Invite MolaiBOT!')
+			.setURL('https://s.molai.dev/molaibot')
+			.setColor(e.color)
+			.setFooter(e.footer)
+			.setTimestamp();
 
 		command.editReply({ embeds: [embed] });
 	},

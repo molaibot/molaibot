@@ -13,6 +13,7 @@
 	"license": "Apache License",
 	"dependencies": {
 		"ascii-table": "0.0.9",
+		"badwords": "^1.0.0",
 		"child_process": "^1.0.2",
 		"dayjs": "^1.10.5",
 		"discord-buttons": "^3.1.1",

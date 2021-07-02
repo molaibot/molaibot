@@ -7,7 +7,7 @@ module.exports = {
 	description: 'Set what you want to send to the user on the support command!',
 	premium: true,
 	cooldown: 1000,
-	permission: "MANAGE_GUILD",
+	permission: 'MANAGE_GUILD',
 	run: async (client, message, args) => {
 		const msg = args.slice(0).join(' ');
 
