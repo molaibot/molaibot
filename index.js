@@ -15,7 +15,7 @@ const Discord = require('discord.js'),
 			// set repliedUser value to `false` to turn off the mention by default
 			repliedUser: false,
 		},
-		intents: require('discord.js').Intents.ALL,
+		intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_INVITES", "GUILD_PRESENCES", "GUILD_MEMBERS"]
 	}),
 	badwords = require('badwords/array'),
 	embed = require('./utils/embeds'),
