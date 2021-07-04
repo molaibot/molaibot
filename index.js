@@ -1,5 +1,4 @@
 require('module-alias/register');
-require('./utils/inlinereplies');
 
 const Discord = require('discord.js'),
 	{ token, mongodb } = require('./config2.json'),
@@ -17,7 +16,7 @@ const Discord = require('discord.js'),
 		},
 		intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_INVITES", "GUILD_PRESENCES", "GUILD_MEMBERS"]
 	}),
-	badwords = require('badwords/array'),
+	badwords = require('./badWords.js'),
 	embed = require('./utils/embeds'),
 	// for the currency stuff
 	profileModel = require('./models/profileSchema'),

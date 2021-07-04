@@ -17,7 +17,7 @@
 		"child_process": "^1.0.2",
 		"dayjs": "^1.10.5",
 		"discord-buttons": "^3.1.1",
-		"discord.js": "^13.0.0-dev.1f8f3ab0f8dbd346154bbfa14a98726b8df25d57",
+		"discord.js": "^13.0.0-dev.a7c6678.1625427504",
 		"ejs": "^3.1.6",
 		"glob": "^7.1.7",
 		"https": "^1.0.0",
