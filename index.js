@@ -101,9 +101,6 @@ client.msgLogs = async function (
 ModLogs end
 */
 
-// Embeds so i don't have to remember the hex code
-let e = require('./utils/embeds.json');
-
 const cmdHandler = ['command'];
 // Run the command loader
 cmdHandler.forEach((handler) => {
