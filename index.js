@@ -256,11 +256,20 @@ client.on('message', async (message) => {
 	message.author.bank = await profileData.bank;
 
 	if (command) {
+		if (command.owner) {
+			if (message.member.id !== ownerID)
+				return embed.error(
+					"You aren't my owner!",
+					"You don't seem to be my owner. Erhh- sorry.",
+					message
+				);
+		}
+
 		if (command.permission) {
 			if (!message.member.permissions.has(command.permission))
 				return embed.error(
 					`You do not have the required permissions!`,
-					`This command needs you to have the ${command.permission} permission.`,
+					`This command needs you to have the **${command.permission.toUpperCase()}** permission.`,
 					message
 				);
 		}
@@ -324,7 +333,8 @@ client.on('message', async (message) => {
 					!cooldown &&
 					!command.premium &&
 					!command.permission &&
-					!command.botPerm
+					!command.botPerm &&
+					!command.owner
 				) {
 					command.run(client, message, args, profileData, customCommand);
 				}
