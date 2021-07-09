@@ -33,6 +33,7 @@ const Discord = require('discord.js'),
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 Cooldown = new Discord.Collection();
+client.owners = ["763767239018938368"];
 
 // functions
 client.getCmds = getCommands();
