@@ -1,5 +1,3 @@
-const badwords = [
-    "badword"
-];
+const badwords = ['badword'];
 
 module.exports = badwords;

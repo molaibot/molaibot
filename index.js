@@ -14,7 +14,13 @@ const Discord = require('discord.js'),
 			// set repliedUser value to `false` to turn off the mention by default
 			repliedUser: false,
 		},
-		intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_INVITES", "GUILD_PRESENCES", "GUILD_MEMBERS"]
+		intents: [
+			'GUILDS',
+			'GUILD_MESSAGES',
+			'GUILD_INVITES',
+			'GUILD_PRESENCES',
+			'GUILD_MEMBERS',
+		],
 	}),
 	badwords = require('./badWords.js'),
 	embed = require('./utils/embeds'),
@@ -26,17 +32,31 @@ const Discord = require('discord.js'),
 	// premium shit
 	premiumGuild = require('./models/premium-guild'),
 	prefixSchema = require('./models/prefix'),
-	autoMod = require('./models/automod');
+	autoMod = require('./models/automod'),
+	e = require('./utils/embeds.json');
 
 // Collections
 
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
 Cooldown = new Discord.Collection();
-client.owners = ["763767239018938368"];
+client.owners = ['763767239018938368'];
 
 // functions
 client.getCmds = getCommands();
+client.embed = function (t, d, f) {
+	const embed = new Discord.MessageEmbed().setColor(e.color);
+	if (t) {
+		embed.title = t;
+	}
+	if (d) {
+		embed.description = d;
+	}
+	if (f) {
+		embed.footer = f;
+	}
+	return embed;
+};
 
 // modlogs
 const modlogs = require('./models/modlogs');
