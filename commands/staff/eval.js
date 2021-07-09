@@ -12,9 +12,9 @@ module.exports = {
 		try {
 			let code = args.join(' ');
 			if (!code)
-				return message.channel.send('Please provide some code to evaluate');
+				return message.reply('Please provide some code to evaluate');
 			if (!code)
-				return message.channel.send('Please provide some code to evaluate');
+				return message.reply('Please provide some code to evaluate');
 			code = code.replace(/(^`{3}(\w+)?|`{3}$)/g, '');
 			code = code.replace(/[“”]/g, '"').replace(/[‘’]/g, "'");
 			embed.addField('📥 Input', '```js\n' + code + '```');
@@ -56,7 +56,7 @@ module.exports = {
 						.addField('📤 Output', '```js\n' + url + '```')
 						.setColor(0x7289da);
 
-					message.channel.send(embed2);
+					message.reply({ embeds: [embed2] });
 					return;
 				});
 			} else {
@@ -64,7 +64,7 @@ module.exports = {
 					.addField('📤 Output', '```js\n' + output + '```')
 					.setColor(0x7289da);
 
-				message.channel.send(embed);
+				message.reply({ embeds: [embed] });
 			}
 		} catch (error) {
 			let err = clean(error);
@@ -89,7 +89,7 @@ module.exports = {
 						.addField('📤 Output', '```js\n' + url + '```')
 						.setColor(0x7289da);
 
-					message.channel.send(embed3);
+					message.reply({ embeds: [embed3] });
 					return;
 				});
 			} else {
@@ -98,7 +98,7 @@ module.exports = {
 					.setColor(0x7289da);
 			}
 
-			message.channel.send(embed);
+			message.reply({ embeds: [embed] });
 		}
 	},
 };
