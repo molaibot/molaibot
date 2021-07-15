@@ -8,7 +8,7 @@ table.setHeading('Command', 'Load status');
 
 module.exports = (client) => {
 	// Read every commands subfolder
-	readdirSync('./commands/').forEach((dir) => {
+	readdirSync('../commands/').forEach((dir) => {
 		// Filter so we only have .js command files
 		const commands = readdirSync(`./commands/${dir}/`).filter((file) =>
 			file.endsWith('.js')
