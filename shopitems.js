@@ -14,4 +14,9 @@ module.exports = [
 		description: 'A Nice Rolex To Go With Your Shoes And Jacket',
 		price: 5000,
 	},
+	{
+		item: "Premium",
+		description: 'A MolaiBOT Premium Code. *claim by asking staff in the support server*',
+		price: 100000
+	}
 ];
