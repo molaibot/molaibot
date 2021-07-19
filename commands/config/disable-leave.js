@@ -16,15 +16,12 @@ module.exports = {
 				);
 
 			if (data) {
-				data
-					.delete()
-					.then(
-						embed.embed(
-							'Disabled leave messages!',
-							'The feature was successfully disabled.',
-							message
-						)
-					);
+				data.delete();
+				await embed.embed(
+					'Disabled leave messages!',
+					'The feature was successfully disabled.',
+					message
+				);
 			}
 		});
 	},

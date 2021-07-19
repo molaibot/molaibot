@@ -21,17 +21,14 @@ module.exports = {
 				message
 			);
 
-		client.user
-			.setPresence({
-				activity: { name: `${status}` },
-				status: 'dnd',
-			})
-			.then(
-				embed(
-					'Successfully changed the status!',
-					'My status was successfully changed.',
-					message
-				)
-			);
+		client.user.setPresence({
+			activity: { name: `${status}` },
+			status: 'dnd',
+		});
+		await embed(
+			'Successfully changed the status!',
+			'My status was successfully changed.',
+			message
+		);
 	},
 };

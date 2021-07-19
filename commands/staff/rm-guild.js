@@ -28,15 +28,12 @@ module.exports = {
 					message
 				);
 
-			data
-				.delete()
-				.then(
-					embed.embed(
-						'I ended their premium subscription',
-						"They don't have access to the premium commands anymore.",
-						message
-					)
-				);
+			data.delete();
+			await embed.embed(
+				'I ended their premium subscription',
+				"They don't have access to the premium commands anymore.",
+				message
+			);
 		});
 	},
 };

@@ -15,8 +15,9 @@ module.exports = [
 		price: 5000,
 	},
 	{
-		item: "Premium",
-		description: 'A MolaiBOT Premium Code. *claim by asking staff in the support server*',
-		price: 100000
-	}
+		item: 'Premium',
+		description:
+			'A MolaiBOT Premium Code. *claim by asking staff in the support server*',
+		price: 100000,
+	},
 ];

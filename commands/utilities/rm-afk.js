@@ -13,15 +13,12 @@ module.exports = {
 					message
 				);
 
-			data
-				.delete()
-				.then(
-					embed.embed(
-						'Cleared Your AFK Status!',
-						'I successfully cleared your AFK status',
-						message
-					)
-				);
+			data.delete();
+			await embed.embed(
+				'Cleared Your AFK Status!',
+				'I successfully cleared your AFK status',
+				message
+			);
 		});
 	},
 };

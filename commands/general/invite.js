@@ -19,7 +19,7 @@ module.exports = {
 									type: 2,
 									label: 'Click me',
 									style: 5,
-									url: 'https://dsc.gg/molaibot',
+									url: 'http://s.molai.dev/bot',
 								},
 							],
 						},

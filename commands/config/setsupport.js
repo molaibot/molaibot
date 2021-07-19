@@ -24,30 +24,24 @@ module.exports = {
 					new schema({
 						Guild: message.guild.id,
 						Message: msg,
-					})
-						.save()
-						.then(
-							embed.embed(
-								'Saved to the database!',
-								'Successfully set the message as the response for the support command.',
-								message
-							)
-						)
+					}).save(),
+					await embed.embed(
+						'Saved to the database!',
+						'Successfully set the message as the response for the support command.',
+						message
+					)
 				);
 
 			if (!data) {
 				new schema({
 					Guild: message.guild.id,
 					Message: msg,
-				})
-					.save()
-					.then(
-						embed.embed(
-							'Saved to the database!',
-							'Successfully set the message as the response for the support command.',
-							message
-						)
-					);
+				}).save();
+				await embed.embed(
+					'Saved to the database!',
+					'Successfully set the message as the response for the support command.',
+					message
+				);
 			}
 		});
 	},

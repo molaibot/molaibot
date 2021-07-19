@@ -18,17 +18,14 @@ module.exports = {
 			guildID: message.guild.id,
 		};
 
-		await schema
-			.findOneAndUpdate(params, {
-				$set: {
-					prefix: newPrefix,
-				},
-			})
-			.then(() =>
-				titleOnly(
-					`Successfully changed the prefix to: **${newPrefix}**`,
-					message
-				)
-			);
+		await schema.findOneAndUpdate(params, {
+			$set: {
+				prefix: newPrefix,
+			},
+		});
+		await titleOnly(
+			`Successfully changed the prefix to: **${newPrefix}**`,
+			message
+		);
 	},
 };

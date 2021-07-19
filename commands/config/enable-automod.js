@@ -12,18 +12,15 @@ module.exports = {
 					message
 				);
 			} else {
-				await s
-					.create({
-						guild: message.guild.id,
-						enabled: true,
-					})
-					.then(() =>
-						embed.embed(
-							'Successfully enabled auto-moderation!',
-							'I enabled the feature for you! To disable it, use the `disable-automod` command.',
-							message
-						)
-					);
+				await s.create({
+					guild: message.guild.id,
+					enabled: true,
+				});
+				await embed.embed(
+					'Successfully enabled auto-moderation!',
+					'I enabled the feature for you! To disable it, use the `disable-automod` command.',
+					message
+				);
 			}
 		});
 	},

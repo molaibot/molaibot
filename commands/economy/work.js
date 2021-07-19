@@ -22,14 +22,15 @@ module.exports = {
 			userID: message.author.id,
 		};
 
-		await profileModel
-			.findOneAndUpdate(params, {
-				$inc: {
-					mCoins: salary,
-				},
-			})
-			.then(
-				embed.success(`You earned: ${salary} mCoins!`, jobs[whichJob], message)
-			);
+		await profileModel.findOneAndUpdate(params, {
+			$inc: {
+				mCoins: salary,
+			},
+		});
+		await embed.success(
+			`You earned: ${salary} mCoins!`,
+			jobs[whichJob],
+			message
+		);
 	},
 };

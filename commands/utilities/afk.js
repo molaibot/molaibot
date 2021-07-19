@@ -27,15 +27,12 @@ module.exports = {
 				new afkSchema({
 					User: message.author.id,
 					Reason: reason,
-				})
-					.save()
-					.then(
-						embed.embed(
-							'Successfully Set Your AFK Status',
-							`You are afk for: ${reason}`,
-							message
-						)
-					);
+				}).save();
+				await embed.embed(
+					'Successfully Set Your AFK Status',
+					`You are afk for: ${reason}`,
+					message
+				);
 			}
 		});
 	},

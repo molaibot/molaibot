@@ -37,29 +37,23 @@ module.exports = {
 					Guild: guildID,
 					Expire,
 					Permanant: false,
-				})
-					.save()
-					.then(
-						embed.embed(
-							'Gave the server premium',
-							`Expiry: ${Expire} (unix) \nPermanant: false`,
-							message
-						)
-					);
+				}).save();
+				await embed.embed(
+					'Gave the server premium',
+					`Expiry: ${Expire} (unix) \nPermanant: false`,
+					message
+				);
 			} else {
 				new premium({
 					Guild: guildID,
 					Expire: 0,
 					Permanant: true,
-				})
-					.save()
-					.then(
-						embed.embed(
-							'Gave the server premium',
-							`Expiry: 0\nPermanant: true`,
-							message
-						)
-					);
+				}).save();
+				await embed.embed(
+					'Gave the server premium',
+					`Expiry: 0\nPermanant: true`,
+					message
+				);
 			}
 		});
 	},

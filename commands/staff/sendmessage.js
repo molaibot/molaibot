@@ -36,15 +36,11 @@ module.exports = {
 			.setColor(e.color)
 			.setFooter(e.footer);
 
-		client.users.cache
-			.get(args[0])
-			.send({ embeds: [tousre] })
-			.then(() =>
-				embed.embed(
-					`You sent a message to: ${client.users.cache.get(args[0]).tag}`,
-					msg,
-					message
-				)
-			);
+		client.users.cache.get(args[0]).send({ embeds: [tousre] });
+		await embed.embed(
+			`You sent a message to: ${client.users.cache.get(args[0]).tag}`,
+			msg,
+			message
+		);
 	},
 };

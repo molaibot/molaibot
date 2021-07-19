@@ -18,14 +18,11 @@ module.exports = {
 		new schema({
 			Guild: message.guild.id,
 			Channel: channel,
-		})
-			.save()
-			.then(
-				embed.embed(
-					'Succesfully Set the welcome channel!',
-					'Changed the channel for welcome messages to the channel you provided.',
-					message
-				)
-			);
+		}).save();
+		await embed.embed(
+			'Succesfully Set the welcome channel!',
+			'Changed the channel for welcome messages to the channel you provided.',
+			message
+		);
 	},
 };

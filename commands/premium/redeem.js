@@ -20,25 +20,20 @@ module.exports = {
 								message
 							);
 
-						embed
-							.titleOnly(
-								'You successfully claimed the MolaiBOT Premium Code!',
-								message
-							)
-							.then(async () => {
-								await premiumGuild
-									.create({
-										Guild: message.guild.id,
-										Expire: code.expire,
-										Permanant: code.permanant,
-									})
-									.then(() => {
-										const index = codes.indexOf(code);
-										if (index > -1) {
-											codes.splice(index, 1);
-										}
-									});
-							});
+						embed.titleOnly(
+							'You successfully claimed the MolaiBOT Premium Code!',
+							message
+						);
+						await premiumGuild.create({
+							Guild: message.guild.id,
+							Expire: code.expire,
+							Permanant: code.permanant,
+						})(async () => {
+							const index = codes.indexOf(code);
+							if (index > -1) {
+								codes.splice(index, 1);
+							}
+						});
 					}
 				);
 			}

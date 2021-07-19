@@ -9,6 +9,11 @@ module.exports = {
 		let maxi = args[1];
 
 		try {
+			if (mini !== Number)
+				return error('Not A Number', 'Provide Numbers...', message);
+			if (maxi !== Number)
+				return error('Not A Number', 'Provide Numbers...', message);
+
 			let answer = randomInt(mini, maxi);
 
 			titleOnly(`You answer is: ${answer}`, message);

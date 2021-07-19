@@ -12,17 +12,14 @@ module.exports = {
 					message
 				);
 			} else {
-				await s
-					.findOneAndDelete({
-						guild: message.guild.id,
-					})
-					.then(() =>
-						embed.embed(
-							'Successfully disabled auto-moderation!',
-							'I disabled the feature for you! To enable it, use the `enable-automod` command.',
-							message
-						)
-					);
+				await s.findOneAndDelete({
+					guild: message.guild.id,
+				});
+				await embed.embed(
+					'Successfully disabled auto-moderation!',
+					'I disabled the feature for you! To enable it, use the `enable-automod` command.',
+					message
+				);
 			}
 		});
 	},

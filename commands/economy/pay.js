@@ -40,25 +40,20 @@ module.exports = {
 			userID: payUser.id,
 		};
 
-		await profileModel
-			.findOneAndUpdate(myParams, {
-				$inc: {
-					mCoins: -amount,
-				},
-			})
-			.then(
-				await profileModel.findOneAndUpdate(theirParams, {
-					$inc: {
-						mCoins: amount,
-					},
-				})
-			)
-			.then(
-				embed.embed(
-					`You sent ${amount} mCoins to ${payUser.tag}!`,
-					`They'll be happy to know that you were nice and sent them ${amount} mCoins.`,
-					message
-				)
-			);
+		await profileModel.findOneAndUpdate(myParams, {
+			$inc: {
+				mCoins: -amount,
+			},
+		});
+		await profileModel.findOneAndUpdate(theirParams, {
+			$inc: {
+				mCoins: amount,
+			},
+		});
+		await embed.embed(
+			`You sent ${amount} mCoins to ${payUser.tag}!`,
+			`They'll be happy to know that you were nice and sent them ${amount} mCoins.`,
+			message
+		);
 	},
 };

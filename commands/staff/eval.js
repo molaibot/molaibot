@@ -11,10 +11,8 @@ module.exports = {
 
 		try {
 			let code = args.join(' ');
-			if (!code)
-				return message.reply('Please provide some code to evaluate');
-			if (!code)
-				return message.reply('Please provide some code to evaluate');
+			if (!code) return message.reply('Please provide some code to evaluate');
+			if (!code) return message.reply('Please provide some code to evaluate');
 			code = code.replace(/(^`{3}(\w+)?|`{3}$)/g, '');
 			code = code.replace(/[“”]/g, '"').replace(/[‘’]/g, "'");
 			embed.addField('📥 Input', '```js\n' + code + '```');

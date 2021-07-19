@@ -20,16 +20,13 @@ module.exports = {
 			return msg.channel.send('Please Specify A Command Name!');
 
 		try {
-			await customCommandsModel
-				.findOneAndDelete({
-					serverID: message.guild.id,
-					commandName: delCommandName,
-				})
-				.then(
-					message.reply(
-						`I Successfully Deleted A Command Called: ${delCommandName}!`
-					)
-				);
+			await customCommandsModel.findOneAndDelete({
+				serverID: message.guild.id,
+				commandName: delCommandName,
+			});
+			await message.reply(
+				`I Successfully Deleted A Command Called: ${delCommandName}!`
+			);
 
 			client.modlogs(
 				{

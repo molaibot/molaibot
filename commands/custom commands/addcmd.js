@@ -20,17 +20,14 @@ module.exports = {
 			);
 
 		try {
-			await customCommandsModel
-				.create({
-					serverID: message.guild.id,
-					commandName: newCommandName,
-					commandResponse: newCommandResponse,
-				})
-				.then(
-					message.reply(
-						`I Successfully Created A Command Called: ${newCommandName}.`
-					)
-				);
+			await customCommandsModel.create({
+				serverID: message.guild.id,
+				commandName: newCommandName,
+				commandResponse: newCommandResponse,
+			});
+			await message.reply(
+				`I Successfully Created A Command Called: ${newCommandName}.`
+			);
 
 			client.modlogs(
 				{
