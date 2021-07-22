@@ -15,6 +15,6 @@ module.exports = async (client, member) => {
 				`Sad to see them go. We now have ${member.guild.memberCount} members.`
 			);
 
-		channel.send(leaveEmbed);
+		channel.send({ embeds: [leaveEmbed] });
 	});
 };

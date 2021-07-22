@@ -17,9 +17,9 @@ module.exports = {
 	 * @param {CommandInteraction} command
 	 */
 	run: async (client, command) => {
-		const newP = command.options.get('prefix').value;
-
 		command.defer();
+
+		const newP = command.options.get('prefix').value;
 
 		if (!command.member.permissions.has('MANAGE_GUILD'))
 			return e.sErr(

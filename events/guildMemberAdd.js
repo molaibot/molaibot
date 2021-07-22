@@ -15,6 +15,6 @@ module.exports = async (client, member) => {
 				`Be sure to say hi! We now have ${member.guild.memberCount} members.`
 			);
 
-		channel.send(welkomEmbed);
+		channel.send({ embeds: [welkomEmbed] });
 	});
 };
