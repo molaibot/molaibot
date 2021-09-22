@@ -6,8 +6,13 @@ module.exports = {
 	description: 'Withdraw mCoins from your bank',
 	run: async (client, message, args, profileData) => {
 		const amount = args[0];
-		if (amount % 1 != 0 || amount <= 0)
-			return message.reply('Withdrawn amount must be a whole number');
+		if(amount = all) {
+			amount = profileData.mCoins;
+		}
+
+		if(!amount === Number || !amount === 'all') {
+			return message.reply("That is not a number, i would accept all, but thats not even that.")
+		}
 
 		try {
 			if (amount > profileData.bank)
