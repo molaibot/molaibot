@@ -1,4 +1,4 @@
-module.exports = async (guild) => {
+module.exports = async (guild, client) => {
 	const bot = client.user;
 
 	const onJoinChannel = client.channels.cache.get('833902174115069972');

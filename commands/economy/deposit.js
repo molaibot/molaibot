@@ -6,12 +6,14 @@ module.exports = {
 	description: 'Deposit mCoins into your bank!',
 	run: async (client, message, args, profileData) => {
 		let amount = args[0];
-		if(amount = all) {
+		if ((amount = all)) {
 			amount = profileData.mCoins;
 		}
 
-		if(!amount === Number || !amount === 'all') {
-			return message.reply("That is not a number, i would accept all, but thats not even that.")
+		if (!amount === Number || !amount === 'all') {
+			return message.reply(
+				'That is not a number, i would accept all, but thats not even that.'
+			);
 		}
 		try {
 			if (amount > profileData.mCoins)

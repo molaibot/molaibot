@@ -1,7 +1,7 @@
 require('module-alias/register');
 
 const Discord = require('discord.js'),
-	{ token, mongodb } = require('./config2.json'),
+	{ token, mongodb } = require('./config.json'),
 	defaultprefix = 'm/',
 	ownerID = '763767239018938368',
 	mongoose = require('mongoose'),
@@ -115,11 +115,11 @@ client.once('ready', async () => {
 });
 
 client.on('guildCreate', (guild) => {
-	require('./events/guildCreate')(guild);
+	require('./events/guildCreate')(guild, client);
 });
 
 client.on('guildDelete', (guild) => {
-	require('./events/guildDelete')(guild);
+	require('./events/guildDelete')(guild, client);
 });
 
 client.on('guildMemberAdd', (member) => {
@@ -136,7 +136,7 @@ client.on('interaction', async (...args) => {
 
 let prefix = defaultprefix;
 
-client.on('message', async (message) => {
+client.on('messageCreate', async (message) => {
 	if (message.author.bot) return;
 
 	badwords.forEach(async (badword) => {
